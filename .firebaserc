@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "lista-super-app",
+    "superlista": "superlista-v2"
+  },
+  "targets": {},
+  "etags": {}
+}
