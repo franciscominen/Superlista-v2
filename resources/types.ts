@@ -8,15 +8,15 @@ export interface IProduct {
 
 export interface State {
     products: IProduct[];
+    list: IProduct[];
 }
 
-/* export interface Actions {
-    add: (text: IProduct["text"]) => void;
-    update: (todo: IProduct) => void;
-    remove: (id: IProduct["id"]) => void;
+export interface Actions {
+    addProduct: (product: IProduct) => void;
+    removeProduct: (id: IProduct['id']) => void;
 }
- */
+
 export interface Context {
     state: State;
-    /* actions: Actions; */
+    actions: Actions;
 }

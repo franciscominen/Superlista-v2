@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement, useEffect } from 'react'
 import Layout from '@/components/layout'
 import type { NextPageWithLayout } from '@/pages/_app'
 import Head from 'next/head'
@@ -8,12 +8,7 @@ import { IProduct } from '@/resources/types'
 
 const Products: NextPageWithLayout = () => {
 
-  const products = useProducts();
-
-  products.map(product => {
-
-  })
-  console.log(products)
+  const products = useProducts()
 
   return (
     <>
@@ -23,15 +18,16 @@ const Products: NextPageWithLayout = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {
-        products.map(({ id, name, img, note, category }: IProduct) => {
+        products.map((product: IProduct) => {
           return (
             <ProductCard
-              id={id}
-              key={id}
-              name={name}
-              img={img}
-              note={note}
-              category={category}
+              id={product.id}
+              name={product.name}
+              img={product.img}
+              note={product.note}
+              category={product.category}
+              key={product.name}
+              product={product}
             />
           )
         })
