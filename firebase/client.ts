@@ -1,34 +1,18 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import { useCollection } from "react-firebase-hooks/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBiTu_NMGHt8I3DV5MAU7Q0APBg-iVM16U",
-  authDomain: "superlista-v2.firebaseapp.com",
-  projectId: "superlista-v2",
-  storageBucket: "superlista-v2.appspot.com",
-  messagingSenderId: "491637516760",
-  appId: "1:491637516760:web:49a0746766bbe302ceaaad",
-  measurementId: "G-S0L80T326D"
+  apiKey: "AIzaSyArdkMYgTUwCXX70lB11KWAttnxDQ8zquQ",
+  authDomain: "lista-super-app.firebaseapp.com",
+  projectId: "lista-super-app",
+  storageBucket: "lista-super-app.appspot.com",
+  messagingSenderId: "435567422333",
+  appId: "1:435567422333:web:015bbebddc89e553e63a14"
 }
 
 !firebase.apps.length && firebase.initializeApp(firebaseConfig)
 
-const db = firebase.firestore()
+const database = firebase.firestore()
 
-export const fetchAllProducts = () => {
-  return db
-    .collection("products")
-    .get()
-    .then(({ docs }) => {
-      return docs.map((doc) => {
-        const data = doc.data()
-        const id = doc.id
-
-        return {
-          ...data,
-          id,
-        }
-      })
-    })
-}
+export { database };
+export default firebase;
