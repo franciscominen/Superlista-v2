@@ -5,12 +5,13 @@ import Head from 'next/head'
 import { IProduct } from '~/lib/types'
 import { useProducts } from '~/lib/hooks'
 
-import Layout from '~/ui/components/layout'
-import ProductCard from '~/ui/components/productCard'
+import Layout from '~/ui/components/Layout'
+import ProductCard from '~/ui/components/ProductCard'
 
 
 const Products: NextPageWithLayout = () => {
   const products = useProducts()
+  console.log(products);
   
   return (
     <>

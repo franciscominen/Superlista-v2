@@ -5,8 +5,8 @@ import Head from 'next/head'
 import { useList } from '~/lib/hooks'
 import { IProduct } from '~/lib/types'
 
-import Layout from '~/ui/components/layout'
-import ProductListCard from '~/ui/components/productListCard'
+import Layout from '~/ui/components/Layout'
+import ProductListCard from '~/ui/components/ProductListCard'
 
 const MyList: NextPageWithLayout = () => {
     const list = useList()
