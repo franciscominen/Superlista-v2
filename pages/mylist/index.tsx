@@ -1,13 +1,14 @@
 import type { ReactElement } from 'react'
-import Layout from '@/components/layout'
-import type { NextPageWithLayout } from '@/pages/_app'
+import type { NextPageWithLayout } from '~/pages/_app'
 import Head from 'next/head'
-import { useList } from '~/hooks'
-import ProductListCard from '~/components/productListCard'
-import { IProduct } from '~/resources/types'
+
+import { useList } from '~/lib/hooks'
+import { IProduct } from '~/lib/types'
+
+import Layout from '~/ui/components/layout'
+import ProductListCard from '~/ui/components/productListCard'
 
 const MyList: NextPageWithLayout = () => {
-
     const list = useList()
 
     return (

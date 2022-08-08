@@ -1,5 +1,5 @@
-import { useProductsActions } from '~/hooks'
-import { IProduct } from '~/resources/types'
+import { useProductsActions } from '~/lib/hooks'
+import { IProduct } from '~/lib/types'
 
 interface Props extends IProduct {
     product: IProduct

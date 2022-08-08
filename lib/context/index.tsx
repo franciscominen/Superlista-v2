@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext } from "react"
-import { IProduct, Context, State, Actions } from "./types"
-import api from "./resources"
-import Loading from '@/components/loading'
+import { IProduct, Context, State, Actions } from "../types"
+import api from '~/pages/api'
+import Loading from '~/ui/components/loading'
 
 interface Props {
     children: JSX.Element;

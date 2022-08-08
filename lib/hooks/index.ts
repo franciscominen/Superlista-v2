@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import ProductsContext from "@/resources/context";
-import { IProduct, Actions } from "~/resources/types";
+import ProductsContext from "~/lib/context";
+import { IProduct, Actions } from "~/lib/types";
 
 
 export function useProducts(): IProduct[] {

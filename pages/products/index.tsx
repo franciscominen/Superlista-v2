@@ -1,15 +1,17 @@
-import { ReactElement, useEffect } from 'react'
-import Layout from '@/components/layout'
-import type { NextPageWithLayout } from '@/pages/_app'
+import { ReactElement } from 'react'
+import type { NextPageWithLayout } from '~/pages/_app'
 import Head from 'next/head'
-import { useProducts } from '@/hooks'
-import ProductCard from '@/components/productCard'
-import { IProduct } from '@/resources/types'
+
+import { IProduct } from '~/lib/types'
+import { useProducts } from '~/lib/hooks'
+
+import Layout from '~/ui/components/layout'
+import ProductCard from '~/ui/components/productCard'
+
 
 const Products: NextPageWithLayout = () => {
-
   const products = useProducts()
-
+  
   return (
     <>
       <Head>

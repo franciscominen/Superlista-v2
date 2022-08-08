@@ -2,7 +2,7 @@
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
-import { Provider as ProductsProvider } from "@/resources/context"
+import { Provider as ProductsProvider } from "~/lib/context"
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode

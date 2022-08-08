@@ -32,7 +32,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "firebase/client.ts"
+    "lib/firebase/client.ts"
   ],
   "exclude": [
     "node_modules"
