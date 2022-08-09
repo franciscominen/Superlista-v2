@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext } from "react"
 import { IProduct, Context, State, Actions } from "../types"
+import { useLocalStorageGet, useLocalStorageSet } from "../hooks";
 import api from '~/pages/api'
 import Loading from '~/ui/components/Loading'
 
@@ -7,12 +8,17 @@ interface Props {
     children: JSX.Element;
 }
 
+const initialState: State = {
+    products: [],
+    list: []
+}
+
 const ProductsContext = createContext({} as Context)
 
 const ProductsProvider = ({ children }: Props) => {
 
     const [products, setProducts] = useState<IProduct[]>([]);
-    const [list, setList] = useState<IProduct[]>([]);
+    const [list, setList] = useState<IProduct[]>(() => useLocalStorageGet("list", initialState.list));
     const [status, setStatus] = useState<"pending" | "resolved" | "rejected">("pending")
 
 
@@ -35,6 +41,10 @@ const ProductsProvider = ({ children }: Props) => {
     }
 
     useEffect(() => {
+        useLocalStorageSet("list", list);
+    }, [list]);
+
+    useEffect(() => {
         api.getAll((products: IProduct[]) => {
             setProducts(products)
             setStatus("resolved")
@@ -47,7 +57,11 @@ const ProductsProvider = ({ children }: Props) => {
     const state: State = { products, list }
     const actions: Actions = { addProduct, removeProduct };
 
-    return <ProductsContext.Provider value={{ state, actions }}> {children} </ProductsContext.Provider>
+    return (
+        <ProductsContext.Provider value={{ state, actions }}>
+            {children}
+        </ProductsContext.Provider>
+    )
 }
 
 export { ProductsProvider as Provider, ProductsContext as default }
