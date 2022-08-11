@@ -2,21 +2,22 @@ export interface IProduct {
     id: string
     name: string
     img: string
-    note: string
-    category: string
+    nota: string
+    categoryID: string
 }
 
 export interface State {
-    products: IProduct[];
-    list: IProduct[];
+    products: IProduct[]
+    list: IProduct[]
 }
 
 export interface Actions {
-    addProduct: (product: IProduct) => void;
-    removeProduct: (id: IProduct['id']) => void;
+    addProduct: (product: IProduct) => void
+    removeProduct: (id: IProduct['id']) => void
+    addNoteToProduct: (product: IProduct, note: IProduct['nota']) => void
 }
 
 export interface Context {
-    state: State;
-    actions: Actions;
+    state: State
+    actions: Actions
 }

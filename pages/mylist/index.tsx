@@ -10,7 +10,7 @@ import ProductListCard from '~/ui/components/ProductListCard'
 
 const MyList: NextPageWithLayout = () => {
     const list = useList()
-
+    
     return (
         <>
             <Head>
@@ -27,8 +27,8 @@ const MyList: NextPageWithLayout = () => {
                                 id={product.id}
                                 name={product.name}
                                 img={product.img}
-                                note={product.note}
-                                category={product.category}
+                                nota={product.nota}
+                                categoryID={product.categoryID}
                                 key={product.name}
                                 product={product}
                             />

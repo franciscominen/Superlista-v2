@@ -31,12 +31,28 @@ const ProductsProvider = ({ children }: Props) => {
             setList([...state.list]) :
             setList([...state.list, { ...newProduct }])
 
+
         return list
     }
 
     const removeProduct = (id: IProduct['id']) => {
         const productToRemove = state.list.filter(product => product.id !== id)
         setList(productToRemove)
+        return list
+    }
+
+    const addNoteToProduct = (product: IProduct, nota: IProduct['nota']) => {
+        let productToEdit = products.find(productList => productList.id === product.id)
+        const isProductInList = state.list.some(productList => productList.id === product.id)
+
+        if (isProductInList && productToEdit) {
+            const editProduct = state.list.find(productList => productList.id === product.id)
+            const productToUpdateNote = state.list.findIndex(product => product.id === editProduct?.id)
+            return list[productToUpdateNote].nota = nota
+        } else {
+            productToEdit = { ...product, nota }
+            list.push(productToEdit)
+        }
         return list
     }
 
@@ -55,7 +71,7 @@ const ProductsProvider = ({ children }: Props) => {
     if (status === "pending") return <Loading />;
 
     const state: State = { products, list }
-    const actions: Actions = { addProduct, removeProduct };
+    const actions: Actions = { addProduct, removeProduct, addNoteToProduct };
 
     return (
         <ProductsContext.Provider value={{ state, actions }}>

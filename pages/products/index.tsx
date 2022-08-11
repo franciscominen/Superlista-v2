@@ -11,7 +11,6 @@ import ProductCard from '~/ui/components/ProductCard'
 
 const Products: NextPageWithLayout = () => {
   const products = useProducts()
-  console.log(products);
   
   return (
     <>
@@ -27,8 +26,8 @@ const Products: NextPageWithLayout = () => {
               id={product.id}
               name={product.name}
               img={product.img}
-              note={product.note}
-              category={product.category}
+              nota={product.nota}
+              categoryID={product.categoryID}
               key={product.name}
               product={product}
             />
