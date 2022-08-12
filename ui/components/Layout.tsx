@@ -1,6 +1,7 @@
-import React, { ReactNode } from "react"
+import React, { Component, ReactNode } from "react"
 import Navbar from './Navbar'
 import Footer from './Footer'
+import { NextComponentType } from "next"
 
 interface Props {
     children?: ReactNode

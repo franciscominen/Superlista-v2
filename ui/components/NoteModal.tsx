@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { useProductsActions } from "~/lib/hooks";
 import { IProduct } from "~/lib/types";

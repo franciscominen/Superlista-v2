@@ -7,6 +7,7 @@ import { IProduct } from '~/lib/types'
 
 import Layout from '~/ui/components/Layout'
 import ProductListCard from '~/ui/components/ProductListCard'
+import ClearListModal from '~/ui/components/ClearListModal'
 
 const MyList: NextPageWithLayout = () => {
     const list = useList()
@@ -35,6 +36,7 @@ const MyList: NextPageWithLayout = () => {
                         )
                     })
             }
+            <ClearListModal modalIcon={'CLEAR'}/>
         </>
     )
 }

@@ -15,6 +15,7 @@ export interface Actions {
     addProduct: (product: IProduct) => void
     removeProduct: (id: IProduct['id']) => void
     addNoteToProduct: (product: IProduct, note: IProduct['nota']) => void
+    clearList: () => void
 }
 
 export interface Context {
