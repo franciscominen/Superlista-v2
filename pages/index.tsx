@@ -3,9 +3,10 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Footer from '~/ui/components/Footer'
 import ClearListModal from '~/ui/components/ClearListModal'
-import { useState } from 'react'
+import { useList } from '~/lib/hooks'
 
 const Home: NextPage = () => {
+  const list = useList()
 
   return (
     <>
@@ -16,8 +17,12 @@ const Home: NextPage = () => {
       </Head>
 
       <h1>Superlista.ar</h1>
-      <ClearListModal modalIcon={'Empezar nueva lista'}/>
-      <Link href="/products">
+      {
+        !list.length ?
+          <Link href="/products"> Empezar nueva lista </Link> :
+          <ClearListModal modalIcon={'Empezar nueva lista'} />
+      }
+      <Link href="/mylist">
         Continuar mi lista
       </Link>
 

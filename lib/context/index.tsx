@@ -10,17 +10,16 @@ interface Props {
 
 const initialState: State = {
     products: [],
-    list: []
+    list: [],
 }
 
 const ProductsContext = createContext({} as Context)
 
 const ProductsProvider = ({ children }: Props) => {
 
-    const [products, setProducts] = useState<IProduct[]>([]);
-    const [list, setList] = useState<IProduct[]>(() => useLocalStorageGet("list", initialState.list));
+    const [products, setProducts] = useState<IProduct[]>([])
+    const [list, setList] = useState<IProduct[]>(() => useLocalStorageGet("list", initialState.list))
     const [status, setStatus] = useState<"pending" | "resolved" | "rejected">("pending")
-
 
     const addProduct = (newProduct: IProduct) => {
         const isProductInList = state.list.some(
@@ -74,7 +73,8 @@ const ProductsProvider = ({ children }: Props) => {
     if (status === "pending") return <Loading />;
 
     const state: State = { products, list }
-    const actions: Actions = { addProduct, removeProduct, addNoteToProduct, clearList };
+    const actions: Actions = { addProduct, removeProduct, addNoteToProduct, clearList }
+
 
     return (
         <ProductsContext.Provider value={{ state, actions }}>
