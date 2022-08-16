@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Footer from '~/ui/components/Footer'
 import ClearListModal from '~/ui/components/ClearListModal'
 import { useList } from '~/lib/hooks'
+import { MainContainer, Container } from '~/ui/styles/sharedStyles'
 
 const Home: NextPage = () => {
   const list = useList()
@@ -16,15 +17,23 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Superlista.ar</h1>
-      {
-        !list.length ?
-          <Link href="/products"> Empezar nueva lista </Link> :
-          <ClearListModal modalIcon={'Empezar nueva lista'} />
-      }
-      <Link href="/mylist">
-        Continuar mi lista
-      </Link>
+      <MainContainer>
+        <h1>Superlista.ar</h1>
+
+        <Container>
+          {
+            !list.length ?
+              <Link href="/products"> Empezar nueva lista </Link> :
+              <ClearListModal modalIcon={'Empezar nueva lista'} />
+          }
+          <Link href="/mylist">
+            Continuar mi lista
+          </Link>
+        </Container>
+
+        <Link href='/'>Como usarla?</Link>
+
+      </MainContainer>
 
       <Footer />
     </>

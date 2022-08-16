@@ -1,11 +1,12 @@
 import Link from 'next/link'
+import { StyledFooter } from '../styles/sharedStyles';
 
 const Footer = () => {
     return (
         <>
-            <footer>
+            <StyledFooter>
                 Superlista.ar | Todos los derechos reservados.
-            </footer>
+            </StyledFooter>
         </>
     );
 }

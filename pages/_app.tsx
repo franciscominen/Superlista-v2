@@ -2,8 +2,10 @@
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
-import { Provider as ProductsProvider } from "~/lib/context"
-
+import { Provider as ProductsProvider } from "~/lib/context"/* 
+import '~/ui/styles/globals.css'
+ */
+import GlobalStyle from '~/ui/styles/globalStyles'
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 }
@@ -18,7 +20,10 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     <ProductsProvider>
-      <Component {...pageProps} />
+      <>        
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </>
     </ProductsProvider>
   )
 }
