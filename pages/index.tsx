@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Footer from '~/ui/components/Footer'
 import ClearListModal from '~/ui/components/ClearListModal'
 import { useList } from '~/lib/hooks'
-import { MainContainer, Container } from '~/ui/styles/sharedStyles'
+import { MainContainer, SpacedContainer } from '~/ui/styles/sharedStyles'
 
 const Home: NextPage = () => {
   const list = useList()
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
       <MainContainer>
         <h1>Superlista.ar</h1>
 
-        <Container>
+        <SpacedContainer>
           {
             !list.length ?
               <Link href="/products"> Empezar nueva lista </Link> :
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
           <Link href="/mylist">
             Continuar mi lista
           </Link>
-        </Container>
+        </SpacedContainer>
 
         <Link href='/'>Como usarla?</Link>
 

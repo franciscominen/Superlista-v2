@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
     :root {
         --dark: #232323;
-        --light: #F5F5F5;
+        --light: #fff;
         --white: #F6F6F6;
         --principalFont: 'IBM Plex Sans', sans-serif;
     }
@@ -20,6 +20,13 @@ const GlobalStyle = createGlobalStyle`
     }
     * {
         box-sizing: border-box;
+    }
+    h1, h2, h3, h4, h5, h6, p, a {
+        color: var(--dark);
+    }
+    button {
+        background: none;
+        border: none;
     }
 `
 

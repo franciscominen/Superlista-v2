@@ -2,6 +2,7 @@ import React, { Component, ReactNode } from "react"
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { NextComponentType } from "next"
+import { MainContainer } from "../styles/sharedStyles"
 
 interface Props {
     children?: ReactNode
@@ -11,9 +12,11 @@ interface Props {
 const Layout = ({ children, ...props }: Props) => {
     return (
         <>
-            <Navbar />
-            <main {...props}>{children}</main>
-            <Footer />
+            <>
+                <Navbar />
+                <MainContainer {...props}>{children}</MainContainer>
+                <Footer />
+            </>
         </>
     )
 }

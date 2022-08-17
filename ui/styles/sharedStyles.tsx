@@ -1,20 +1,24 @@
 import styled from 'styled-components'
 
 const MainContainer = styled.main`
-    min-height: 100vh;
     max-width: 750px;
     width: 100%;
     margin:  0 auto;
-    padding: 0 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 `
-
-const Container = styled.div`
+const CenterContainer = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+`
+
+const SpacedContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 8px;
 `
@@ -30,4 +34,11 @@ const StyledFooter = styled.footer`
     text-align: center;
 `
 
-export { MainContainer, Container, StyledFooter }
+const Title = styled.h1`
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    padding: 0 3%;
+`
+
+export { MainContainer, SpacedContainer, StyledFooter, Title, CenterContainer }
