@@ -11,9 +11,10 @@ const MainContainer = styled.main`
 `
 const CenterContainer = styled.div`
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 8px;
+    text-align: center;
 `
 
 const SpacedContainer = styled.div`
@@ -41,4 +42,38 @@ const Title = styled.h1`
     padding: 0 3%;
 `
 
-export { MainContainer, SpacedContainer, StyledFooter, Title, CenterContainer }
+const StyledModalWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  background: #00000055;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden!important;
+`;
+
+const ModalContainer = styled.div`
+  background: var(--light);
+  padding: 22px 0 12px 0;
+  border-radius: 40px;
+  max-width: 30em;
+  width: 90%;
+  margin: 0 auto;
+`
+
+export {
+    MainContainer,
+    SpacedContainer,
+    StyledFooter,
+    Title,
+    CenterContainer,
+    StyledModalWrapper,
+    ModalContainer
+}

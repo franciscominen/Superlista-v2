@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useProductsActions } from "~/lib/hooks";
 import { IProduct } from "~/lib/types";
-import { CenterContainer } from "../styles/sharedStyles";
+import { CenterContainer, StyledModalWrapper, ModalContainer } from "../styles/sharedStyles";
 
 interface Props {
   show: boolean
@@ -90,31 +90,6 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
 
 export default NoteModal
 
-const StyledModalWrapper = styled.div`
-  height: 100%;
-  width: 100%;
-  background: #00000055;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden!important;
-`;
-
-const ModalContainer = styled.div`
-  background: #f2f2f2;
-  padding: 22px 0 12px 0;
-  border-radius: 40px;
-  max-width: 30em;
-  width: 90%;
-  margin: 0 auto;
-`
 const NoteTextArea = styled.textarea`
   background-color: transparent;
   border: none;

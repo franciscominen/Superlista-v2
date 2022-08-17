@@ -5,9 +5,21 @@ import Footer from '~/ui/components/Footer'
 import ClearListModal from '~/ui/components/ClearListModal'
 import { useList } from '~/lib/hooks'
 import { MainContainer, SpacedContainer } from '~/ui/styles/sharedStyles'
+import styled from 'styled-components'
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
   const list = useList()
+  const router = useRouter()
+
+  const modalButton = (
+    <>
+      <HomeButton>
+        <img src="/assets/new-list-btn.svg" alt="" style={{ maxWidth: '78px' }} />
+        <HomeText><strong>Crear nueva</strong> Lista</HomeText>
+      </HomeButton>
+    </>
+  )
 
   return (
     <>
@@ -18,21 +30,25 @@ const Home: NextPage = () => {
       </Head>
 
       <MainContainer>
-        <h1>Superlista.ar</h1>
+        <HomeContainer>
+          <h1>Superlista.ar</h1>
 
-        <SpacedContainer>
-          {
-            !list.length ?
-              <Link href="/products"> Empezar nueva lista </Link> :
-              <ClearListModal modalIcon={'Empezar nueva lista'} />
-          }
-          <Link href="/mylist">
-            Continuar mi lista
+          <SpacedContainer style={{marginBottom: '20px'}}>
+            {
+              !list.length ?
+                <Link href="/products"> Empezar nueva lista </Link> :
+                <ClearListModal modalIcon={modalButton} />
+            }
+            <HomeButton onClick={() => { router.push('/mylist') }}>
+              <img src="/assets/continue-btn.svg" alt="" style={{ maxWidth: '78px' }} />
+              <HomeText><strong>Continuar</strong> Lista</HomeText>
+            </HomeButton>
+          </SpacedContainer>
+
+          <Link href='/'>
+            <h3>¿Como funciona?</h3>
           </Link>
-        </SpacedContainer>
-
-        <Link href='/'>Como usarla?</Link>
-
+        </HomeContainer>
       </MainContainer>
 
       <Footer />
@@ -41,3 +57,26 @@ const Home: NextPage = () => {
 }
 
 export default Home
+const HomeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+`
+const HomeButton = styled.button`
+  background-color: var(--white);
+  border: 2px solid #D2D2D2;
+  border-radius: 20px;
+  min-width: 160px;
+  max-width: 185px;
+  width: 100%;
+  min-height: 160px;
+  max-height: 185px;
+  height: 100%;
+  object-fit: contain;
+`
+const HomeText = styled.p`
+  font-size: 15px;
+  margin: 8px 0 0 0;
+`

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useProductsActions } from "~/lib/hooks";
-
+import { StyledModalWrapper, ModalContainer, CenterContainer } from '~/ui/styles/sharedStyles'
 interface Props {
     modalIcon: any
 }
@@ -24,53 +24,102 @@ const ClearListModal = ({ modalIcon }: Props) => {
     }
 
     const modal = (
-        <div className="modal-wrapper">
-            <div className="modal-container">
-                {
-                    isHome ?
-                        <h2> Tenes una lista creada, queres borrarla?</h2> :
-                        <h2> Queres borrar esta lista?</h2>
+        <>
+            <StyledModalWrapper>
+                <ModalContainer>
+                    {
+                        isHome ?
+                            (
+                                <>
+                                    <button onClick={() => closeModal()} className='close-btnHome'>
+                                        <img src="/assets/close-icon.svg" alt="" />
+                                    </button>
+                                    <h3> Ya tenes una lista creada, <br />queres borrarla?</h3>
+                                </>
+                            ) :
+                            <div className="clearList-wrapper">
+                                <figure></figure>
+                                <h3> ¿Borrar todo?</h3>
+                                <button onClick={() => closeModal()} className='close-btn'>
+                                    <img src="/assets/close-icon.svg" alt="" />
+                                </button>
+                            </div>
+
+                    }
+                    <CenterContainer>
+                        <button onClick={() => handleClear()} className='modal-btn'>SI</button>
+                        <button onClick={() => closeModal()} className='modal-btnCancel'>NO</button>
+                    </CenterContainer>
+                </ModalContainer>
+            </StyledModalWrapper>
+            <style jsx>{`
+                html,
+                body,
+                body > div:first-child,
+                div#__next,
+                div#__next > div {
+                overflow: hidden;
                 }
-                <div>
-                    <button onClick={() => handleClear()}>SI</button>
-                    <button onClick={() => closeModal()}>NO</button>
-                </div>
-            </div>
+                
+                .clearList-wrapper {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0 12px;
+                }
 
-            <style global jsx>{`
-        html,
-        body,
-        body > div:first-child,
-        div#__next,
-        div#__next > div {
-          overflow: hidden;
-        }
-        
-        .modal-wrapper {
-          height: 100%;
-          width: 100%;
-          background: #00000055;
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: 3;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
+                figure {
+                    margin: 0;
+                    width: 35px;
+                }
 
-        .modal-container {
-          background: #f2f2f2;
-          padding: 20px;
-          border-radius: 20px;
-          max-width: 30em;
-          width: 100%;
-          margin: auto;
-        }
-        `}</style>
-        </div>
+                .clearList-wrapper .close-btn {
+                    position: relative;
+                    bottom: 16px;
+                    right: 4px;
+                }
+
+                .clearList-wrapper h3 {
+                    font-size: 22px;
+                    text-align: center;
+                }
+
+                h3 {
+                    font-size: 22px;
+                    text-align: center;
+                    margin: 8px 0 22px 0;  
+                }
+
+                .close-btnHome {
+                    width: 100%;
+                    text-align: right;
+                    padding-right: 22px;
+                }
+
+                .modal-btn {
+                    font-size: 22px;
+                    font-weight: bold;
+                    background-color: var(--white);
+                    color: #8D8D8D;
+                    width: 120px;
+                    padding: 16px 0;
+                    border-radius: 18px;
+                    margin-bottom: 12px;
+                    border: 3px solid #D2D2D2;
+                }
+                .modal-btnCancel {
+                    font-size: 22px;
+                    font-weight: bold;
+                    background-color: #D2D2D2;
+                    color: var(--white);
+                    width: 120px;
+                    padding: 16px 0;
+                    border-radius: 18px;
+                    margin-bottom: 12px;
+                    border: 3px solid #D2D2D2;
+                }
+            `}</style>
+        </>
     )
 
     return (
