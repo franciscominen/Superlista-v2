@@ -8,7 +8,7 @@ const ConfirmClearButton = (props: any) => {
             className={props.className}
             onClick={props.onClick}
         >
-            Borrar lista?
+            ¿Borrar lista?
         </button>
     )
 }
@@ -19,7 +19,7 @@ const ConfirmClearButtonStyled = styled(ConfirmClearButton)`
     font-size: 16px;
     text-align: right;
     background-color: #8D8D8D;
-    width: 10.3em;
+    width: 10.8em;
     height: 52px;
     padding-right: 19px;
     position: fixed;
@@ -45,7 +45,7 @@ const ClearButton = styled.button`
 `
 
 const ClearListButton = () => {
-    const [active, setActive] = useState(true)
+    const [active, setActive] = useState<boolean>(true)
     const { clearList } = useProductsActions()
     const list = useList()
 
@@ -61,9 +61,7 @@ const ClearListButton = () => {
                                 style={{ maxWidth: '42px', position: 'relative', top: '3px' }}
                             />
                         </ClearButton>
-                        <ConfirmClearButtonStyled active={active} onClick={clearList}>
-                            Borrar lista?
-                        </ConfirmClearButtonStyled>
+                        <ConfirmClearButtonStyled active={active} onClick={clearList} />
                     </> : null
             }
 
