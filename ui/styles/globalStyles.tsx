@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
         --dark: #232323;
         --light: #fff;
         --white: #F6F6F6;
+        --principalFont: "IBM Plex Sans";
     }
     html,
     body {
@@ -17,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         font-family: var(--principalFont);
         background-color: var(--light);
-        font-family: "IBM Plex Sans";
+        font-family: var(--principalFont);
     }
     a {
         color: inherit;
@@ -28,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
     }
     h1, h2, h3, h4, h5, h6, p, a {
         color: var(--dark);
-        font-family: "IBM Plex Sans";
+        font-family: var(--principalFont);
     }
     button {
         background: none;

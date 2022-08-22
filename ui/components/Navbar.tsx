@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import styled from 'styled-components';
+import SearchProductInput from './SearchProductInput';
 
 const NavHeader = styled.header`
     display: flex;
@@ -19,6 +21,17 @@ const NavLogoContainer = styled.div`
     width: 100%;
     padding: 4px;
 `
+const SearchButton = styled.button<{ show: boolean }>`
+    padding: 0;
+    transition: all .3s;
+    transform: ${({ show }) => show ? 'translateY(-100px)' : 'translateY(0)'};
+`
+
+const Logo = styled.img<{ show: boolean }>`
+    max-width: 110px;
+    transition: all .3s;
+    transform: ${({ show }) => show ? 'translateY(-100px)' : 'translateY(0)'};
+`
 
 const NavContainer = styled.nav`
     display: flex;
@@ -35,7 +48,7 @@ const NavbarLink = styled.a<{ active: boolean }>`
     align-items: center;
     width: 10em;
     text-align: center;
-    transition: all .1s;
+    transition: all .2s;
     font-weight: ${({ active }) => active ? "0" : "bold"};
 `
 const NavbarLinkAnimation = styled.figure<{ active: boolean }>`
@@ -50,17 +63,32 @@ const NavbarLinkAnimation = styled.figure<{ active: boolean }>`
 `
 
 const Navbar = () => {
+    const [showSearch, setShowSearch] = useState<boolean>(false)
     const router = useRouter()
     const isActiveLink = router.pathname === '/products'
+
+    const handleShowSearch = () => {
+        setShowSearch(!showSearch)
+    }
 
     return (
         <>
             <NavHeader>
+
                 <NavLogoContainer>
-                    <img src="/assets/search-icon.svg" alt="" />
-                    <h1><strong>Superlista</strong>.ar</h1>
-                    <img src="/assets/share-icon.svg" alt="" />
+
+                    <SearchButton onClick={handleShowSearch} show={showSearch}>
+                        <img src="/assets/search-icon.svg" alt='Search' style={{ maxWidth: '42px' }} />
+                    </SearchButton>
+
+                    <Logo src="/assets/logo-navbar.svg" alt="Superlista.ar" show={showSearch} />
+
+                    <SearchProductInput handleShowSearch={handleShowSearch} showSearch={showSearch} />
+
+                    <img src="/assets/share-icon.svg" alt="" style={{ maxWidth: '42px' }} />
                 </NavLogoContainer>
+
+
                 <NavContainer>
                     <Link href='/products'>
                         <NavbarLink active={!isActiveLink}>
@@ -81,9 +109,6 @@ const Navbar = () => {
             <style jsx>{`
                 h1 {
                     font-size: 18px;
-                }
-                img {
-                    max-width: 42px;
                 }
                 figure {
                     margin: 0;
