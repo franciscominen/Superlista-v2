@@ -8,6 +8,7 @@ import { IProduct } from '~/lib/types'
 import Layout from '~/ui/components/Layout'
 import ProductListCard from '~/ui/components/ProductListCard'
 import styled from 'styled-components'
+import ClearListButton from '~/ui/components/ClearListButton'
 
 const MyList: NextPageWithLayout = () => {
     const list = useList()
@@ -38,6 +39,8 @@ const MyList: NextPageWithLayout = () => {
                         })
                 }
             </MyListWrapper>
+
+            <ClearListButton />
         </>
     )
 }

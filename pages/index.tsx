@@ -33,10 +33,16 @@ const Home: NextPage = () => {
         <HomeContainer>
           <h1>Superlista.ar</h1>
 
-          <SpacedContainer style={{marginBottom: '20px'}}>
+          <SpacedContainer style={{ marginBottom: '20px' }}>
             {
               !list.length ?
-                <Link href="/products"> Empezar nueva lista </Link> :
+                (
+                  <HomeButton onClick={() => { router.push('/mylist') }}>
+                    <img src="/assets/new-list-btn.svg" alt="" style={{ maxWidth: '78px' }} />
+                    <HomeText><strong>Crear nueva</strong> Lista</HomeText>
+                  </HomeButton>
+                )
+                :
                 <ClearListModal modalIcon={modalButton} />
             }
             <HomeButton onClick={() => { router.push('/mylist') }}>
