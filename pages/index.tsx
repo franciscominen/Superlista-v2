@@ -29,35 +29,31 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <MainContainer>
-        <HomeContainer>
-          <h1>Superlista.ar</h1>
+      <HomeContainer>
+        <h1>Superlista.ar</h1>
 
-          <SpacedContainer style={{ marginBottom: '20px' }}>
-            {
-              !list.length ?
-                (
-                  <HomeButton onClick={() => { router.push('/mylist') }}>
-                    <img src="/assets/new-list-btn.svg" alt="" style={{ maxWidth: '78px' }} />
-                    <HomeText><strong>Crear nueva</strong> Lista</HomeText>
-                  </HomeButton>
-                )
-                :
-                <ClearListModal modalIcon={modalButton} />
-            }
-            <HomeButton onClick={() => { router.push('/mylist') }}>
-              <img src="/assets/continue-btn.svg" alt="" style={{ maxWidth: '78px' }} />
-              <HomeText><strong>Continuar</strong> Lista</HomeText>
-            </HomeButton>
-          </SpacedContainer>
+        <SpacedContainer style={{ marginBottom: '20px' }}>
+          {
+            !list.length ?
+              (
+                <HomeButton onClick={() => { router.push('/mylist') }}>
+                  <img src="/assets/new-list-btn.svg" alt="" style={{ maxWidth: '78px' }} />
+                  <HomeText><strong>Crear nueva</strong> Lista</HomeText>
+                </HomeButton>
+              )
+              :
+              <ClearListModal modalIcon={modalButton} />
+          }
+          <HomeButton onClick={() => { router.push('/mylist') }}>
+            <img src="/assets/continue-btn.svg" alt="" style={{ maxWidth: '78px' }} />
+            <HomeText><strong>Continuar</strong> Lista</HomeText>
+          </HomeButton>
+        </SpacedContainer>
 
-          <Link href='/'>
-            <h3>¿Como funciona?</h3>
-          </Link>
-        </HomeContainer>
-      </MainContainer>
-
-      <Footer />
+        <Link href='/'>
+          <h3>¿Como funciona?</h3>
+        </Link>
+      </HomeContainer>
     </>
   )
 }

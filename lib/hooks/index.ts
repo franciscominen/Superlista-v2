@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import ProductsContext from "~/lib/context";
-import { IProduct, Actions } from "~/lib/types";
+import { IProduct, Actions, Utils } from "~/lib/types";
 
 
 export function useProducts(): IProduct[] {
@@ -16,6 +16,11 @@ export function useList(): IProduct[] {
 export function useProductsActions(): Actions {
     const { actions } = useContext(ProductsContext);
     return actions;
+}
+
+export function useUtils(): Utils {
+    const { utils } = useContext(ProductsContext);
+    return utils;
 }
 
 export function useLocalStorageSet(key: string, value: any) {

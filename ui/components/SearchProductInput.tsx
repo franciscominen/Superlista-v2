@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { useProductsActions, useUtils } from "~/lib/hooks";
 
 const InputContainer = styled.div<{ active: boolean }>`
     display: flex;
@@ -23,16 +24,13 @@ const SearchInput = styled.input`
 `
 
 interface Props {
-    /*     searchTerm: string,
-        setSearchTerm: (value: string) => void */
     handleShowSearch: any,
-    showSearch: boolean
+    showSearch: boolean,
 }
-const SearchProductInput = ({ handleShowSearch, showSearch/* , searchTerm, setSearchTerm */ }: Props) => {
 
-    /*   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-          setSearchTerm(event.currentTarget.value);
-      }; */
+const SearchProductInput = ({ handleShowSearch, showSearch }: Props) => {
+    const { handleSearch } = useProductsActions()
+    const { searchValue } = useUtils()
 
     return (
         <>
@@ -43,8 +41,8 @@ const SearchProductInput = ({ handleShowSearch, showSearch/* , searchTerm, setSe
                 <SearchInput
                     type="text"
                     placeholder="Buscar producto"
-                /*   value={searchTerm}
-                  onChange={handleChange} */
+                    value={searchValue}
+                    onChange={handleSearch}
                 />
             </InputContainer>
         </>

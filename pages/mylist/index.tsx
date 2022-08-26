@@ -1,16 +1,13 @@
-import type { ReactElement } from 'react'
-import type { NextPageWithLayout } from '~/pages/_app'
 import Head from 'next/head'
-
+import { NextPage } from 'next'
 import { useList } from '~/lib/hooks'
 import { IProduct } from '~/lib/types'
 
-import Layout from '~/ui/components/Layout'
 import ProductListCard from '~/ui/components/ProductListCard'
 import styled from 'styled-components'
 import ClearListButton from '~/ui/components/ClearListButton'
 
-const MyList: NextPageWithLayout = () => {
+const MyList: NextPage = () => {
     const list = useList()
 
     return (
@@ -42,14 +39,6 @@ const MyList: NextPageWithLayout = () => {
 
             <ClearListButton />
         </>
-    )
-}
-
-MyList.getLayout = function getLayout(page: ReactElement) {
-    return (
-        <Layout>
-            {page}
-        </Layout>
     )
 }
 

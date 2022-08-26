@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react"
+
 export interface IProduct {
     id: string
     name: string
@@ -16,9 +18,15 @@ export interface Actions {
     removeProduct: (id: IProduct['id']) => void
     addNoteToProduct: (product: IProduct, note: IProduct['nota']) => void
     clearList: () => void
+    handleSearch: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
+export interface Utils {
+    searchValue: string
+    setSearchValue: (e: any) => void
+}
 export interface Context {
     state: State
     actions: Actions
+    utils: Utils
 }

@@ -1,5 +1,5 @@
-import { useState, useEffect, createContext } from "react"
-import { IProduct, Context, State, Actions } from "../types"
+import { useState, useEffect, createContext, ChangeEvent } from "react"
+import { IProduct, Context, State, Actions, Utils } from "../types"
 import { useLocalStorageGet, useLocalStorageSet } from "../hooks";
 import api from '~/pages/api'
 import Loading from '~/ui/components/Loading'
@@ -20,6 +20,7 @@ const ProductsProvider = ({ children }: Props) => {
     const [products, setProducts] = useState<IProduct[]>([])
     const [list, setList] = useState<IProduct[]>(() => useLocalStorageGet("list", initialState.list))
     const [status, setStatus] = useState<"pending" | "resolved" | "rejected">("pending")
+    const [searchValue, setSearchValue] = useState<string>("")
 
     const addProduct = (newProduct: IProduct) => {
         const isProductInList = state.list.some(
@@ -58,6 +59,10 @@ const ProductsProvider = ({ children }: Props) => {
         return list
     }
 
+    const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(e.target.value);
+    }
+
     useEffect(() => {
         useLocalStorageSet("list", list);
     }, [list]);
@@ -73,11 +78,11 @@ const ProductsProvider = ({ children }: Props) => {
     if (status === "pending") return <Loading />;
 
     const state: State = { products, list }
-    const actions: Actions = { addProduct, removeProduct, addNoteToProduct, clearList }
-
+    const actions: Actions = { addProduct, removeProduct, addNoteToProduct, clearList, handleSearch }
+    const utils: Utils = { searchValue, setSearchValue }
 
     return (
-        <ProductsContext.Provider value={{ state, actions }}>
+        <ProductsContext.Provider value={{ state, actions, utils }}>
             {children}
         </ProductsContext.Provider>
     )

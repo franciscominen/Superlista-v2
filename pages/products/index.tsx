@@ -1,25 +1,22 @@
-import { ChangeEvent, ReactElement, useState } from 'react'
-import type { NextPageWithLayout } from '~/pages/_app'
+import { NextPage } from 'next'
 import Head from 'next/head'
 
 import { IProduct } from '~/lib/types'
-import { useProducts } from '~/lib/hooks'
+import { useProducts, useUtils } from '~/lib/hooks'
 
-import Layout from '~/ui/components/Layout'
 import ProductCard from '~/ui/components/ProductCard'
-import SearchProductInput from '~/ui/components/SearchProductInput'
 
-import { Title } from '~/ui/styles/sharedStyles'
 import styled from 'styled-components'
+import { Title } from '~/ui/styles/sharedStyles'
 
-const Products: NextPageWithLayout = () => {
-  const products = useProducts()
-  const [searchTerm, setSearchTerm] = useState("");
+const Products: NextPage = () => {
+  let products = useProducts()
+  const { searchValue } = useUtils()
 
-  const results = !searchTerm
+  products = !searchValue
     ? products
     : products.filter(product =>
-      product.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+      product.name.toLowerCase().includes(searchValue.toLocaleLowerCase())
     );
 
   return (
@@ -30,12 +27,11 @@ const Products: NextPageWithLayout = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <SearchProductInput setSearchTerm={setSearchTerm} searchTerm={searchTerm}/> */}
       <Title>Productos</Title>
 
       <ProductsContainer>
         {
-          results
+          products
             .map((product: IProduct) => {
               return (
                 <ProductCard
@@ -55,14 +51,6 @@ const Products: NextPageWithLayout = () => {
   )
 }
 
-Products.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <Layout>
-      {page}
-    </Layout>
-  )
-}
-
 export default Products
 
 const ProductsContainer = styled.div`
@@ -72,4 +60,5 @@ const ProductsContainer = styled.div`
   grid-column-gap: 3%;
   grid-row-gap: 8px;
   padding: 0 3%;
+  width: 100%;
 `
