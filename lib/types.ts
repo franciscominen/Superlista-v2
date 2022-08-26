@@ -19,6 +19,7 @@ export interface Actions {
     addNoteToProduct: (product: IProduct, note: IProduct['nota']) => void
     clearList: () => void
     handleSearch: (e: ChangeEvent<HTMLInputElement>) => void
+    clearSearch: () => void
 }
 
 export interface Utils {

@@ -63,6 +63,10 @@ const ProductsProvider = ({ children }: Props) => {
         setSearchValue(e.target.value);
     }
 
+    const clearSearch = () => {
+        setSearchValue('')
+    }
+
     useEffect(() => {
         useLocalStorageSet("list", list);
     }, [list]);
@@ -78,7 +82,14 @@ const ProductsProvider = ({ children }: Props) => {
     if (status === "pending") return <Loading />;
 
     const state: State = { products, list }
-    const actions: Actions = { addProduct, removeProduct, addNoteToProduct, clearList, handleSearch }
+    const actions: Actions = { 
+        addProduct, 
+        removeProduct, 
+        addNoteToProduct, 
+        clearList, 
+        handleSearch, 
+        clearSearch
+    }
     const utils: Utils = { searchValue, setSearchValue }
 
     return (

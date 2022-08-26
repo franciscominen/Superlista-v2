@@ -1,5 +1,7 @@
+import { useRef } from "react";
 import styled from "styled-components"
 import { useProductsActions, useUtils } from "~/lib/hooks";
+import { scaleInCenter } from "../styles/animations";
 
 const InputContainer = styled.div<{ active: boolean }>`
     display: flex;
@@ -23,27 +25,72 @@ const SearchInput = styled.input`
     } 
 `
 
+const ClearListButton = styled.button`
+    background-color: #8d8d8d;
+    width: 21px;
+    height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    position: absolute;
+    right: 0.2px;
+    animation: ${scaleInCenter} 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+`
+
+const ClearListImg = styled.img`
+    max-width: 10px;
+    filter: brightness(10);
+    position: relative;
+    top: .3px;
+`
+
 interface Props {
     handleShowSearch: any,
     showSearch: boolean,
 }
 
 const SearchProductInput = ({ handleShowSearch, showSearch }: Props) => {
-    const { handleSearch } = useProductsActions()
+    const { handleSearch, clearSearch } = useProductsActions()
     const { searchValue } = useUtils()
+    const inputRef = useRef<HTMLInputElement | null>(null)
+
+    const onBackSearch = () => {
+        clearSearch()
+        handleShowSearch()
+    }
+
+    const onClearSearch = () => {
+        clearSearch()
+        inputRef?.current?.focus()
+    }
 
     return (
         <>
             <InputContainer active={showSearch}>
-                <button style={{ padding: '0 3px' }} onClick={handleShowSearch}>
+                <button style={{ padding: '0 3px' }} onClick={onBackSearch}>
                     <img style={{ maxWidth: '36px', marginRight: '8px' }} src="/assets/back-icon.svg" alt="Back" />
                 </button>
                 <SearchInput
+                    ref={inputRef}
+
                     type="text"
                     placeholder="Buscar producto"
                     value={searchValue}
                     onChange={handleSearch}
                 />
+
+                {
+                    searchValue ?
+                        <ClearListButton onClick={onClearSearch}>
+                            <ClearListImg
+                                src="/assets/close-icon.svg"
+                                alt="X"
+                            />
+                        </ClearListButton>
+                        : null
+                }
+
             </InputContainer>
         </>
     )
