@@ -1,11 +1,6 @@
-import Link from 'next/link'
-import { useUtils } from '~/lib/hooks';
 import { StyledFooter } from '../styles/sharedStyles';
 
 const Footer = () => {
-    const { searchValue } = useUtils()
-    console.log(searchValue);
-    
     return (
         <>
             <StyledFooter>
