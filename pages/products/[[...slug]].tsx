@@ -10,7 +10,6 @@ import styled from 'styled-components'
 import { Title } from '~/ui/styles/sharedStyles'
 import CategoriesCollapse from '~/ui/components/CategoriesCollapse'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 
 const Products: NextPage = () => {
   let products = useProducts()
@@ -39,7 +38,6 @@ const Products: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Title>Categorias</Title>
       <CategoriesCollapse />
 
       <Title>Productos</Title>
@@ -76,4 +74,5 @@ const ProductsContainer = styled.div`
   grid-row-gap: 8px;
   padding: 0 3%;
   width: 100%;
+  transition: all .5s;
 `

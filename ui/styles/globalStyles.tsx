@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: var(--principalFont);
         background-color: var(--light);
         font-family: var(--principalFont);
+        overflow-x: hidden;
     }
     a {
         color: inherit;

@@ -12,10 +12,19 @@ interface Props {
     }
 }
 
+const CategoryBtn = styled.button`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+`
+
 const CategoryImgContainer = styled.div<{ active: boolean }>`
     background-color: ${({ active }) => active ? "#232323" : "#F6F6F6"};
-    min-height: 70px;
-    min-width: 70px;
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,26 +64,24 @@ const CategoryButton = ({ category }: Props) => {
 
     return (
         <>
-            <button onClick={onClickCategory}>
-                <div>
-                    <CategoryImgContainer active={activeCategory}>
-                        {
-                            !activeCategory
-                                ? <img src={img} alt={title} style={{ maxWidth: '40px' }} />
-                                : (
-                                    <CloseIcon onClick={onCloseCategory}>
-                                        <img
-                                            src="/assets/close-icon.svg"
-                                            alt="X"
-                                            style={{ maxWidth: '12px' }}
-                                        />
-                                    </CloseIcon>
-                                )
-                        }
-                    </CategoryImgContainer>
-                    <p style={{margin: '6px 0 0 0'}}>{title}</p>
-                </div>
-            </button>
+            <CategoryBtn onClick={onClickCategory}>
+                <CategoryImgContainer active={activeCategory}>
+                    {
+                        !activeCategory
+                            ? <img src={img} alt={title} style={{ maxWidth: '40px' }} />
+                            : (
+                                <CloseIcon onClick={onCloseCategory}>
+                                    <img
+                                        src="/assets/close-icon.svg"
+                                        alt="X"
+                                        style={{ maxWidth: '12px' }}
+                                    />
+                                </CloseIcon>
+                            )
+                    }
+                </CategoryImgContainer>
+                <p style={{ margin: '6px 0 0 0' }}>{title}</p>
+            </CategoryBtn>
         </>
     )
 }

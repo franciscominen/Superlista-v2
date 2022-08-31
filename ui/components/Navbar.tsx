@@ -65,7 +65,7 @@ const NavbarLinkAnimation = styled.figure<{ active: boolean }>`
 const Navbar = () => {
     const [showSearch, setShowSearch] = useState<boolean>(false)
     const router = useRouter()
-    const isActiveLink = router.pathname === '/products'
+    const isActiveLink = router.pathname === "/products/[[...slug]]"
 
     const handleShowSearch = () => {
         setShowSearch(!showSearch)
