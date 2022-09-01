@@ -76,7 +76,6 @@ const Navbar = () => {
             <NavHeader>
 
                 <NavLogoContainer>
-
                     <SearchButton onClick={handleShowSearch} show={showSearch}>
                         <img src="/assets/search-icon.svg" alt='Search' style={{ maxWidth: '42px' }} />
                     </SearchButton>

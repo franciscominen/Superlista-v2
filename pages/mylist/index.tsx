@@ -9,7 +9,7 @@ import ClearListButton from '~/ui/components/ClearListButton'
 
 const MyList: NextPage = () => {
     const list = useList()
-
+    
     return (
         <>
             <Head>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import { useProductsActions } from '~/lib/hooks'
+import { useList, useProductsActions } from '~/lib/hooks'
 import { IProduct } from '~/lib/types'
 import NoteModal from './NoteModal'
 
@@ -9,8 +9,15 @@ interface Props extends IProduct {
 }
 
 const ProductCard = (product: Props) => {
+    const list = useList()
     const [showModal, setShowModal] = useState(false);
     const { addProduct } = useProductsActions()
+
+    let isInList = list.some((listProduct) => listProduct.id === product.id)
+
+    const onAddProduct = () => {
+        addProduct(product)
+    }
 
     const onCloseModal = () => {
         setShowModal(false)
@@ -18,12 +25,12 @@ const ProductCard = (product: Props) => {
 
     return (
         <>
-            <Card>
+            <Card disabled={isInList}>
                 <ButtonsContainer>
                     <button onClick={() => setShowModal(true)}>
                         <img src="/assets/add-note-icon.svg" alt="Edit" className='button-img' />
                     </button>
-                    <button onClick={() => addProduct(product)}>
+                    <button onClick={onAddProduct}>
                         <img src="/assets/add-icon.svg" alt="Add" className='button-img' />
                     </button>
                 </ButtonsContainer>
@@ -60,7 +67,7 @@ const ProductCard = (product: Props) => {
 
 export default ProductCard
 
-const Card = styled.div`
+const Card = styled.span<{ disabled: boolean }>`
     max-width: 240px;
     min-width: 50px;
     width: 100%;
@@ -73,6 +80,9 @@ const Card = styled.div`
     background-color: var(--white);
     border-radius: 16px;
     padding: 8px 3px;
+    transition: all .3s;
+    opacity: ${({ disabled }) => disabled ? '0.6' : '1'};
+    pointer-events:  ${({ disabled }) => disabled ? 'none' : 'all'};
 `
 const ButtonsContainer = styled.div`
     display: flex;
