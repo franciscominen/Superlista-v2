@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import { Title } from '~/ui/styles/sharedStyles'
 import CategoriesCollapse from '~/ui/components/CategoriesCollapse'
 import { useRouter } from 'next/router'
+import ToastNotify from '~/ui/components/ToastNotify'
 
 const Products: NextPage = () => {
   let products = useProducts()
@@ -53,13 +54,15 @@ const Products: NextPage = () => {
                   img={product.img}
                   nota={product.nota}
                   categoryID={product.categoryID}
-                  key={product.name}
+                  key={product.id}
                   product={product}
                 />
               )
             })
         }
       </ProductsContainer>
+
+
     </>
   )
 }

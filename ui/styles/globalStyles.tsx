@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
         --dark: #232323;
         --light: #fff;
         --white: #F6F6F6;
+        --gray: #D2D2D2;
         --principalFont: "IBM Plex Sans";
     }
     html,
@@ -36,6 +37,13 @@ const GlobalStyle = createGlobalStyle`
         background: none;
         border: none;
     }
+
+    // Toast
+    .toast-text {
+        margin: 4px 0;
+        font-size: 16px;
+    }
+
 `
 
 export default GlobalStyle

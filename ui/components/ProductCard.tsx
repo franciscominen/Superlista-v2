@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { useList, useProductsActions } from '~/lib/hooks'
 import { IProduct } from '~/lib/types'
+import toast from 'react-hot-toast';
 import NoteModal from './NoteModal'
 
 interface Props extends IProduct {
@@ -15,8 +16,23 @@ const ProductCard = (product: Props) => {
 
     let isInList = list.some((listProduct) => listProduct.id === product.id)
 
+    const toastMessage = <p className='toast-text'>Agregaste <strong>{product.name}</strong> a tu lista.</p>
+    const showToast = () => toast(toastMessage, {
+        duration: 1200,
+        position: 'bottom-center',
+        style: {
+            boxShadow: 'none',
+            background: '#f6f6f6f0',
+            border: '1px solid #D2D2D2',
+            borderRadius: '20px',
+            position: 'relative',
+            bottom: '2em',
+        },
+    });
+
     const onAddProduct = () => {
         addProduct(product)
+        showToast()
     }
 
     const onCloseModal = () => {
@@ -38,7 +54,6 @@ const ProductCard = (product: Props) => {
                 <h3>{product.name}</h3>
             </Card>
             <NoteModal show={showModal} closeModal={onCloseModal} product={product} />
-
             <style jsx>{`
                 .button-img {
                     max-width: 18px;

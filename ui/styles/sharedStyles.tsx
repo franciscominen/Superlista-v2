@@ -33,6 +33,7 @@ const StyledFooter = styled.footer`
     font-size: 10px;
     padding: 8px 0;
     text-align: center;
+    z-index: 10000;
 `
 
 const Title = styled.h1`
@@ -43,29 +44,29 @@ const Title = styled.h1`
 `
 
 const StyledModalWrapper = styled.div`
-  height: 100%;
-  width: 100%;
-  background: #00000055;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden!important;
+    height: 100%;
+    width: 100%;
+    background: #00000055;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden!important;
 `;
 
 const ModalContainer = styled.div`
-  background: var(--light);
-  padding: 22px 0 12px 0;
-  border-radius: 40px;
-  max-width: 30em;
-  width: 90%;
-  margin: 0 auto;
+    background: var(--light);
+    padding: 22px 0 12px 0;
+    border-radius: 40px;
+    max-width: 30em;
+    width: 90%;
+    margin: 0 auto;
 `
 
 export {
