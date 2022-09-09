@@ -1,17 +1,24 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SearchProductInput from './SearchProductInput';
 
-const NavHeader = styled.header`
+const NavHeader = styled.header<{ isVisible: boolean }>`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 4px 0;
+    border-bottom: 6px solid white;
     width: 100%;
     background-color: var(--white);
     border-radius: 0 0 35px 35px;
+    position: fixed;
+    top: 0;
+    z-index: 15;
+    transition: all .2s;
+    transform: ${({ isVisible }) => isVisible ? 'translateY(0)' : 'translateY(-2.7em)'};
 `
 
 const NavLogoContainer = styled.div`
@@ -63,17 +70,41 @@ const NavbarLinkAnimation = styled.figure<{ active: boolean }>`
 `
 
 const Navbar = () => {
-    const [showSearch, setShowSearch] = useState<boolean>(false)
     const router = useRouter()
     const isActiveLink = router.pathname === "/products/[[...slug]]"
+
+    const [showSearch, setShowSearch] = useState<boolean>(false)
 
     const handleShowSearch = () => {
         setShowSearch(!showSearch)
     }
 
+    const [showNavbar, setShowNavbar] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    const controlNavbar = () => {
+        if (typeof window !== 'undefined') {
+            if (window.scrollY > lastScrollY && window.scrollY > 200) {
+                setShowNavbar(false);
+            } else {
+                setShowNavbar(true);
+            }
+            setLastScrollY(window.scrollY);
+        }
+    };
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            window.addEventListener('scroll', controlNavbar);
+            return () => {
+                window.removeEventListener('scroll', controlNavbar);
+            };
+        }
+    }, [lastScrollY]);
+
     return (
         <>
-            <NavHeader>
+            <NavHeader isVisible={showNavbar}>
 
                 <NavLogoContainer>
                     <SearchButton onClick={handleShowSearch} show={showSearch}>

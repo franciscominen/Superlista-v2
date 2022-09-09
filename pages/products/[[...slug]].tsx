@@ -10,7 +10,6 @@ import styled from 'styled-components'
 import { Title } from '~/ui/styles/sharedStyles'
 import CategoriesCollapse from '~/ui/components/CategoriesCollapse'
 import { useRouter } from 'next/router'
-import ToastNotify from '~/ui/components/ToastNotify'
 
 const Products: NextPage = () => {
   let products = useProducts()
@@ -40,6 +39,8 @@ const Products: NextPage = () => {
       </Head>
 
       <CategoriesCollapse />
+
+      <figure style={{ background: '#f5f5f5', height: '1px', width: '95%', margin: '8px 0 0 0' }} />
 
       <Title>Productos</Title>
 

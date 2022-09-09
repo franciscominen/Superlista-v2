@@ -4,6 +4,7 @@ const MainContainer = styled.main`
     max-width: 750px;
     width: 100%;
     margin:  0 auto;
+    padding: 7em 0 2.5em 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
