@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import CategoriesNavbar from './CategoriesNavbar';
 import SearchProductInput from './SearchProductInput';
 
 const NavHeader = styled.header<{ isVisible: boolean }>`
@@ -69,7 +70,12 @@ const NavbarLinkAnimation = styled.figure<{ active: boolean }>`
     transform: ${({ active }) => active ? "scaleX(0)" : "scaleX(1)"};
 `
 
-const Navbar = () => {
+interface Props {
+    onShowCategories: Function
+    showCategories: boolean
+}
+
+const Navbar = ({onShowCategories, showCategories}: Props) => {
     const router = useRouter()
     const isActiveLink = router.pathname === "/products/[[...slug]]"
 
@@ -134,6 +140,9 @@ const Navbar = () => {
                         </NavbarLink>
                     </Link>
                 </NavContainer>
+
+                <CategoriesNavbar onShowCategories={onShowCategories} showCategories={showCategories}/>
+
             </NavHeader>
 
             <style jsx>{`

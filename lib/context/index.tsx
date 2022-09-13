@@ -82,15 +82,18 @@ const ProductsProvider = ({ children }: Props) => {
     if (status === "pending") return <Loading />;
 
     const state: State = { products, list }
-    const actions: Actions = { 
-        addProduct, 
-        removeProduct, 
-        addNoteToProduct, 
-        clearList, 
-        handleSearch, 
+    const actions: Actions = {
+        addProduct,
+        removeProduct,
+        addNoteToProduct,
+        clearList,
+        handleSearch,
         clearSearch
     }
-    const utils: Utils = { searchValue, setSearchValue }
+    const utils: Utils = { 
+        searchValue, 
+        setSearchValue
+    }
 
     return (
         <ProductsContext.Provider value={{ state, actions, utils }}>

@@ -26,12 +26,15 @@ const CollapseButton = styled.button<{ active: boolean }>`
 
 const CategoriesCollapse = () => {
     const [showCategories, setShowCategories] = useState<boolean>(false)
+    const onShowCategories = () => {
+        setShowCategories(!showCategories) 
+    }
 
     return (
         <>
             <SpacedContainer style={{ width: '100%', zIndex: '4' }}>
                 <Title>Categorías</Title>
-                <CollapseButton active={showCategories} onClick={() => { setShowCategories(!showCategories) }}>
+                <CollapseButton active={showCategories} onClick={onShowCategories}>
                     <img src="/assets/collapse-icon.svg" alt=">" style={{ maxWidth: '32px' }} />
                 </CollapseButton>
             </SpacedContainer>
