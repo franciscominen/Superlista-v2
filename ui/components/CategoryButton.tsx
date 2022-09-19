@@ -46,10 +46,8 @@ const CloseIcon = styled.span`
 const CategoryButton = ({ category }: Props) => {
     const router = useRouter()
     const categoryQuery = router.query.slug
-    console.log(router);
-    
 
-    const { id, title, link, img } = category
+    const { title, link, img } = category
 
     let activeCategory: boolean | any;
     if (categoryQuery) {
@@ -62,11 +60,6 @@ const CategoryButton = ({ category }: Props) => {
 
     const onCloseCategory = () => {
         router.push(`/products`)
-    }
-
-
-    const filterCategories = () => {
-        
     }
 
     return (

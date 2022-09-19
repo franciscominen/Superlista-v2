@@ -3,6 +3,7 @@ import { IProduct, Context, State, Actions, Utils } from "../types"
 import { useLocalStorageGet, useLocalStorageSet } from "../hooks";
 import api from '~/pages/api'
 import Loading from '~/ui/components/Loading'
+import { useRouter } from "next/router";
 
 interface Props {
     children: JSX.Element;
@@ -16,6 +17,7 @@ const initialState: State = {
 const ProductsContext = createContext({} as Context)
 
 const ProductsProvider = ({ children }: Props) => {
+    const router = useRouter()
 
     const [products, setProducts] = useState<IProduct[]>([])
     const [list, setList] = useState<IProduct[]>(() => useLocalStorageGet("list", initialState.list))
@@ -88,7 +90,7 @@ const ProductsProvider = ({ children }: Props) => {
         addNoteToProduct,
         clearList,
         handleSearch,
-        clearSearch
+        clearSearch,
     }
     const utils: Utils = { 
         searchValue, 
