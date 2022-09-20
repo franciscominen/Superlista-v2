@@ -1,12 +1,47 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import Head from 'next/head'
-import Footer from '~/ui/components/Footer'
+import Image from 'next/image'
 import ClearListModal from '~/ui/components/ClearListModal'
 import { useList } from '~/lib/hooks'
-import { MainContainer, SpacedContainer } from '~/ui/styles/sharedStyles'
+import { SpacedContainer } from '~/ui/styles/sharedStyles'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+
+const HomeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+`
+
+const HomeButton = styled.button`
+  background-color: var(--white);
+  border: 2px solid #D2D2D2;
+  border-radius: 20px;
+  min-width: 160px;
+  max-width: 185px;
+  width: 100%;
+  min-height: 160px;
+  max-height: 185px;
+  height: 100%;
+  object-fit: contain;
+`
+
+const HomeText = styled.p`
+  font-size: 15px;
+  margin: 8px 0 0 0;
+`
+
+const ImageWrapper = styled.div`
+  position: "relative";
+  width: 250px;
+  max-width: 250px;
+  height: 50px;
+  max-height: 50px;
+  margin-bottom: 2em;
+`
 
 const Home: NextPage = () => {
   const list = useList()
@@ -15,7 +50,12 @@ const Home: NextPage = () => {
   const modalButton = (
     <>
       <HomeButton>
-        <img src="/assets/new-list-btn.svg" alt="" style={{ maxWidth: '78px' }} />
+        <Image
+          src="/assets/new-list-btn.svg"
+          alt='+'
+          width={78}
+          height={78}
+        />
         <HomeText><strong>Crear nueva</strong> Lista</HomeText>
       </HomeButton>
     </>
@@ -30,14 +70,29 @@ const Home: NextPage = () => {
       </Head>
 
       <HomeContainer>
-        <h1>Superlista.ar</h1>
+
+        <ImageWrapper>
+          <Image
+            priority
+            src='/assets/logo-navbar.svg'
+            alt='Superlista.ar'
+            layout="responsive"
+            width={250}
+            height={50}
+          />
+        </ImageWrapper >
 
         <SpacedContainer style={{ marginBottom: '20px' }}>
           {
             !list.length ?
               (
                 <HomeButton onClick={() => { router.push('/mylist') }}>
-                  <img src="/assets/new-list-btn.svg" alt="" style={{ maxWidth: '78px' }} />
+                  <Image
+                    src="/assets/new-list-btn.svg"
+                    alt='+'
+                    width={78}
+                    height={78}
+                  />
                   <HomeText><strong>Crear nueva</strong> Lista</HomeText>
                 </HomeButton>
               )
@@ -45,7 +100,12 @@ const Home: NextPage = () => {
               <ClearListModal modalIcon={modalButton} />
           }
           <HomeButton onClick={() => { router.push('/mylist') }}>
-            <img src="/assets/continue-btn.svg" alt="" style={{ maxWidth: '78px' }} />
+            <Image
+              src="/assets/continue-btn.svg"
+              alt='>'
+              width={78}
+              height={78}
+            />
             <HomeText><strong>Continuar</strong> Lista</HomeText>
           </HomeButton>
         </SpacedContainer>
@@ -59,26 +119,3 @@ const Home: NextPage = () => {
 }
 
 export default Home
-const HomeContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-`
-const HomeButton = styled.button`
-  background-color: var(--white);
-  border: 2px solid #D2D2D2;
-  border-radius: 20px;
-  min-width: 160px;
-  max-width: 185px;
-  width: 100%;
-  min-height: 160px;
-  max-height: 185px;
-  height: 100%;
-  object-fit: contain;
-`
-const HomeText = styled.p`
-  font-size: 15px;
-  margin: 8px 0 0 0;
-`

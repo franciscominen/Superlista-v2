@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useState } from "react"
 import styled from "styled-components"
 import { useList, useProductsActions } from "~/lib/hooks"
@@ -34,7 +35,7 @@ const ConfirmClearButtonStyled = styled(ConfirmClearButton)`
 
 const ClearButton = styled.button`
     background-color: var(--dark);
-    padding: 0;
+    padding: 5px 0 0 0;
     width: 52px;
     height: 52px;
     border-radius: 100%;
@@ -55,10 +56,11 @@ const ClearListButton = () => {
                 !!list.length ?
                     <>
                         <ClearButton onClick={() => setActive(!active)}>
-                            <img
+                            <Image
                                 src="/assets/clear-icon.svg"
                                 alt="Clear"
-                                style={{ maxWidth: '42px', position: 'relative', top: '3px' }}
+                                width={42}
+                                height={42}
                             />
                         </ClearButton>
                         <ConfirmClearButtonStyled active={active} onClick={clearList} />

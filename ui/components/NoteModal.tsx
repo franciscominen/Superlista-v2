@@ -1,9 +1,10 @@
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
 import { useProductsActions } from "~/lib/hooks";
 import { IProduct } from "~/lib/types";
-import { CenterContainer, StyledModalWrapper, ModalContainer } from "../styles/sharedStyles";
+import { StartContainer, StyledModalWrapper, ModalContainer } from "../styles/sharedStyles";
 
 interface Props {
   show: boolean
@@ -31,13 +32,13 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
       <StyledModalWrapper>
         <ModalContainer>
           <button onClick={() => closeModal()} className='close-btn'>
-            <img src="/assets/close-icon.svg" alt="X" />
+            <Image src="/assets/close-icon.svg" alt="X" width={28} height={28}/>
           </button>
           <div className="modal-info">
-            <CenterContainer>
-              <img src={product.img} alt="" className="product-img" />
+            <StartContainer>
+              <Image src={product.img} alt={product.name} width={58} height={58} />
               <h3>{name}</h3>
-            </CenterContainer>
+            </StartContainer>
             <NoteTextArea
               rows={1}
               defaultValue={nota}
@@ -47,7 +48,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
           </div>
         </ModalContainer>
         <AddNoteButton onClick={() => handleAdd()}>
-          {isEdit ? 'Cambiar nota' : 'Agregar a Mi lista'}
+          {isEdit ? 'Cambiar nota' : 'Agregar a Mi Lista'}
         </AddNoteButton>
       </StyledModalWrapper>
       <style jsx>{`
@@ -71,11 +72,6 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
           margin: 0 auto;
           position: relative;
           bottom: 1em;
-        }
-
-        .product-img {
-          min-width: 38px;
-          margin-right: 4px;
         }
 
         h3 {

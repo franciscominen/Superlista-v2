@@ -5,6 +5,7 @@ import { Provider as ProductsProvider } from "~/lib/context"
 import { MainContainer } from "../styles/sharedStyles"
 import { useRouter } from "next/router"
 import styled from "styled-components"
+import Image from "next/image"
 
 interface Props {
     children?: ReactNode
@@ -21,6 +22,7 @@ const ShowCategoriesButton = styled.button<{ active: boolean }>`
     width: 58px;
     height: 58px;
     border-radius: 50%;
+    z-index: 10;
     transition: all .3s;
     transform: ${({ active }) => active ? 'translateX(0)' : 'translateX(-15em)'};
 `
@@ -36,21 +38,23 @@ const Layout = ({ children, ...props }: Props) => {
     }
 
     const showFilterIcon = () => {
-       window.scrollY > 400 ? 
-        setFilterIconActive(true) : 
-        setFilterIconActive(false) 
+        window.scrollY > 400 ?
+            setFilterIconActive(true) :
+            setFilterIconActive(false)
     }
     window.addEventListener("scroll", showFilterIcon);
 
     return (
         <ProductsProvider>
             <>
-                {isHome ? null : <Navbar onShowCategories={onShowCategories} showCategories={showCategories}/>}
+                {isHome ? null : <Navbar onShowCategories={onShowCategories} showCategories={showCategories} />}
                 <ShowCategoriesButton onClick={onShowCategories} active={filterIconActive}>
-                    <img
+                    <Image
                         src="/assets/filter-icon.svg"
                         alt="Filter"
-                        style={{ maxWidth: '46px', position: 'relative', top: '3px' }}
+                        height={46}
+                        width={46}
+                        style={{ position: 'relative', top: '3px' }}
                     />
                 </ShowCategoriesButton>
                 <MainContainer {...props}>{children}</MainContainer>

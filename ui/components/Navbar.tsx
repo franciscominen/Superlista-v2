@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -114,14 +115,14 @@ const Navbar = ({onShowCategories, showCategories}: Props) => {
 
                 <NavLogoContainer>
                     <SearchButton onClick={handleShowSearch} show={showSearch}>
-                        <img src="/assets/search-icon.svg" alt='Search' style={{ maxWidth: '42px' }} />
+                        <Image src="/assets/search-icon.svg" alt='Search' width={42} height={42}/>
                     </SearchButton>
 
                     <Logo src="/assets/logo-navbar.svg" alt="Superlista.ar" show={showSearch} />
 
                     <SearchProductInput handleShowSearch={handleShowSearch} showSearch={showSearch} />
 
-                    <img src="/assets/share-icon.svg" alt="" style={{ maxWidth: '42px' }} />
+                    <Image src="/assets/share-icon.svg" alt="Share"  width={42} height={42} />
                 </NavLogoContainer>
 
 

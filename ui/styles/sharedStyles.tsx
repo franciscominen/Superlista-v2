@@ -10,6 +10,15 @@ const MainContainer = styled.main`
     justify-content: flex-start;
     align-items: center;
 `
+
+const StartContainer = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+`
+
 const CenterContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -53,7 +62,7 @@ const StyledModalWrapper = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 3;
+    z-index: 20;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,6 +84,7 @@ export {
     SpacedContainer,
     StyledFooter,
     Title,
+    StartContainer,
     CenterContainer,
     StyledModalWrapper,
     ModalContainer

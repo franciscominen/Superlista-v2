@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useProductsActions } from "~/lib/hooks";
@@ -9,7 +10,6 @@ interface Props {
 const ClearListModal = ({ modalIcon }: Props) => {
     const [showModal, setShowModal] = useState(false);
     const router = useRouter()
-    const isHome = router.route === '/'
 
     const { clearList } = useProductsActions();
 
@@ -20,32 +20,19 @@ const ClearListModal = ({ modalIcon }: Props) => {
     const handleClear = () => {
         clearList()
         closeModal()
-        isHome ? router.push('/products') : null
+        router.push('/products')
     }
 
     const modal = (
         <>
             <StyledModalWrapper>
                 <ModalContainer>
-                    {
-                        isHome ?
-                            (
-                                <>
-                                    <button onClick={() => closeModal()} className='close-btnHome'>
-                                        <img src="/assets/close-icon.svg" alt="" />
-                                    </button>
-                                    <h3> Ya tenes una lista creada, <br />queres borrarla?</h3>
-                                </>
-                            ) :
-                            <div className="clearList-wrapper">
-                                <figure></figure>
-                                <h3> ¿Borrar todo?</h3>
-                                <button onClick={() => closeModal()} className='close-btn'>
-                                    <img src="/assets/close-icon.svg" alt="" />
-                                </button>
-                            </div>
-
-                    }
+                    <>
+                        <button onClick={() => closeModal()} className='close-btnHome'>
+                            <Image src="/assets/close-icon.svg" alt="X" width={28} height={28} />
+                        </button>
+                        <h3> Ya tenes una lista creada, <br />queres borrarla?</h3>
+                    </>
                     <CenterContainer>
                         <button onClick={() => handleClear()} className='modal-btn'>SI</button>
                         <button onClick={() => closeModal()} className='modal-btnCancel'>NO</button>

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useRouter } from "next/router"
 import styled from "styled-components"
 
@@ -37,7 +38,7 @@ const CategoryButtonNavbar = ({ category, onShowCategories }: Props) => {
         <>
 
             <CategoryButton onClick={onFilterByCategory}>
-                <img src={img} alt={title} />
+                <Image src={img} alt={title} width={42} height={42} />
                 <p style={{ fontSize: '18px' }}>{title}</p>
             </CategoryButton>
 

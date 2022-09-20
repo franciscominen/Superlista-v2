@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useState } from "react"
 import styled from "styled-components"
 import { categoriesData } from "~/pages/api"
@@ -35,7 +36,7 @@ const CategoriesCollapse = () => {
             <SpacedContainer style={{ width: '100%', zIndex: '4' }}>
                 <Title>Categorías</Title>
                 <CollapseButton active={showCategories} onClick={onShowCategories}>
-                    <img src="/assets/collapse-icon.svg" alt=">" style={{ maxWidth: '32px' }} />
+                    <Image src="/assets/collapse-icon.svg" alt=">" width={32} height={32} />
                 </CollapseButton>
             </SpacedContainer>
 

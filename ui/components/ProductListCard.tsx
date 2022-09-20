@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useState } from 'react'
 import styled from 'styled-components'
 import { useProductsActions } from '~/lib/hooks'
@@ -22,18 +23,18 @@ const ProductListCard = (product: Props) => {
         <>
             <ListCard>
                 <SpacedContainer>
-                    <img src={product.img} alt="" className='product-img'/>
-                    <span>
+                    <Image src={product.img} alt={product.name} width={48} height={48} />
+                    <span style={{paddingLeft: '8px'}}>
                         <h3>{product.name}</h3>
                         <p>{product.nota}</p>
                     </span>
                 </SpacedContainer>
                 <SpacedContainer>
                     <button onClick={() => setShowModal(true)}>
-                        <img src="/assets/edit-icon.svg" alt="" />
+                        <Image src="/assets/edit-icon.svg" alt="Edit" width={26} height={26} />
                     </button>
                     <button onClick={() => removeProduct(product.id)}>
-                        <img src="/assets/close-icon.svg" alt="" />
+                        <Image src="/assets/close-icon.svg" alt="X" width={26} height={26} />
                     </button>
                 </SpacedContainer>
             </ListCard>
@@ -43,13 +44,6 @@ const ProductListCard = (product: Props) => {
             <style jsx>{`
                 .button-img {
                     max-width: 18px;
-                }
-                .product-img {
-                    max-width: 42px;
-                    min-width: 32px;
-                    width: 100%;
-                    object-fit: contain;
-                    margin-right: 8px;
                 }
                 span {
                     display: flex;

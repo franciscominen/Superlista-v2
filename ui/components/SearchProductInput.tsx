@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useRef } from "react";
 import styled from "styled-components"
 import { useProductsActions, useUtils } from "~/lib/hooks";
@@ -68,12 +69,11 @@ const SearchProductInput = ({ handleShowSearch, showSearch }: Props) => {
     return (
         <>
             <InputContainer active={showSearch}>
-                <button style={{ padding: '0 3px' }} onClick={onBackSearch}>
-                    <img style={{ maxWidth: '36px', marginRight: '8px' }} src="/assets/back-icon.svg" alt="Back" />
+                <button style={{ padding: '0 3px', marginRight: '8px' }} onClick={onBackSearch}>
+                    <Image src="/assets/back-icon.svg" alt="Back" width={36} height={36} />
                 </button>
                 <SearchInput
                     ref={inputRef}
-
                     type="text"
                     placeholder="Buscar producto"
                     value={searchValue}

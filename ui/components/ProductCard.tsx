@@ -1,9 +1,40 @@
 import { useState } from 'react'
+import Image from 'next/image'
 import styled from 'styled-components'
 import { useList, useProductsActions } from '~/lib/hooks'
 import { IProduct } from '~/lib/types'
 import toast from 'react-hot-toast';
 import NoteModal from './NoteModal'
+
+const Card = styled.div<{ disabled: boolean }>`
+    position: relative;
+    width: 124px;
+    height: 145px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 8px 3px;
+    transition: all .3s;
+    opacity: ${({ disabled }) => disabled ? '0.6' : '1'};
+    pointer-events:  ${({ disabled }) => disabled ? 'none' : 'all'};
+`
+const ButtonsContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+`
+
+const ImageWrapper = styled.div`
+    position: "relative";
+    width: 64px;
+    height: 64px;
+    max-height: 64px;
+    max-width: 64px;
+`
 
 interface Props extends IProduct {
     product: IProduct
@@ -44,20 +75,27 @@ const ProductCard = (product: Props) => {
             <Card disabled={isInList}>
                 <ButtonsContainer>
                     <button onClick={() => setShowModal(true)}>
-                        <img src="/assets/add-note-icon.svg" alt="Edit" className='button-img' />
+                        <Image src="/assets/add-note-icon.svg" alt="Edit" width={18} height={18} />
                     </button>
                     <button onClick={onAddProduct}>
-                        <img src="/assets/add-icon.svg" alt="Add" className='button-img' />
+                        <Image src="/assets/add-icon.svg" alt="Add" width={18} height={18} />
                     </button>
                 </ButtonsContainer>
-                <img src={product.img} alt={product.name} className='product-img' />
+
+                <ImageWrapper>
+                    <Image
+                        src={product.img}
+                        alt={product.name}
+                        layout="responsive"
+                        width={64}
+                        height={64}
+                    />
+                </ImageWrapper>
+
                 <h3>{product.name}</h3>
             </Card>
             <NoteModal show={showModal} closeModal={onCloseModal} product={product} />
             <style jsx>{`
-                .button-img {
-                    max-width: 18px;
-                }
                 .product-img {
                     max-width: 64px;
                     min-width: 22px;
@@ -81,27 +119,3 @@ const ProductCard = (product: Props) => {
 }
 
 export default ProductCard
-
-const Card = styled.span<{ disabled: boolean }>`
-    max-width: 240px;
-    min-width: 50px;
-    width: 100%;
-    min-height: 145px;
-    object-fit: contain;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--white);
-    border-radius: 16px;
-    padding: 8px 3px;
-    transition: all .3s;
-    opacity: ${({ disabled }) => disabled ? '0.6' : '1'};
-    pointer-events:  ${({ disabled }) => disabled ? 'none' : 'all'};
-`
-const ButtonsContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-`

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import styled, { css } from "styled-components"
@@ -68,13 +69,14 @@ const CategoryButton = ({ category }: Props) => {
                 <CategoryImgContainer active={activeCategory}>
                     {
                         !activeCategory
-                            ? <img src={img} alt={title} style={{ maxWidth: '40px' }} />
+                            ? <Image src={img} alt={title} width={42} height={42} />
                             : (
                                 <CloseIcon onClick={onCloseCategory}>
-                                    <img
+                                    <Image
                                         src="/assets/close-icon.svg"
                                         alt="X"
-                                        style={{ maxWidth: '12px' }}
+                                        width={14}
+                                        height={14}
                                     />
                                 </CloseIcon>
                             )
