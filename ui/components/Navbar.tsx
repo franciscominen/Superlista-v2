@@ -74,9 +74,10 @@ const NavbarLinkAnimation = styled.figure<{ active: boolean }>`
 interface Props {
     onShowCategories: Function
     showCategories: boolean
+    setShowCategories: (active: boolean) => void
 }
 
-const Navbar = ({onShowCategories, showCategories}: Props) => {
+const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) => {
     const router = useRouter()
     const isActiveLink = router.pathname === "/products/[[...slug]]"
 
@@ -115,14 +116,14 @@ const Navbar = ({onShowCategories, showCategories}: Props) => {
 
                 <NavLogoContainer>
                     <SearchButton onClick={handleShowSearch} show={showSearch}>
-                        <Image src="/assets/search-icon.svg" alt='Search' width={42} height={42}/>
+                        <Image src="/assets/search-icon.svg" alt='Search' width={42} height={42} />
                     </SearchButton>
 
                     <Logo src="/assets/logo-navbar.svg" alt="Superlista.ar" show={showSearch} />
 
                     <SearchProductInput handleShowSearch={handleShowSearch} showSearch={showSearch} />
 
-                    <Image src="/assets/share-icon.svg" alt="Share"  width={42} height={42} />
+                    <Image src="/assets/share-icon.svg" alt="Share" width={42} height={42} />
                 </NavLogoContainer>
 
 
@@ -135,14 +136,14 @@ const Navbar = ({onShowCategories, showCategories}: Props) => {
                     </Link>
                     <figure></figure>
                     <Link href='/mylist' >
-                        <NavbarLink active={isActiveLink}>
+                        <NavbarLink active={isActiveLink} onClick={(() => setShowCategories(false))}>
                             <p>MI LISTA</p>
                             <NavbarLinkAnimation active={isActiveLink}></NavbarLinkAnimation>
                         </NavbarLink>
                     </Link>
                 </NavContainer>
 
-                <CategoriesNavbar onShowCategories={onShowCategories} showCategories={showCategories}/>
+                <CategoriesNavbar onShowCategories={onShowCategories} showCategories={showCategories} />
 
             </NavHeader>
 

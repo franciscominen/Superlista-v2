@@ -47,7 +47,14 @@ const Layout = ({ children, ...props }: Props) => {
     return (
         <ProductsProvider>
             <>
-                {isHome ? null : <Navbar onShowCategories={onShowCategories} showCategories={showCategories} />}
+                {isHome ?
+                    null :
+                    <Navbar
+                        onShowCategories={onShowCategories}
+                        showCategories={showCategories}
+                        setShowCategories={setShowCategories}
+                    />
+                }
                 <ShowCategoriesButton onClick={onShowCategories} active={filterIconActive}>
                     <Image
                         src="/assets/filter-icon.svg"
