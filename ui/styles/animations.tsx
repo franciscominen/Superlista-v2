@@ -12,7 +12,18 @@ const scaleInCenter = keyframes`
         opacity: 1;
     }
 `
+const slideLeft = keyframes`
+  0% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+`
 
 export {
-    scaleInCenter
+    scaleInCenter,
+    slideLeft
 }

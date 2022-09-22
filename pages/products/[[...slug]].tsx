@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 
 import { IProduct } from '~/lib/types'
-import { useProducts, useUtils } from '~/lib/hooks'
+import { useProducts, useProductsActions, useUtils } from '~/lib/hooks'
 
 import ProductCard from '~/ui/components/ProductCard'
 
@@ -10,12 +10,12 @@ import styled from 'styled-components'
 import { Title } from '~/ui/styles/sharedStyles'
 import CategoriesCollapse from '~/ui/components/CategoriesCollapse'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 const Products: NextPage = () => {
   let products = useProducts()
   //let PRODUCTS = products.sort((a, b) => 0.5 - Math.random());
   const { searchValue } = useUtils()
-
 
   const router = useRouter()
   const categoryQuery = router.query.slug

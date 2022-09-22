@@ -6,6 +6,7 @@ import { IProduct } from '~/lib/types'
 import ProductListCard from '~/ui/components/ProductListCard'
 import styled from 'styled-components'
 import ClearListButton from '~/ui/components/ClearListButton'
+import EmptyList from '~/ui/components/EmptyList'
 
 const MyList: NextPage = () => {
     const list = useList()
@@ -20,7 +21,7 @@ const MyList: NextPage = () => {
             <MyListWrapper>
                 {
                     !list.length ?
-                        <p>Tu Lista esta vacia.</p> :
+                        <EmptyList /> :
                         list.map((product: IProduct) => {
                             return (
                                 <ProductListCard

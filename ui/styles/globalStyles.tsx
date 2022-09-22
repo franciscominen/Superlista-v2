@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
         --light: #fff;
         --white: #F6F6F6;
         --gray: #D2D2D2;
+        --darkgrey: #8D8D8D;
         --principalFont: "IBM Plex Sans";
     }
     html,
@@ -29,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
-    h1, h2, h3, h4, h5, h6, p, a {
+    h1, h2, h3, h4, h5, h6, p, a, button {
         color: var(--dark);
         font-family: var(--principalFont);
     }

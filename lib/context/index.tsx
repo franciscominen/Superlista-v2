@@ -72,7 +72,7 @@ const ProductsProvider = ({ children }: Props) => {
     useEffect(() => {
         useLocalStorageSet("list", list);
     }, [list]);
-
+    
     useEffect(() => {
         api.getAll((products: IProduct[]) => {
             setProducts(products)
