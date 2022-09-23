@@ -7,6 +7,7 @@ import { useList } from '~/lib/hooks'
 import { SpacedContainer } from '~/ui/styles/sharedStyles'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import { fade, homeLogoMove } from '~/ui/styles/animations'
 
 const HomeContainer = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ const HomeContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 70vh;
+  
 `
 
 const HomeButton = styled.button`
@@ -27,6 +29,8 @@ const HomeButton = styled.button`
   max-height: 185px;
   height: 100%;
   object-fit: contain;
+  opacity: 0;
+  animation: ${fade} 0.3s ease-in 2.1s forwards;
 `
 
 const HomeText = styled.p`
@@ -35,12 +39,19 @@ const HomeText = styled.p`
 `
 
 const ImageWrapper = styled.div`
-  position: "relative";
+  position: absolute;
+  transform: translateY(-3em);
+  opacity: 0;
   width: 250px;
   max-width: 250px;
   height: 50px;
   max-height: 50px;
-  margin-bottom: 2em;
+  animation: ${fade} 0.5s ease-in 0.3s forwards, ${homeLogoMove} .8s ease 1.4s forwards;
+`
+
+const HowToUseLink = styled.h3`
+  opacity: 0;
+  animation: ${fade} 0.5s ease-in 2.6s forwards;
 `
 
 const Home: NextPage = () => {
@@ -86,7 +97,7 @@ const Home: NextPage = () => {
           {
             !list.length ?
               (
-                <HomeButton onClick={() => { router.push('/mylist') }}>
+                <HomeButton onClick={() => { router.push('/products') }}>
                   <Image
                     src="/assets/new-list-btn.svg"
                     alt='+'
@@ -111,7 +122,7 @@ const Home: NextPage = () => {
         </SpacedContainer>
 
         <Link href='/'>
-          <h3>¿Como funciona?</h3>
+          <HowToUseLink>¿Como funciona?</HowToUseLink>
         </Link>
       </HomeContainer>
     </>

@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import styled from "styled-components"
+import { fade, slideLeft } from "../styles/animations"
 
 const EmptyListWrapper = styled.div`
     display: flex;
@@ -14,6 +15,8 @@ const EmptyListText = styled.p`
     font-size: 18px;
     font-weight: 800;
     text-align: center;
+    opacity: 0;
+    animation: ${fade} .7s .5s forwards;
 `
 
 const EmptyListButton = styled.button`
@@ -24,13 +27,21 @@ const EmptyListButton = styled.button`
     font-size: 16px;
     font-weight: 800;
     padding: 12px 28px;
+    opacity: 0;
+    animation: ${fade} .7s .8s forwards;
+`
+
+const ImageWrapper = styled.div`
+    animation: ${slideLeft} .5s ease forwards;
 `
 
 const EmptyList = () => {
 
     return (
         <EmptyListWrapper>
-            <Image src='/assets/empty-list-icon.svg' width={94} height={94} priority />
+            <ImageWrapper>
+                <Image src='/assets/empty-list-icon.svg' width={94} height={94} priority />
+            </ImageWrapper>
             <EmptyListText>Parece que todavía no <br />agregaste nada</EmptyListText>
             <Link href='/products'>
                 <EmptyListButton>

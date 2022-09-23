@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { fade, scaleInCenter } from './animations'
 
 const MainContainer = styled.main`
     max-width: 750px;
@@ -53,7 +54,7 @@ const Title = styled.h1`
     padding: 0 3%;
 `
 
-const StyledModalWrapper = styled.div`
+const StyledModalWrapper = styled.div<{exit: boolean}>`
     height: 100%;
     width: 100%;
     background: #00000055;
@@ -68,15 +69,21 @@ const StyledModalWrapper = styled.div`
     justify-content: center;
     align-items: center;
     overflow: hidden!important;
+    transition: all .2s;
+    opacity: ${({ exit }) => exit ? '0' : '1'};;
+    animation: ${fade} .2s ease-in; 
 `;
 
-const ModalContainer = styled.div`
+const ModalContainer = styled.div<{exit: boolean}>`
     background: var(--light);
     padding: 22px 0 12px 0;
     border-radius: 40px;
     max-width: 30em;
     width: 90%;
     margin: 0 auto;
+    animation: ${scaleInCenter} .2s ease-in;
+    transition: all .2s ease-in;
+    transform: ${({ exit }) => exit ? 'scale(0)' : 'scale(1)'};
 `
 
 export {

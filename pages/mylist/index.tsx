@@ -7,10 +7,21 @@ import ProductListCard from '~/ui/components/ProductListCard'
 import styled from 'styled-components'
 import ClearListButton from '~/ui/components/ClearListButton'
 import EmptyList from '~/ui/components/EmptyList'
+import { slideInBottom } from '~/ui/styles/animations'
+
+const MyListWrapper = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 12px 3%;
+    transition: .5s;
+    //animation: ${slideInBottom} .6s ease-in forwards;
+`
 
 const MyList: NextPage = () => {
     const list = useList()
-    
+
     return (
         <>
             <Head>
@@ -44,12 +55,3 @@ const MyList: NextPage = () => {
 }
 
 export default MyList
-
-const MyListWrapper = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 12px 3%;
-`

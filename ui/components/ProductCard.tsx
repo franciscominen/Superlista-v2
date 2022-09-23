@@ -5,6 +5,7 @@ import { useList, useProductsActions } from '~/lib/hooks'
 import { IProduct } from '~/lib/types'
 import toast from 'react-hot-toast';
 import NoteModal from './NoteModal'
+import { scaleInCenter } from '../styles/animations'
 
 const Card = styled.div<{ disabled: boolean }>`
     position: relative;
@@ -20,6 +21,8 @@ const Card = styled.div<{ disabled: boolean }>`
     transition: all .3s;
     opacity: ${({ disabled }) => disabled ? '0.6' : '1'};
     pointer-events:  ${({ disabled }) => disabled ? 'none' : 'all'};
+    transform: scale(0);
+    animation: ${scaleInCenter} 0.2s ease-in forwards;
 `
 const ButtonsContainer = styled.div`
     display: flex;

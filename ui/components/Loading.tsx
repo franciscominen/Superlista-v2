@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { slideLeft } from "../styles/animations";
+import { loadingAnimation } from "../styles/animations";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -21,7 +21,7 @@ const ProductsWrapper = styled.div`
   padding-bottom: 2px;
   background-image: url('/assets/loader/products.svg');
   background-size: cover;
-  animation: ${slideLeft} 3s linear infinite both;
+  animation: ${loadingAnimation} 3s linear infinite both;
 `
 const WheelsWrapper = styled.div`
   padding: 0 5px;

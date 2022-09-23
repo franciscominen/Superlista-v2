@@ -2,6 +2,7 @@ import Image from "next/image"
 import { useState } from "react"
 import styled from "styled-components"
 import { categoriesData } from "~/pages/api"
+import { fade } from "../styles/animations"
 import { SpacedContainer, Title } from "../styles/sharedStyles"
 import CategoryButton from "./CategoryButton"
 
@@ -18,6 +19,8 @@ const CategoriesWrapper = styled.div<{ active: boolean }>`
     height: ${({ active }) => active ? '0' : '12.5em'};
     transform-origin: 100% 0%;
     z-index: 2;
+    opacity: 0;
+    animation: ${fade} 0.3s ease-in .2s forwards;
 `
 
 const CollapseButton = styled.button<{ active: boolean }>`
