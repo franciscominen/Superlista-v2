@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { memo, useState } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { useList, useProductsActions } from '~/lib/hooks'
@@ -21,8 +21,7 @@ const Card = styled.div<{ disabled: boolean }>`
     transition: all .3s;
     opacity: ${({ disabled }) => disabled ? '0.6' : '1'};
     pointer-events:  ${({ disabled }) => disabled ? 'none' : 'all'};
-    transform: scale(0);
-    animation: ${scaleInCenter} 0.2s ease-in forwards;
+    animation: ${scaleInCenter} 0.2s ease-in;
 `
 const ButtonsContainer = styled.div`
     display: flex;
@@ -39,14 +38,15 @@ const ImageWrapper = styled.div`
     max-width: 64px;
 `
 
-interface Props extends IProduct {
+type Props = {
     product: IProduct
 }
 
-const ProductCard = (product: Props) => {
+function ProductCard ({ product }: Props) {
     const list = useList()
-    const [showModal, setShowModal] = useState(false);
     const { addProduct } = useProductsActions()
+    const [showModal, setShowModal] = useState(false);
+
 
     let isInList = list.some((listProduct) => listProduct.id === product.id)
 
@@ -80,7 +80,7 @@ const ProductCard = (product: Props) => {
                     <button onClick={() => setShowModal(true)}>
                         <Image src="/assets/add-note-icon.svg" alt="Edit" width={18} height={18} />
                     </button>
-                    <button onClick={onAddProduct}>
+                    <button onClick={() => onAddProduct()}>
                         <Image src="/assets/add-icon.svg" alt="Add" width={18} height={18} />
                     </button>
                 </ButtonsContainer>
@@ -121,4 +121,4 @@ const ProductCard = (product: Props) => {
     )
 }
 
-export default ProductCard
+export default memo(ProductCard)

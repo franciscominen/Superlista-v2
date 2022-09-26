@@ -24,22 +24,18 @@ const ProductsProvider = ({ children }: Props) => {
     const [status, setStatus] = useState<"pending" | "resolved" | "rejected">("pending")
     const [searchValue, setSearchValue] = useState<string>("")
 
-    const addProduct = (newProduct: IProduct) => {
+    const addProduct = (product: IProduct) => {
         const isProductInList = state.list.some(
-            (product) => product.id === newProduct.id
+            (productInList) => productInList.id === product.id
         );
 
-        isProductInList ?
-            setList([...state.list]) :
-            setList([...state.list, { ...newProduct }])
-
-        return list
+        if (isProductInList) return
+        setList(list => list.concat(product))
     }
 
     const removeProduct = (id: IProduct['id']) => {
         const productToRemove = state.list.filter(product => product.id !== id)
-        setList(productToRemove)
-        return list
+        return setList(productToRemove)
     }
 
     const clearList = () => {

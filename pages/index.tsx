@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import ClearListModal from '~/ui/components/ClearListModal'
 import { useList } from '~/lib/hooks'
-import { SpacedContainer } from '~/ui/styles/sharedStyles'
+import { HomeButton, HomeText, SpacedContainer } from '~/ui/styles/sharedStyles'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { fade, homeLogoMove } from '~/ui/styles/animations'
@@ -16,26 +16,6 @@ const HomeContainer = styled.div`
   align-items: center;
   height: 70vh;
   
-`
-
-const HomeButton = styled.button`
-  background-color: var(--white);
-  border: 2px solid #D2D2D2;
-  border-radius: 20px;
-  min-width: 160px;
-  max-width: 185px;
-  width: 100%;
-  min-height: 160px;
-  max-height: 185px;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  animation: ${fade} 0.3s ease-in 2.1s forwards;
-`
-
-const HomeText = styled.p`
-  font-size: 15px;
-  margin: 8px 0 0 0;
 `
 
 const ImageWrapper = styled.div`
@@ -57,20 +37,6 @@ const HowToUseLink = styled.h3`
 const Home: NextPage = () => {
   const list = useList()
   const router = useRouter()
-
-  const modalButton = (
-    <>
-      <HomeButton>
-        <Image
-          src="/assets/new-list-btn.svg"
-          alt='+'
-          width={78}
-          height={78}
-        />
-        <HomeText><strong>Crear nueva</strong> Lista</HomeText>
-      </HomeButton>
-    </>
-  )
 
   return (
     <>
@@ -108,7 +74,7 @@ const Home: NextPage = () => {
                 </HomeButton>
               )
               :
-              <ClearListModal modalIcon={modalButton} />
+              <ClearListModal />
           }
           <HomeButton onClick={() => { router.push('/mylist') }}>
             <Image

@@ -6,7 +6,7 @@ export default {
         database
             .collection('products')
             .onSnapshot(snapshot => callback(
-                snapshot.docs.map(doc => ({ id: doc.id, ...(doc.data() as IProduct) }))
+                snapshot.docs.sort((a, b) => 0.5 - Math.random()).map(doc => ({ id: doc.id, ...(doc.data() as IProduct) }))
             )),
 }
 

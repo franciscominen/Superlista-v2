@@ -2,40 +2,42 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useProductsActions } from "~/lib/hooks";
-import { StyledModalWrapper, ModalContainer, CenterContainer } from '~/ui/styles/sharedStyles'
-interface Props {
-    modalIcon: any
-}
+import { StyledModalWrapper, ModalContainer, CenterContainer, HomeButton, HomeText } from '~/ui/styles/sharedStyles'
 
-const ClearListModal = ({ modalIcon }: Props) => {
-    const [showModal, setShowModal] = useState(false);
+const ClearListModal = () => {
+    const [showModal, setShowModal] = useState(false)
+    const [exit, setExit] = useState(false)
     const router = useRouter()
 
-    const { clearList } = useProductsActions();
+    const { clearList } = useProductsActions()
 
     const closeModal = () => {
-        return setShowModal(false)
+        setExit(true)
+        setTimeout(() => {
+            setShowModal(false)
+            setExit(false)
+        }, 400)
     }
 
     const handleClear = () => {
         clearList()
         closeModal()
-        router.push('/products')
+        router.replace('/products')
     }
 
     const modal = (
         <>
-            <StyledModalWrapper>
-                <ModalContainer>
+            <StyledModalWrapper exit={exit}>
+                <ModalContainer exit={exit}>
                     <>
-                        <button onClick={() => closeModal()} className='close-btnHome'>
+                        <button onClick={closeModal} className='close-btnHome'>
                             <Image src="/assets/close-icon.svg" alt="X" width={28} height={28} />
                         </button>
                         <h3> Ya tenes una lista creada, <br />queres borrarla?</h3>
                     </>
                     <CenterContainer>
-                        <button onClick={() => handleClear()} className='modal-btn'>SI</button>
-                        <button onClick={() => closeModal()} className='modal-btnCancel'>NO</button>
+                        <button onClick={handleClear} className='modal-btn'>SI</button>
+                        <button onClick={closeModal} className='modal-btnCancel'>NO</button>
                     </CenterContainer>
                 </ModalContainer>
             </StyledModalWrapper>
@@ -111,7 +113,15 @@ const ClearListModal = ({ modalIcon }: Props) => {
 
     return (
         <>
-            <button onClick={() => { setShowModal(true) }}>{modalIcon}</button>
+            <HomeButton onClick={() => setShowModal(true)}>
+                <Image
+                    src="/assets/new-list-btn.svg"
+                    alt='+'
+                    width={78}
+                    height={78}
+                />
+                <HomeText><strong>Crear nueva</strong> Lista</HomeText>
+            </HomeButton>
             {showModal ? modal : null}
         </>
     )

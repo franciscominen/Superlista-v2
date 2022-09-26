@@ -72,9 +72,9 @@ const NavbarLinkAnimation = styled.figure<{ active: boolean }>`
 `
 
 interface Props {
-    onShowCategories: Function
+    onShowCategories: (value: boolean) => void
     showCategories: boolean
-    setShowCategories: (active: boolean) => void
+    setShowCategories: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) => {

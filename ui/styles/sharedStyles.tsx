@@ -54,7 +54,7 @@ const Title = styled.h1`
     padding: 0 3%;
 `
 
-const StyledModalWrapper = styled.div<{exit: boolean}>`
+const StyledModalWrapper = styled.div<{ exit: boolean }>`
     height: 100%;
     width: 100%;
     background: #00000055;
@@ -74,7 +74,7 @@ const StyledModalWrapper = styled.div<{exit: boolean}>`
     animation: ${fade} .2s ease-in; 
 `;
 
-const ModalContainer = styled.div<{exit: boolean}>`
+const ModalContainer = styled.div<{ exit: boolean }>`
     background: var(--light);
     padding: 22px 0 12px 0;
     border-radius: 40px;
@@ -86,6 +86,26 @@ const ModalContainer = styled.div<{exit: boolean}>`
     transform: ${({ exit }) => exit ? 'scale(0)' : 'scale(1)'};
 `
 
+const HomeButton = styled.button`
+  background-color: var(--white);
+  border: 2px solid #D2D2D2;
+  border-radius: 20px;
+  min-width: 160px;
+  max-width: 185px;
+  width: 100%;
+  min-height: 160px;
+  max-height: 185px;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  animation: ${fade} 0.3s ease-in 2.1s forwards;
+`
+
+const HomeText = styled.p`
+  font-size: 15px;
+  margin: 8px 0 0 0;
+`
+
 export {
     MainContainer,
     SpacedContainer,
@@ -94,5 +114,7 @@ export {
     StartContainer,
     CenterContainer,
     StyledModalWrapper,
-    ModalContainer
+    ModalContainer,
+    HomeButton,
+    HomeText
 }

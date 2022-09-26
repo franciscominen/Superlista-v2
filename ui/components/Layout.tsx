@@ -6,43 +6,21 @@ import { MainContainer } from "../styles/sharedStyles"
 import { useRouter } from "next/router"
 import styled from "styled-components"
 import Image from "next/image"
+import CategoriesFilterButton from "./CategoriesFilterButton"
 
 interface Props {
     children?: ReactNode
 }
 
-const ShowCategoriesButton = styled.button<{ active: boolean }>`
-    background-color: var(--dark);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed !important;
-    left: 3%;
-    top: 82%;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    z-index: 10;
-    transition: all .3s;
-    transform: ${({ active }) => active ? 'translateX(0)' : 'translateX(-15em)'};
-`
-
 const Layout = ({ children, ...props }: Props) => {
     const router = useRouter()
     const isHome = router.route === '/'
+    const isProducts = router.route === '/products/[[...slug]]'
     const [showCategories, setShowCategories] = useState<boolean>(false)
-    const [filterIconActive, setFilterIconActive] = useState<boolean>(false)
 
     const onShowCategories = () => {
         setShowCategories(!showCategories)
     }
-
-    const showFilterIcon = () => {
-        window.scrollY > 400 ?
-            setFilterIconActive(true) :
-            setFilterIconActive(false)
-    }
-    window.addEventListener("scroll", showFilterIcon);
 
     return (
         <ProductsProvider>
@@ -55,15 +33,12 @@ const Layout = ({ children, ...props }: Props) => {
                         setShowCategories={setShowCategories}
                     />
                 }
-                <ShowCategoriesButton onClick={onShowCategories} active={filterIconActive}>
-                    <Image
-                        src="/assets/filter-icon.svg"
-                        alt="Filter"
-                        height={46}
-                        width={46}
-                        style={{ position: 'relative', top: '3px' }}
-                    />
-                </ShowCategoriesButton>
+
+                {isProducts ?
+                    <CategoriesFilterButton onShowCategories={onShowCategories}/>
+                    : null
+                }
+
                 <MainContainer {...props}>{children}</MainContainer>
                 <Footer />
             </>

@@ -57,16 +57,16 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
 
   const toastMessage = <p className='toast-text'>Agregaste <strong>{product.name}</strong> a tu lista.</p>
   const showToast = () => toast(toastMessage, {
-      duration: 1200,
-      position: 'bottom-center',
-      style: {
-          boxShadow: 'none',
-          background: '#f6f6f6f0',
-          border: '1px solid #D2D2D2',
-          borderRadius: '20px',
-          position: 'relative',
-          bottom: '2em',
-      },
+    duration: 1200,
+    position: 'bottom-center',
+    style: {
+      boxShadow: 'none',
+      background: '#f6f6f6f0',
+      border: '1px solid #D2D2D2',
+      borderRadius: '20px',
+      position: 'relative',
+      bottom: '2em',
+    },
   });
 
   const handleAdd = () => {

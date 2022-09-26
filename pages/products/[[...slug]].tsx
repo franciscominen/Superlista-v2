@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 
 import { IProduct } from '~/lib/types'
-import { useProducts, useProductsActions, useUtils } from '~/lib/hooks'
+import { useProducts, useUtils } from '~/lib/hooks'
 
 import ProductCard from '~/ui/components/ProductCard'
 
@@ -10,7 +10,6 @@ import styled from 'styled-components'
 import { Title } from '~/ui/styles/sharedStyles'
 import CategoriesCollapse from '~/ui/components/CategoriesCollapse'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 
 const Products: NextPage = () => {
   let products = useProducts()
@@ -52,11 +51,6 @@ const Products: NextPage = () => {
             .map((product: IProduct) => {
               return (
                 <ProductCard
-                  id={product.id}
-                  name={product.name}
-                  img={product.img}
-                  nota={product.nota}
-                  categoryID={product.categoryID}
                   key={product.id}
                   product={product}
                 />
