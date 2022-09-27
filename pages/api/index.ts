@@ -11,6 +11,13 @@ export default {
                     /* ts ignore */
                     .map(doc => ({ id: doc.id, ...(doc.data() as IProduct) }))
             )),
+    getSharedLists: (callback: (products: IProduct[]) => void) =>
+        database
+            .collection('sharedlist')
+            .onSnapshot(snapshot => callback(
+                snapshot.docs
+                    .map(doc => ({ ...(doc.data() as IProduct) }))
+            )),
 }
 
 export const categoriesData = [

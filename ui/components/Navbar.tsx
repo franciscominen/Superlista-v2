@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useList } from '~/lib/hooks';
 import CategoriesNavbar from './CategoriesNavbar';
 import OrderByCategoryButton from './OrderByCategoryButton';
 import SearchProductInput from './SearchProductInput';
+import ShareMyListModal from './ShareMyListModal';
 
 const NavHeader = styled.header<{ isVisible: boolean }>`
     height: 112px;
@@ -123,7 +123,7 @@ const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) 
 
                 <NavLogoContainer>
 
-                    <Image src="/assets/share-icon.svg" alt="Share" width={42} height={42} />
+                    <ShareMyListModal />
                     <Logo src="/assets/logo-navbar.svg" alt="Superlista.ar" show={showSearch} />
                     {
                         isProducts ?

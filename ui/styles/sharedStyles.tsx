@@ -55,7 +55,7 @@ const Title = styled.h1`
 `
 
 const StyledModalWrapper = styled.div<{ exit: boolean }>`
-    height: 100%;
+    height: 100vh;
     width: 100%;
     background: #00000055;
     position: fixed;
