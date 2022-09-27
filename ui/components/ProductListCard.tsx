@@ -3,7 +3,6 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { useProductsActions } from '~/lib/hooks'
 import { IProduct } from '~/lib/types'
-import { slideInBottom } from '../styles/animations'
 import { SpacedContainer } from '../styles/sharedStyles'
 import NoteModal from './NoteModal'
 
@@ -16,19 +15,19 @@ const ListCard = styled.div<{ exit: boolean }>`
     width: 100%;
     padding: 0 16px;
     border-radius: 16px;
-    //animation: ${slideInBottom} 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) forwards;
-    transition: transform .5s, opacity .4s, height .4s .2s, margin-bottom .4s .2s;
+    transition: transform .3s, opacity .2s, height .2s .1s, margin-bottom .2s .05s;
     margin-bottom: ${({ exit }) => exit ? '0' : '8px'};
     height: ${({ exit }) => exit ? '0' : '4em'};
     transform: ${({ exit }) => exit ? 'translateX(-100%)' : 'translateX(0)'};
     opacity: ${({ exit }) => exit ? '0' : '1'};
 `
 
-interface Props extends IProduct {
+type Props = {
     product: IProduct
 }
 
-const ProductListCard = (product: Props) => {
+const ProductListCard = ({ product }: Props) => {
+    const { name, img, id, nota } = product
     const [showModal, setShowModal] = useState(false);
     const [exit, setExit] = useState(false)
     const { removeProduct } = useProductsActions()
@@ -40,18 +39,18 @@ const ProductListCard = (product: Props) => {
     const onRemoveProduct = () => {
         setExit(!exit)
         setTimeout(() => {
-            removeProduct(product.id)
-        }, 800)
+            removeProduct(id)
+        }, 300)
     }
 
     return (
         <>
             <ListCard exit={exit}>
                 <SpacedContainer>
-                    <Image src={product.img} alt={product.name} width={48} height={48} />
+                    <Image src={img} alt={name} width={48} height={48} />
                     <span style={{ paddingLeft: '8px' }}>
-                        <h3>{product.name}</h3>
-                        <p>{product.nota}</p>
+                        <h3>{name}</h3>
+                        <p>{nota}</p>
                     </span>
                 </SpacedContainer>
                 <SpacedContainer>

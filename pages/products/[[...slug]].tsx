@@ -13,7 +13,6 @@ import { useRouter } from 'next/router'
 
 const Products: NextPage = () => {
   let products = useProducts()
-  //let PRODUCTS = products.sort((a, b) => 0.5 - Math.random());
   const { searchValue } = useUtils()
 
   const router = useRouter()
@@ -30,6 +29,9 @@ const Products: NextPage = () => {
       return product.categoryID === categoryQuery[0]
     })
   }
+
+  console.log(products);
+  
 
   return (
     <>

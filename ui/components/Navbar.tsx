@@ -3,10 +3,13 @@ import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useList } from '~/lib/hooks';
 import CategoriesNavbar from './CategoriesNavbar';
+import OrderByCategoryButton from './OrderByCategoryButton';
 import SearchProductInput from './SearchProductInput';
 
 const NavHeader = styled.header<{ isVisible: boolean }>`
+    height: 112px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,8 +82,7 @@ interface Props {
 
 const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) => {
     const router = useRouter()
-    const isActiveLink = router.pathname === "/products/[[...slug]]"
-
+    const isProducts = router.pathname === "/products/[[...slug]]"
     const [showSearch, setShowSearch] = useState<boolean>(false)
 
     const handleShowSearch = () => {
@@ -101,6 +103,11 @@ const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) 
         }
     };
 
+    const onGoToMyList = () => {
+        setShowCategories(false)
+        setShowSearch(false)
+    }
+
     useEffect(() => {
         if (typeof window !== 'undefined') {
             window.addEventListener('scroll', controlNavbar);
@@ -115,30 +122,34 @@ const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) 
             <NavHeader isVisible={showNavbar}>
 
                 <NavLogoContainer>
-                    <SearchButton onClick={handleShowSearch} show={showSearch}>
-                        <Image src="/assets/search-icon.svg" alt='Search' width={42} height={42} />
-                    </SearchButton>
-
-                    <Logo src="/assets/logo-navbar.svg" alt="Superlista.ar" show={showSearch} />
-
-                    <SearchProductInput handleShowSearch={handleShowSearch} showSearch={showSearch} />
 
                     <Image src="/assets/share-icon.svg" alt="Share" width={42} height={42} />
-                </NavLogoContainer>
+                    <Logo src="/assets/logo-navbar.svg" alt="Superlista.ar" show={showSearch} />
+                    {
+                        isProducts ?
+                            <>
+                                <SearchButton onClick={handleShowSearch} show={showSearch}>
+                                    <Image src="/assets/search-icon.svg" alt='Search' width={46} height={46} />
+                                </SearchButton>
+                                <SearchProductInput handleShowSearch={handleShowSearch} showSearch={showSearch} />
+                            </>
+                            : <OrderByCategoryButton />
+                    }
 
+                </NavLogoContainer>
 
                 <NavContainer>
                     <Link href='/products'>
-                        <NavbarLink active={!isActiveLink}>
+                        <NavbarLink active={!isProducts}>
                             <p>PRODUCTOS</p>
-                            <NavbarLinkAnimation active={!isActiveLink}></NavbarLinkAnimation>
+                            <NavbarLinkAnimation active={!isProducts}></NavbarLinkAnimation>
                         </NavbarLink>
                     </Link>
                     <figure></figure>
                     <Link href='/mylist' >
-                        <NavbarLink active={isActiveLink} onClick={(() => setShowCategories(false))}>
+                        <NavbarLink active={isProducts} onClick={onGoToMyList}>
                             <p>MI LISTA</p>
-                            <NavbarLinkAnimation active={isActiveLink}></NavbarLinkAnimation>
+                            <NavbarLinkAnimation active={isProducts}></NavbarLinkAnimation>
                         </NavbarLink>
                     </Link>
                 </NavContainer>

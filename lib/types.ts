@@ -6,6 +6,7 @@ export interface IProduct {
     img: string
     nota: string
     categoryID: string
+    timestamp: Date
 }
 
 export interface State {

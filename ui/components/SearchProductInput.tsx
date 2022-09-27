@@ -9,6 +9,7 @@ const InputContainer = styled.div<{ active: boolean }>`
     justify-content: center;
     align-items: center;
     position: absolute;
+    right: 2%;
     width: 85%;
     transition: all .2s;
     transform: ${({ active }) => active ? 'translateY(0)' : 'translateY(-100px)'};
@@ -69,9 +70,7 @@ const SearchProductInput = ({ handleShowSearch, showSearch }: Props) => {
     return (
         <>
             <InputContainer active={showSearch}>
-                <button style={{ padding: '0 3px', marginRight: '8px' }} onClick={onBackSearch}>
-                    <Image src="/assets/back-icon.svg" alt="Back" width={36} height={36} />
-                </button>
+
                 <SearchInput
                     ref={inputRef}
                     type="text"
@@ -90,6 +89,10 @@ const SearchProductInput = ({ handleShowSearch, showSearch }: Props) => {
                         </ClearListButton>
                         : null
                 }
+
+                <button style={{ padding: '0 3px', marginLeft: '8px', transform: 'rotate(180deg)' }} onClick={onBackSearch}>
+                    <Image src="/assets/back-icon.svg" alt="Back" width={36} height={36} />
+                </button>
 
             </InputContainer>
         </>

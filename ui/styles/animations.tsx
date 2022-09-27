@@ -36,17 +36,13 @@ const slideLeft = keyframes`
 
 const slideInBottom = keyframes`
   0% {
-    -webkit-transform: rotateX(-100deg);
-            transform: rotateX(-100deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
+    -webkit-transform: translateY(50%);
+    transform: translateY(50%);
     opacity: 0;
   }
   100% {
-    -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
     opacity: 1;
   }
 `

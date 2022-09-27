@@ -30,6 +30,7 @@ const ProductsProvider = ({ children }: Props) => {
         );
 
         if (isProductInList) return
+        product.timestamp = new Date()
         setList(list => list.concat(product))
     }
 

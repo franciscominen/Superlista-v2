@@ -16,12 +16,13 @@ const MyListWrapper = styled.section`
     width: 100%;
     padding: 12px 3%;
     transition: .5s;
-    //animation: ${slideInBottom} .6s ease-in forwards;
+    animation: ${slideInBottom} .5s ease;
 `
 
 const MyList: NextPage = () => {
-    const list = useList()
-
+    const LIST = useList()
+    console.log(LIST);
+    
     return (
         <>
             <Head>
@@ -31,21 +32,16 @@ const MyList: NextPage = () => {
             </Head>
             <MyListWrapper>
                 {
-                    !list.length ?
+                    !LIST.length ?
                         <EmptyList /> :
-                        list.map((product: IProduct) => {
+                        LIST.map((product: IProduct) => {
                             return (
                                 <ProductListCard
-                                    id={product.id}
-                                    name={product.name}
-                                    img={product.img}
-                                    nota={product.nota}
-                                    categoryID={product.categoryID}
                                     key={product.name}
                                     product={product}
                                 />
                             )
-                        })
+                        }).reverse()
                 }
             </MyListWrapper>
 
