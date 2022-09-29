@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import ProductsContext from "~/lib/context";
-import { IProduct, Actions, Utils } from "~/lib/types";
+import { IProduct, Actions, Utils, State } from "~/lib/types";
 
 
 export function useProducts(): IProduct[] {
@@ -11,6 +11,11 @@ export function useProducts(): IProduct[] {
 export function useList(): IProduct[] {
     const { state: { list } } = useContext(ProductsContext);
     return list;
+}
+
+export function useSessionId(): State['sessionId'] {
+    const { state: { sessionId } } = useContext(ProductsContext);
+    return sessionId;
 }
 
 export function useProductsActions(): Actions {

@@ -12,6 +12,7 @@ export interface IProduct {
 export interface State {
     products: IProduct[]
     list: IProduct[]
+    sessionId: string | null
 }
 
 export interface Actions {
@@ -26,9 +27,16 @@ export interface Actions {
 export interface Utils {
     searchValue: string
     setSearchValue: (e: any) => void
+    setSessionId: React.Dispatch<React.SetStateAction<string | null>>
 }
 export interface Context {
     state: State
     actions: Actions
     utils: Utils
+}
+
+export interface ISharedList {
+    id: string
+    listID: string | null
+    listProducts: IProduct[]
 }

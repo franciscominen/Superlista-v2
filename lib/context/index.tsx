@@ -4,6 +4,7 @@ import { useLocalStorageGet, useLocalStorageSet } from "../hooks";
 import api from '~/pages/api'
 import Loading from '~/ui/components/Loading'
 import { useRouter } from "next/router";
+import { v4 as uuid } from 'uuid';
 
 interface Props {
     children: JSX.Element;
@@ -12,6 +13,7 @@ interface Props {
 const initialState: State = {
     products: [],
     list: [],
+    sessionId: null
 }
 
 const ProductsContext = createContext({} as Context)
@@ -21,10 +23,17 @@ const ProductsProvider = ({ children }: Props) => {
 
     const [products, setProducts] = useState<IProduct[]>([])
     const [list, setList] = useState<IProduct[]>(() => useLocalStorageGet("list", initialState.list))
+    const [sessionId, setSessionId] = useState<State['sessionId']>(() => useLocalStorageGet("sessionId", initialState.sessionId))
     const [status, setStatus] = useState<"pending" | "resolved" | "rejected">("pending")
     const [searchValue, setSearchValue] = useState<string>("")
 
     const addProduct = (product: IProduct) => {
+
+        if (!state.list.length) {
+            const getSessionId = uuid().slice(0, 8)
+            setSessionId(getSessionId)
+        }
+
         const isProductInList = state.list.some(
             (productInList) => productInList.id === product.id
         );
@@ -32,6 +41,7 @@ const ProductsProvider = ({ children }: Props) => {
         if (isProductInList) return
         product.timestamp = new Date()
         setList(list => list.concat(product))
+
     }
 
     const removeProduct = (id: IProduct['id']) => {
@@ -67,9 +77,13 @@ const ProductsProvider = ({ children }: Props) => {
     }
 
     useEffect(() => {
+        useLocalStorageSet("sessionId", sessionId);
+    }, [sessionId]);
+
+    useEffect(() => {
         useLocalStorageSet("list", list);
     }, [list]);
-    
+
     useEffect(() => {
         api.getAll((products: IProduct[]) => {
             setProducts(products)
@@ -80,7 +94,7 @@ const ProductsProvider = ({ children }: Props) => {
 
     if (status === "pending") return <Loading />;
 
-    const state: State = { products, list }
+    const state: State = { products, list, sessionId }
     const actions: Actions = {
         addProduct,
         removeProduct,
@@ -89,9 +103,10 @@ const ProductsProvider = ({ children }: Props) => {
         handleSearch,
         clearSearch,
     }
-    const utils: Utils = { 
-        searchValue, 
-        setSearchValue
+    const utils: Utils = {
+        searchValue,
+        setSearchValue,
+        setSessionId
     }
 
     return (

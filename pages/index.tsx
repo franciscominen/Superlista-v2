@@ -3,11 +3,13 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Image from 'next/image'
 import ClearListModal from '~/ui/components/ClearListModal'
-import { useList } from '~/lib/hooks'
+import { useList, useSessionId, useUtils } from '~/lib/hooks'
 import { HomeButton, HomeText, SpacedContainer } from '~/ui/styles/sharedStyles'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { fade, homeLogoMove } from '~/ui/styles/animations'
+import { useEffect } from 'react'
+import { v4 as uuid } from 'uuid';
 
 const HomeContainer = styled.div`
   display: flex;
@@ -37,6 +39,16 @@ const HowToUseLink = styled.h3`
 const Home: NextPage = () => {
   const list = useList()
   const router = useRouter()
+  const { setSessionId } = useUtils()
+  //const { sessionId } = useSessionId()
+
+  /* const getSessionId = uuid().slice(0, 8)
+
+  useEffect(() => {
+    setSessionId(getSessionId)
+  }, []) */
+
+
 
   return (
     <>

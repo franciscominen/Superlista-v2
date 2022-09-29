@@ -29,10 +29,7 @@ const Products: NextPage = () => {
       return product.categoryID === categoryQuery[0]
     })
   }
-
-  console.log(products);
   
-
   return (
     <>
       <Head>

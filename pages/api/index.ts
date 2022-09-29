@@ -1,5 +1,5 @@
 import { database } from "~/lib/firebase"
-import { IProduct } from "~/lib/types"
+import { IProduct, ISharedList } from "~/lib/types"
 
 export default {
     getAll: (callback: (products: IProduct[]) => void) =>
@@ -11,13 +11,13 @@ export default {
                     /* ts ignore */
                     .map(doc => ({ id: doc.id, ...(doc.data() as IProduct) }))
             )),
-    getSharedLists: (callback: (products: IProduct[]) => void) =>
+    getSharedLists: (callback: (sharedLists: ISharedList[]) => void) =>
         database
-            .collection('sharedlist')
+            .collection('sharedLists')
             .onSnapshot(snapshot => callback(
                 snapshot.docs
-                    .map(doc => ({ ...(doc.data() as IProduct) }))
-            )),
+                    .map(doc => ({ id: doc.id, ...(doc.data() as IProduct) }))
+            ))
 }
 
 export const categoriesData = [
