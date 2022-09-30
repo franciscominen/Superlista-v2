@@ -6,6 +6,9 @@ import { database } from "~/lib/firebase"
 import { useList, useSessionId } from "~/lib/hooks"
 import { ISharedList } from "~/lib/types"
 import api from "~/pages/api"
+import styled from "styled-components"
+import SmallLoader from "./SmallLoader"
+import { fade } from "../styles/animations"
 
 const ShareMyListModal = () => {
     const LIST = useList()
@@ -93,30 +96,30 @@ const ShareMyListModal = () => {
             setExistsSharedList(true)
         }
     });
-    
-    const shareButton = <>{loading ? <p>Cargando...</p> : <button onClick={createNewListToShare}>COMPARTIR</button>}</>
-    const updateButton = <>{loading ? <p>Cargando...</p> : <button onClick={updateListShared}>ACTUAILIZAR</button>}</>
+
+    const shareButton = <>{loading ? <SmallLoader /> : <ModalButton onClick={createNewListToShare}>COMPARTIR</ModalButton>}</>
+    const updateButton = <>{loading ? <SmallLoader /> : <ModalButton onClick={updateListShared}>ACTUAILIZAR</ModalButton>}</>
     const fetchButtons = <>{existsSharedList ? updateButton : shareButton}</>
 
     const modal = (
         <>
             <StyledModalWrapper exit={exit}>
                 <ModalContainer exit={exit}>
-                    <button onClick={closeModal} className='close-btnHome'>
-                        <Image src="/assets/close-icon.svg" alt="X" width={28} height={28} />
-                    </button>
+                    <CloseModalImg onClick={closeModal}>
+                        <Image src="/assets/close-icon.svg" alt="X" width={26} height={26} />
+                    </CloseModalImg>
                     {!LIST.length ?
                         <>
-                            <p>Debes agregar al menos un elemento para compartir tu lista.</p>
-                            <button>OK</button>
+                            <ModalText>Agregá al menos un elemento <br />para compartir tu lista.</ModalText>
+                            <ModalButton onClick={closeModal}>OKEY</ModalButton>
                         </> :
                         <>
-                            <h1>Comparte Tu Lista!</h1>
+                            <ModalText>Comparti tu Lista!</ModalText>
                             {
                                 showLink ?
-                                    <button onClick={createMiListLink}>
+                                    <ModalButton onClick={createMiListLink}>
                                         COPIAR LINK
-                                    </button> :
+                                    </ModalButton> :
                                     fetchButtons
                             }
                         </>
@@ -129,7 +132,7 @@ const ShareMyListModal = () => {
                 body > div:first-child,
                 div#__next,
                 div#__next > div {
-                overflow: hidden;
+                    overflow: hidden;
                 }
             `}</style>
         </>
@@ -146,3 +149,31 @@ const ShareMyListModal = () => {
 }
 
 export default ShareMyListModal;
+
+const CloseModalImg = styled.button`
+    display: block;
+    margin-left: auto;
+    padding-right: 24px;
+`
+
+const ModalText = styled.p`
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 8px;
+`
+
+const ModalButton = styled.button`
+    font-size: 18px;
+    font-weight: bold;
+    background-color: var(--white);
+    color: #8D8D8D;
+    padding: 16px 16px;
+    border-radius: 22px;
+    margin-bottom: 12px;
+    border: 3px solid #D2D2D2;
+    margin: 12px auto;
+    display: block;
+    opacity: 0;
+    animation: ${fade} .3s forwards;
+`
