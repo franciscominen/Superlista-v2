@@ -21,7 +21,6 @@ const MyListWrapper = styled.section`
 
 const MyList: NextPage = () => {
     const LIST = useList()
-    console.log(LIST);
     
     return (
         <>

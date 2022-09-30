@@ -10,14 +10,14 @@ import api from "~/pages/api"
 const ShareMyListModal = () => {
     const LIST = useList()
     const SESSION_ID = useSessionId()
-    const [showModal, setShowModal] = useState(false)
-    const [exit, setExit] = useState(false)
+    const [showModal, setShowModal] = useState<boolean>(false)
+    const [exit, setExit] = useState<boolean>(false)
     const [sharedLists, setSharedLists] = useState<ISharedList[]>([])
     const [lastSharedList, setLastSharedList] = useState<ISharedList[]>([])
     const [listParam, setListParam] = useState<ISharedList['id']>('')
-    const [loading, setLoading] = useState(false)
-    const [showLink, setShowLink] = useState(false)
-    const router = useRouter()
+    const [loading, setLoading] = useState<boolean>(false)
+    const [showLink, setShowLink] = useState<boolean>(false)
+    const [existsSharedList, setExistsSharedList] = useState<boolean>(false)
 
     const closeModal = () => {
         setExit(true)
@@ -27,28 +27,13 @@ const ShareMyListModal = () => {
         }, 400)
     }
 
-    useEffect(() => {
-        api.getSharedLists((sharedLists: ISharedList[]) => {
-            setSharedLists(sharedLists)
-        });
-    }, []);
-
-    useEffect(() => {
+    const getLastSharedList = () => {
         const lastSharedList = sharedLists.filter((listShared) => {
             return listShared.listID === SESSION_ID
         })
         setLastSharedList(lastSharedList)
-    }, [sharedLists])
-
-    useEffect(() => {
         setListParam(lastSharedList[0]?.id)
-
-        /* console.log('listID:', lastSharedList[0]?.listID, 'SESSION_ID:', SESSION_ID);
-        
-        if (lastSharedList[0]?.listID === SESSION_ID) {
-            setShowLink(true)
-        } */
-    }, [lastSharedList])
+    }
 
     const createNewListToShare = async () => {
         setLoading(true)
@@ -60,11 +45,58 @@ const ShareMyListModal = () => {
         } catch {
             console.log('error');
         }
-        setLoading(false)
         setShowLink(true)
+        setLoading(false)
     }
 
+    const updateListShared = async () => {
+        setLoading(true)
+        try {
+            await database.collection("sharedLists").doc(lastSharedList[0]?.id).update({
+                listProducts: [...LIST],
+            })
+        } catch {
+            console.log('error');
+        }
+        setShowLink(true)
+        setLoading(false)
+    }
+
+    const createMiListLink = () => {
+        return navigator.clipboard.writeText(`http://localhost:3001/mylist/${listParam}`)
+    }
+
+    useEffect(() => {
+        api.getSharedLists((sharedLists: ISharedList[]) => {
+            setSharedLists(sharedLists)
+        });
+    }, []);
+
+    useEffect(() => {
+        getLastSharedList()
+    }, [sharedLists])
+
+    useEffect(() => {
+        setListParam(lastSharedList[0]?.id)
+    }, [lastSharedList])
+
+    useEffect(() => {
+        getLastSharedList()
+        setShowLink(false)
+        if (!lastSharedList.length) {
+            setExistsSharedList(false)
+        }
+    }, [LIST])
+
+    useEffect(() => {
+        if (!!lastSharedList.length) {
+            setExistsSharedList(true)
+        }
+    });
+    
     const shareButton = <>{loading ? <p>Cargando...</p> : <button onClick={createNewListToShare}>COMPARTIR</button>}</>
+    const updateButton = <>{loading ? <p>Cargando...</p> : <button onClick={updateListShared}>ACTUAILIZAR</button>}</>
+    const fetchButtons = <>{existsSharedList ? updateButton : shareButton}</>
 
     const modal = (
         <>
@@ -80,8 +112,13 @@ const ShareMyListModal = () => {
                         </> :
                         <>
                             <h1>Comparte Tu Lista!</h1>
-                            {showLink ? <button onClick={() => { navigator.clipboard.writeText(listParam) }}
-                            >COPIAR LINK</button> : shareButton}
+                            {
+                                showLink ?
+                                    <button onClick={createMiListLink}>
+                                        COPIAR LINK
+                                    </button> :
+                                    fetchButtons
+                            }
                         </>
                     }
                 </ModalContainer>

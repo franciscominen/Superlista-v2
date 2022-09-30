@@ -17,7 +17,7 @@ export default {
             .onSnapshot(snapshot => callback(
                 snapshot.docs
                     .map(doc => ({ id: doc.id, ...(doc.data() as IProduct) }))
-            ))
+            )),
 }
 
 export const categoriesData = [

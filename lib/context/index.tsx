@@ -4,7 +4,9 @@ import { useLocalStorageGet, useLocalStorageSet } from "../hooks";
 import api from '~/pages/api'
 import Loading from '~/ui/components/Loading'
 import { useRouter } from "next/router";
+import { doc, getDoc } from "firebase/firestore";
 import { v4 as uuid } from 'uuid';
+import { database } from "../firebase";
 
 interface Props {
     children: JSX.Element;
@@ -84,7 +86,24 @@ const ProductsProvider = ({ children }: Props) => {
         useLocalStorageSet("list", list);
     }, [list]);
 
+    const fetchSharedList = async (query: string | string[]) => {
+        const docRef = doc(database, "sharedLists", `${query}`);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data());
+            setList(docSnap.data().listProducts);
+            
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }
+
     useEffect(() => {
+        if (router.query.slug) {
+            fetchSharedList(router.query.slug)
+        }
         api.getAll((products: IProduct[]) => {
             setProducts(products)
             setStatus("resolved")
