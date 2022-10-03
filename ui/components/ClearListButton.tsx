@@ -2,6 +2,7 @@ import Image from "next/image"
 import { useState } from "react"
 import styled from "styled-components"
 import { useList, useProductsActions } from "~/lib/hooks"
+import { scaleInCenter } from "../styles/animations"
 
 const ConfirmClearButton = (props: any) => {
     return (
@@ -43,6 +44,7 @@ const ClearButton = styled.button`
     left: 3%;
     bottom: 15%;
     z-index: 4;
+    animation: ${scaleInCenter} .3s ease both;
 `
 
 const ClearListButton = () => {

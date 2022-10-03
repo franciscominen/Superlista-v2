@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useRouter } from "next/router"
+import toast from "react-hot-toast";
 import { useEffect, useState } from "react"
 import { StyledModalWrapper, ModalContainer } from '~/ui/styles/sharedStyles'
 import { database } from "~/lib/firebase"
@@ -65,8 +65,23 @@ const ShareMyListModal = () => {
         setLoading(false)
     }
 
-    const createMiListLink = () => {
-        return navigator.clipboard.writeText(`http://localhost:3001/mylist/${listParam}`)
+    const toastMessage = <p className='toast-text-link'>Link de la lista copiado.</p>
+    const showToast = () => toast(toastMessage, {
+        duration: 1600,
+        position: 'bottom-center',
+        style: {
+            boxShadow: 'none',
+            background: '#f6f6f6f0',
+            border: '1px solid #D2D2D2',
+            borderRadius: '20px',
+            position: 'relative',
+            bottom: '2em',
+        },
+    });
+
+    const onCopyLink = () => {
+        navigator.clipboard.writeText(`http://localhost:3001/mylist/${listParam}`)
+        showToast()
     }
 
     useEffect(() => {
@@ -117,7 +132,7 @@ const ShareMyListModal = () => {
                             <ModalText>Comparti tu Lista!</ModalText>
                             {
                                 showLink ?
-                                    <ModalButton onClick={createMiListLink}>
+                                    <ModalButton onClick={onCopyLink}>
                                         COPIAR LINK
                                     </ModalButton> :
                                     fetchButtons

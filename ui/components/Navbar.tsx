@@ -9,7 +9,7 @@ import SearchProductInput from './SearchProductInput';
 import ShareMyListModal from './ShareMyListModal';
 
 const NavHeader = styled.header<{ isVisible: boolean }>`
-    height: 112px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

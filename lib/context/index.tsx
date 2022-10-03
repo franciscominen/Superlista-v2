@@ -93,7 +93,6 @@ const ProductsProvider = ({ children }: Props) => {
         if (docSnap.exists()) {
             console.log("Document data:", docSnap.data());
             setList(docSnap.data().listProducts);
-            
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");

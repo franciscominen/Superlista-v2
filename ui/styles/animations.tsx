@@ -25,8 +25,8 @@ const loadingAnimation = keyframes`
 
 const slideLeft = keyframes`
   0% {
-    -webkit-transform: translateX(-300%);
-    transform: translateX(-300%);
+    -webkit-transform: translateX(-200%);
+    transform: translateX(-200%);
   }
   100% {
     -webkit-transform: translateX(0);

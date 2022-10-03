@@ -44,6 +44,13 @@ const GlobalStyle = createGlobalStyle`
         margin: 4px 0;
         font-size: 16px;
     }
+    .toast-text-link {
+        font-size: 18px;
+        color: var(--dark);
+        font-weight: bold;
+        margin: 4px 0;
+        padding: 0 12px;
+    }
 
 `
 
