@@ -1,14 +1,14 @@
-import Image from "next/image"
-import toast from "react-hot-toast";
 import { useEffect, useState } from "react"
-import { StyledModalWrapper, ModalContainer } from '~/ui/styles/sharedStyles'
+import Image from "next/image"
+import toast from "react-hot-toast"
 import { database } from "~/lib/firebase"
-import { useList, useSessionId } from "~/lib/hooks"
 import { ISharedList } from "~/lib/types"
+import { useList, useSessionId } from "~/lib/hooks"
 import api from "~/pages/api"
 import styled from "styled-components"
-import SmallLoader from "./SmallLoader"
-import { fade } from "../styles/animations"
+import { StyledModalWrapper, ModalContainer } from '~/ui/styles/sharedStyles'
+import SmallLoader from "../utils/SmallLoader"
+import { fade } from "../../styles/animations"
 
 const ShareMyListModal = () => {
     const LIST = useList()
@@ -121,7 +121,7 @@ const ShareMyListModal = () => {
             <StyledModalWrapper exit={exit}>
                 <ModalContainer exit={exit}>
                     <CloseModalImg onClick={closeModal}>
-                        <Image src="/assets/close-icon.svg" alt="X" width={26} height={26} />
+                        <Image src="/assets/icons/close-icon.svg" alt="X" width={26} height={26} />
                     </CloseModalImg>
                     {!LIST.length ?
                         <>
@@ -156,7 +156,7 @@ const ShareMyListModal = () => {
     return (
         <>
             <button onClick={() => setShowModal(true)}>
-                <Image src="/assets/share-icon.svg" alt="Share" width={42} height={42} />
+                <Image src="/assets/icons/share-icon.svg" alt="Share" width={42} height={42} />
             </button>
             {showModal ? modal : null}
         </>

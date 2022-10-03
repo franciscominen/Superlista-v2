@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { useRef } from "react";
+import { useRef } from "react"
+import Image from "next/image"
+import { useProductsActions, useUtils } from "~/lib/hooks"
 import styled from "styled-components"
-import { useProductsActions, useUtils } from "~/lib/hooks";
-import { scaleInCenter } from "../styles/animations";
+import { scaleInCenter } from "../../styles/animations"
 
 const InputContainer = styled.div<{ active: boolean }>`
     display: flex;
@@ -14,6 +14,7 @@ const InputContainer = styled.div<{ active: boolean }>`
     transition: all .2s;
     transform: ${({ active }) => active ? 'translateY(0)' : 'translateY(-100px)'};
 `
+
 const SearchInput = styled.input`
     width: 100%;
     background-color: transparent;
@@ -83,7 +84,7 @@ const SearchProductInput = ({ handleShowSearch, showSearch }: Props) => {
                     searchValue ?
                         <ClearListButton onClick={onClearSearch}>
                             <ClearListImg
-                                src="/assets/close-icon.svg"
+                                src="/assets/icons/close-icon.svg"
                                 alt="X"
                             />
                         </ClearListButton>
@@ -91,7 +92,7 @@ const SearchProductInput = ({ handleShowSearch, showSearch }: Props) => {
                 }
 
                 <button style={{ padding: '0 3px', marginLeft: '8px', transform: 'rotate(180deg)' }} onClick={onBackSearch}>
-                    <Image src="/assets/back-icon.svg" alt="Back" width={36} height={36} />
+                    <Image src="/assets/icons/back-icon.svg" alt="Back" width={36} height={36} />
                 </button>
 
             </InputContainer>

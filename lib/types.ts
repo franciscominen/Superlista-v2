@@ -9,6 +9,12 @@ export interface IProduct {
     timestamp: Date
 }
 
+export interface ISharedList {
+    id: string
+    listID: string | null
+    listProducts: IProduct[]
+}
+
 export interface State {
     products: IProduct[]
     list: IProduct[]
@@ -33,10 +39,4 @@ export interface Context {
     state: State
     actions: Actions
     utils: Utils
-}
-
-export interface ISharedList {
-    id: string
-    listID: string | null
-    listProducts: IProduct[]
 }

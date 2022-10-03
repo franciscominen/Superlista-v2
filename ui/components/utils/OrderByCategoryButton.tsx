@@ -1,6 +1,6 @@
+import { useState } from "react";
 import Image from "next/image"
 import Link from "next/link";
-import { useState } from "react";
 import { useList } from "~/lib/hooks";
 
 const OrderByCategoryButton = () => {
@@ -24,14 +24,14 @@ const OrderByCategoryButton = () => {
                     <Link href='/mylist' >
                         <a>
                             <button onClick={orderByCategory} style={{ padding: '0', width: '46px', height: '46px' }}>
-                                <Image src="/assets/unorder-icon.svg" alt='Order' width={28} height={28} />
+                                <Image src="/assets/icons/unorder-icon.svg" alt='Order' width={28} height={28} />
                             </button>
                         </a>
                     </Link> :
                     <Link href='/mylist' >
                         <a>
                             <button onClick={unorderList} style={{ padding: '0', width: '46px', height: '46px' }}>
-                                <Image src="/assets/order-icon.svg" alt='Order' width={28} height={28} />
+                                <Image src="/assets/icons/order-icon.svg" alt='Order' width={28} height={28} />
                             </button>
                         </a>
                     </Link>

@@ -1,11 +1,10 @@
-import Image from 'next/image'
 import { useState } from 'react'
+import Image from 'next/image'
+import { IProduct } from '~/lib/types'
 import styled from 'styled-components'
 import { useProductsActions } from '~/lib/hooks'
-import { IProduct } from '~/lib/types'
-import { SpacedContainer } from '../styles/sharedStyles'
-import NoteModal from './NoteModal'
-
+import { SpacedContainer } from '../../styles/sharedStyles'
+import NoteModal from '../modals/NoteModal'
 
 const ListCard = styled.div<{ exit: boolean }>`
     background-color: var(--white);
@@ -28,8 +27,8 @@ type Props = {
 
 const ProductListCard = ({ product }: Props) => {
     const { name, img, id, nota } = product
-    const [showModal, setShowModal] = useState(false);
-    const [exit, setExit] = useState(false)
+    const [showModal, setShowModal] = useState<boolean>(false)
+    const [exit, setExit] = useState<boolean>(false)
     const { removeProduct } = useProductsActions()
 
     const onCloseModal = () => {
@@ -55,10 +54,10 @@ const ProductListCard = ({ product }: Props) => {
                 </SpacedContainer>
                 <SpacedContainer>
                     <button onClick={() => setShowModal(true)}>
-                        <Image src="/assets/edit-icon.svg" alt="Edit" width={26} height={26} />
+                        <Image src="/assets/icons/edit-icon.svg" alt="Edit" width={26} height={26} />
                     </button>
                     <button onClick={onRemoveProduct}>
-                        <Image src="/assets/close-icon.svg" alt="X" width={26} height={26} />
+                        <Image src="/assets/icons/close-icon.svg" alt="X" width={26} height={26} />
                     </button>
                 </SpacedContainer>
             </ListCard>
@@ -84,7 +83,6 @@ const ProductListCard = ({ product }: Props) => {
                 }
             `}</style>
         </>
-
     )
 }
 

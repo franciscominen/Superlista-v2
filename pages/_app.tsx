@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app'
 import { Provider as ProductsProvider } from "~/lib/context"
 import { Toaster } from 'react-hot-toast';
 import GlobalStyle from '~/ui/styles/globalStyles'
-import Layout from '~/ui/components/Layout'
+import Layout from '~/ui/components/layout/Layout'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode

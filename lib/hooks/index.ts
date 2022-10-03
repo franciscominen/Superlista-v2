@@ -2,7 +2,6 @@ import { useContext } from "react";
 import ProductsContext from "~/lib/context";
 import { IProduct, Actions, Utils, State } from "~/lib/types";
 
-
 export function useProducts(): IProduct[] {
     const { state: { products } } = useContext(ProductsContext);
     return products;

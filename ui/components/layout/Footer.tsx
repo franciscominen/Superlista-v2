@@ -1,4 +1,4 @@
-import { StyledFooter } from '../styles/sharedStyles';
+import { StyledFooter } from '../../styles/sharedStyles';
 
 const Footer = () => {
     return (

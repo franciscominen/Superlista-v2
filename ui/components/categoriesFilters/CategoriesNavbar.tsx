@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import styled from "styled-components"
 import { categoriesData } from "~/pages/api"
 import CategoryButtonNavbar from "./CategoryButtonNavbar"
@@ -18,13 +17,12 @@ const CategoriesNavbarWrapper = styled.div<{ active: boolean }>`
     transform-origin: 100% 0%;
 `
 
-interface Props {
+type Props = {
     onShowCategories: Function
     showCategories: boolean
 }
 
 const CategoriesNavbar = ({ onShowCategories, showCategories }: Props) => {
-
     return (
         <>
             <CategoriesNavbarWrapper active={showCategories}>

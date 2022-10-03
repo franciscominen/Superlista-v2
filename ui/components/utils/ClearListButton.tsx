@@ -1,8 +1,8 @@
-import Image from "next/image"
 import { useState } from "react"
-import styled from "styled-components"
+import Image from "next/image"
 import { useList, useProductsActions } from "~/lib/hooks"
-import { scaleInCenter } from "../styles/animations"
+import styled from "styled-components"
+import { scaleInCenter } from "../../styles/animations"
 
 const ConfirmClearButton = (props: any) => {
     return (
@@ -48,9 +48,9 @@ const ClearButton = styled.button`
 `
 
 const ClearListButton = () => {
-    const [active, setActive] = useState<boolean>(true)
-    const { clearList } = useProductsActions()
     const list = useList()
+    const { clearList } = useProductsActions()
+    const [active, setActive] = useState<boolean>(true)
 
     return (
         <>
@@ -59,7 +59,7 @@ const ClearListButton = () => {
                     <>
                         <ClearButton onClick={() => setActive(!active)}>
                             <Image
-                                src="/assets/clear-icon.svg"
+                                src="/assets/icons/clear-icon.svg"
                                 alt="Clear"
                                 width={42}
                                 height={42}

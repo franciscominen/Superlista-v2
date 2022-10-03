@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { loadingAnimation } from "../styles/animations";
+import { loadingAnimation } from "../../styles/animations";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -23,6 +23,7 @@ const ProductsWrapper = styled.div`
   background-size: cover;
   animation: ${loadingAnimation} 3s linear infinite both;
 `
+
 const WheelsWrapper = styled.div`
   padding: 0 5px;
 `
@@ -38,4 +39,4 @@ const Loading = () => (
   </>
 );
 
-export default Loading;
+export default Loading

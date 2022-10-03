@@ -12,6 +12,14 @@ const MainContainer = styled.main`
     align-items: center;
 `
 
+const HomeContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+`
+
 const StartContainer = styled.div`
     display: flex;
     justify-content: flex-start;
@@ -87,27 +95,28 @@ const ModalContainer = styled.div<{ exit: boolean }>`
 `
 
 const HomeButton = styled.button`
-  background-color: var(--white);
-  border: 2px solid #D2D2D2;
-  border-radius: 20px;
-  min-width: 160px;
-  max-width: 185px;
-  width: 100%;
-  min-height: 160px;
-  max-height: 185px;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  animation: ${fade} 0.3s ease-in 2.1s forwards;
+    background-color: var(--white);
+    border: 2px solid #D2D2D2;
+    border-radius: 20px;
+    min-width: 160px;
+    max-width: 185px;
+    width: 100%;
+    min-height: 160px;
+    max-height: 185px;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    animation: ${fade} 0.3s ease-in 2.1s forwards;
 `
 
 const HomeText = styled.p`
-  font-size: 15px;
-  margin: 8px 0 0 0;
+    font-size: 15px;
+    margin: 8px 0 0 0;
 `
 
 export {
     MainContainer,
+    HomeContainer,
     SpacedContainer,
     StyledFooter,
     Title,

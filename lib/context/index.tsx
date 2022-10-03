@@ -2,7 +2,7 @@ import { useState, useEffect, createContext, ChangeEvent } from "react"
 import { IProduct, Context, State, Actions, Utils } from "../types"
 import { useLocalStorageGet, useLocalStorageSet } from "../hooks";
 import api from '~/pages/api'
-import Loading from '~/ui/components/Loading'
+import Loading from '~/ui/components/utils/Loading'
 import { useRouter } from "next/router";
 import { doc, getDoc } from "firebase/firestore";
 import { v4 as uuid } from 'uuid';
@@ -30,7 +30,6 @@ const ProductsProvider = ({ children }: Props) => {
     const [searchValue, setSearchValue] = useState<string>("")
 
     const addProduct = (product: IProduct) => {
-
         if (!state.list.length) {
             const getSessionId = uuid().slice(0, 8)
             setSessionId(getSessionId)
@@ -39,11 +38,9 @@ const ProductsProvider = ({ children }: Props) => {
         const isProductInList = state.list.some(
             (productInList) => productInList.id === product.id
         );
-
         if (isProductInList) return
         product.timestamp = new Date()
         setList(list => list.concat(product))
-
     }
 
     const removeProduct = (id: IProduct['id']) => {
@@ -78,14 +75,6 @@ const ProductsProvider = ({ children }: Props) => {
         setSearchValue('')
     }
 
-    useEffect(() => {
-        useLocalStorageSet("sessionId", sessionId);
-    }, [sessionId]);
-
-    useEffect(() => {
-        useLocalStorageSet("list", list);
-    }, [list]);
-
     const fetchSharedList = async (query: string | string[]) => {
         const docRef = doc(database, "sharedLists", `${query}`);
         const docSnap = await getDoc(docRef);
@@ -98,6 +87,14 @@ const ProductsProvider = ({ children }: Props) => {
             console.log("No such document!");
         }
     }
+
+    useEffect(() => {
+        useLocalStorageSet("sessionId", sessionId);
+    }, [sessionId]);
+
+    useEffect(() => {
+        useLocalStorageSet("list", list);
+    }, [list]);
 
     useEffect(() => {
         if (router.query.slug) {

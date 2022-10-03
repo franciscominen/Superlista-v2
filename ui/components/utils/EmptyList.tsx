@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import styled from "styled-components"
-import { fade, slideLeft } from "../styles/animations"
+import { fade, slideLeft } from "../../styles/animations"
 
 const EmptyListWrapper = styled.div`
     display: flex;
@@ -36,11 +36,10 @@ const ImageWrapper = styled.div`
 `
 
 const EmptyList = () => {
-
     return (
         <EmptyListWrapper>
             <ImageWrapper>
-                <Image src='/assets/empty-list-icon.svg' width={94} height={94} priority />
+                <Image src='/assets/icons/empty-list-icon.svg' width={94} height={94} priority />
             </ImageWrapper>
             <EmptyListText>Parece que todavía no <br />agregaste nada</EmptyListText>
             <Link href='/products'>

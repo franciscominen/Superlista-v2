@@ -1,9 +1,9 @@
-import Image from "next/image"
 import { useState } from "react"
-import styled from "styled-components"
+import Image from "next/image"
 import { categoriesData } from "~/pages/api"
-import { fade } from "../styles/animations"
-import { SpacedContainer, Title } from "../styles/sharedStyles"
+import styled from "styled-components"
+import { fade } from "../../styles/animations"
+import { SpacedContainer, Title } from "../../styles/sharedStyles"
 import CategoryButton from "./CategoryButton"
 
 const CategoriesWrapper = styled.div<{ active: boolean }>`
@@ -39,7 +39,7 @@ const CategoriesCollapse = () => {
             <SpacedContainer style={{ width: '100%', zIndex: '4' }}>
                 <Title>Categorías</Title>
                 <CollapseButton active={showCategories} onClick={onShowCategories}>
-                    <Image src="/assets/collapse-icon.svg" alt=">" width={32} height={32} />
+                    <Image src="/assets/icons/collapse-icon.svg" alt=">" width={32} height={32} />
                 </CollapseButton>
             </SpacedContainer>
 

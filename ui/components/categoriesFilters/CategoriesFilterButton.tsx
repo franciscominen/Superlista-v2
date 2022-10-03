@@ -18,7 +18,7 @@ transition: all .3s;
 transform: ${({ active }) => active ? 'translateX(0)' : 'translateX(-15em)'};
 `
 
-interface Props {
+type Props = {
     onShowCategories: Function
 }
 
@@ -35,7 +35,7 @@ const CategoriesFilterButton = ({ onShowCategories }: Props) => {
     return (
         <ShowCategoriesButton onClick={() => onShowCategories()} active={filterIconActive}>
             <Image
-                src="/assets/filter-icon.svg"
+                src="/assets/icons/filter-icon.svg"
                 alt="Filter"
                 height={46}
                 width={46}

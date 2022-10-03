@@ -1,12 +1,12 @@
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import toast from "react-hot-toast";
 import styled from "styled-components";
 import { useProductsActions } from "~/lib/hooks";
 import { IProduct } from "~/lib/types";
-import { fade } from "../styles/animations";
-import { StartContainer, StyledModalWrapper, ModalContainer } from "../styles/sharedStyles";
+import { fade } from "../../styles/animations";
+import { StartContainer, StyledModalWrapper, ModalContainer } from "../../styles/sharedStyles";
 
 interface Props {
   show: boolean
@@ -48,12 +48,14 @@ const AddNoteButton = styled.div`
 `
 
 const NoteModal = ({ show, closeModal, product }: Props) => {
-  const { name, nota } = product;
-  const { addNoteToProduct, addProduct } = useProductsActions()
-  const [noteValue, setNoteValue] = useState<string>('')
-  const [exit, setExit] = useState(false)
   const router = useRouter()
   const isEdit = router.asPath === '/mylist'
+
+  const { name, nota } = product;
+  const { addNoteToProduct, addProduct } = useProductsActions()
+
+  const [noteValue, setNoteValue] = useState<string>('')
+  const [exit, setExit] = useState<boolean>(false)
 
   const toastMessage = <p className='toast-text'>Agregaste <strong>{product.name}</strong> a tu lista.</p>
   const showToast = () => toast(toastMessage, {
@@ -89,7 +91,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
       <StyledModalWrapper exit={exit}>
         <ModalContainer exit={exit}>
           <button onClick={onCloseModal} className='close-btn'>
-            <Image src="/assets/close-icon.svg" alt="X" width={28} height={28} />
+            <Image src="/assets/icons/close-icon.svg" alt="X" width={28} height={28} />
           </button>
           <div className="modal-info">
             <StartContainer>

@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { useRouter } from "next/router"
-import styled, { css } from "styled-components"
-import { scaleInCenter } from "../styles/animations"
+import styled from "styled-components"
+import { scaleInCenter } from "~/ui/styles/animations"
 
 interface Props {
     category: {
@@ -72,7 +72,7 @@ const CategoryButton = ({ category }: Props) => {
                             : (
                                 <CloseIcon onClick={onCloseCategory}>
                                     <Image
-                                        src="/assets/close-icon.svg"
+                                        src="/assets/icons/close-icon.svg"
                                         alt="X"
                                         width={14}
                                         height={14}

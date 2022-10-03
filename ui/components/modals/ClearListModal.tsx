@@ -1,8 +1,14 @@
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { useProductsActions } from "~/lib/hooks";
-import { StyledModalWrapper, ModalContainer, CenterContainer, HomeButton, HomeText } from '~/ui/styles/sharedStyles'
+import { 
+    StyledModalWrapper, 
+    ModalContainer, 
+    CenterContainer, 
+    HomeButton, 
+    HomeText 
+} from '~/ui/styles/sharedStyles'
 
 const ClearListModal = () => {
     const [showModal, setShowModal] = useState(false)
@@ -31,7 +37,7 @@ const ClearListModal = () => {
                 <ModalContainer exit={exit}>
                     <>
                         <button onClick={closeModal} className='close-btnHome'>
-                            <Image src="/assets/close-icon.svg" alt="X" width={28} height={28} />
+                            <Image src="/assets/icons/close-icon.svg" alt="X" width={28} height={28} />
                         </button>
                         <h3> Ya tenes una lista creada, <br />queres borrarla?</h3>
                     </>
@@ -115,7 +121,7 @@ const ClearListModal = () => {
         <>
             <HomeButton onClick={() => setShowModal(true)}>
                 <Image
-                    src="/assets/new-list-btn.svg"
+                    src="/assets/icons/new-list-btn.svg"
                     alt='+'
                     width={78}
                     height={78}

@@ -1,12 +1,10 @@
 import React, { ReactNode, useState } from "react"
-import Navbar from './Navbar'
-import Footer from './Footer'
-import { Provider as ProductsProvider } from "~/lib/context"
-import { MainContainer } from "../styles/sharedStyles"
 import { useRouter } from "next/router"
-import styled from "styled-components"
-import Image from "next/image"
-import CategoriesFilterButton from "./CategoriesFilterButton"
+import { Provider as ProductsProvider } from "~/lib/context"
+import { MainContainer } from "../../styles/sharedStyles"
+import CategoriesFilterButton from "../categoriesFilters/CategoriesFilterButton"
+import Navbar from "./Navbar"
+import Footer from "./Footer"
 
 interface Props {
     children?: ReactNode
