@@ -41,5 +41,5 @@ yarn-error.log*
 # firebase
 .firebaserc
 firebase.json
-firestore.indexes.json
+firebase.indexes.json
 firestore.rules
