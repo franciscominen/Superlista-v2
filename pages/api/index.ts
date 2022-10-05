@@ -8,15 +8,14 @@ export default {
             .onSnapshot(snapshot => callback(
                 snapshot.docs
                     .sort((a, b) => 0.5 - Math.random())
-                    /* ts ignore */
-                    .map(doc => ({ id: doc.id, ...(doc.data() as IProduct) }))
+                    .map(doc => ({ ...(doc.data() as IProduct), id: doc.id }))
             )),
     getSharedLists: (callback: (sharedLists: ISharedList[]) => void) =>
         database
             .collection('sharedLists')
             .onSnapshot(snapshot => callback(
                 snapshot.docs
-                    .map(doc => ({ id: doc.id, ...(doc.data() as IProduct) }))
+                    .map(doc => ({ id: doc.id, listID: doc.data().listID, listProducts: doc.data().listProducts }))
             )),
 }
 

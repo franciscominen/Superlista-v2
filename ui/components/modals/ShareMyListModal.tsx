@@ -80,7 +80,8 @@ const ShareMyListModal = () => {
     });
 
     const onCopyLink = () => {
-        navigator.clipboard.writeText(`http://localhost:3001/mylist/${listParam}`)
+        const URL = process.env.NEXT_PUBLIC_URL
+        navigator.clipboard.writeText(`${URL}/mylist/${listParam}`)
         showToast()
     }
 

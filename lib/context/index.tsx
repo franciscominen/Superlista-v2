@@ -80,7 +80,6 @@ const ProductsProvider = ({ children }: Props) => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data());
             setList(docSnap.data().listProducts);
         } else {
             // doc.data() will be undefined in this case

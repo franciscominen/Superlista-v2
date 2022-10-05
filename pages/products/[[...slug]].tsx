@@ -22,20 +22,20 @@ const ProductsContainer = styled.div`
 `
 
 const Products: NextPage = () => {
-  let products = useProducts()
+  let PRODUCTS = useProducts()
   const { searchValue } = useUtils()
-
+  
   const router = useRouter()
   const categoryQuery: string | string[] | undefined = router.query.slug
 
-  products = !searchValue
-    ? products
-    : products.filter(product =>
+  PRODUCTS = !searchValue
+    ? PRODUCTS
+    : PRODUCTS.filter(product =>
       product.name.toLowerCase().includes(searchValue.toLocaleLowerCase())
     )
 
   if (categoryQuery) {
-    products = products.filter((product) => {
+    PRODUCTS = PRODUCTS.filter((product) => {
       return product.categoryID === categoryQuery[0]
     })
   }
@@ -54,7 +54,7 @@ const Products: NextPage = () => {
 
       <ProductsContainer>
         {
-          products
+          PRODUCTS
             .map((product: IProduct) => {
               return (
                 <ProductCard
