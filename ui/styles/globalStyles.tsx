@@ -1,0 +1,58 @@
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+    @font-face {
+      font-family: "IBM Plex Sans";
+      src: url("/assets/fonts/IBMPlexSans-Regular.ttf");
+    }
+
+    :root {
+        --dark: #232323;
+        --light: #fff;
+        --white: #F6F6F6;
+        --gray: #D2D2D2;
+        --darkgrey: #8D8D8D;
+        --principalFont: "IBM Plex Sans";
+    }
+
+    html,
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: var(--principalFont);
+        background-color: var(--light);
+        font-family: var(--principalFont);
+        overflow-x: hidden;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    * {
+        box-sizing: border-box;
+    }
+    h1, h2, h3, h4, h5, h6, p, a, button {
+        color: var(--dark);
+        font-family: var(--principalFont);
+    }
+    button {
+        background: none;
+        border: none;
+    }
+
+    // Toast
+    .toast-text {
+        margin: 4px 0;
+        font-size: 16px;
+    }
+    .toast-text-link {
+        font-size: 18px;
+        color: var(--dark);
+        font-weight: bold;
+        margin: 4px 0;
+        padding: 0 12px;
+    }
+
+`
+
+export default GlobalStyle
