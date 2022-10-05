@@ -59,7 +59,8 @@ const ProductsProvider = ({ children }: Props) => {
         if (isProductInList && productToEdit) {
             const editProduct = state.list.find(productList => productList.id === product.id)
             const productToUpdateNote = state.list.findIndex(product => product.id === editProduct?.id)
-            return list[productToUpdateNote].nota = nota
+            const productWithNote = list[productToUpdateNote].nota = nota
+            return productWithNote
         } else {
             productToEdit = { ...product, nota }
             list.push(productToEdit)

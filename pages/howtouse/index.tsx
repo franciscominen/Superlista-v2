@@ -62,8 +62,6 @@ const Dot = styled.button<{ selected: boolean }>`
 const HowToUse: NextPage = () => {
     const router = useRouter()
     const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false })
-    const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
-    const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [scrollSnaps, setScrollSnaps] = useState<any>([])
 
@@ -78,8 +76,6 @@ const HowToUse: NextPage = () => {
     const onSelect = useCallback(() => {
         if (!embla) return;
         setSelectedIndex(embla.selectedScrollSnap());
-        setPrevBtnEnabled(embla.canScrollPrev());
-        setNextBtnEnabled(embla.canScrollNext());
     }, [embla, setSelectedIndex]);
 
     useEffect(() => {
