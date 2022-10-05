@@ -10,7 +10,10 @@ import { Strong } from '~/ui/styles/sharedStyles'
 
 const Card = styled.div<{ disabled: boolean }>`
     position: relative;
-    width: 124px;
+    min-width: 60px;
+    max-width: 125px;
+    width: 100%;
+    object-fit: cover;
     height: 145px;
     display: flex;
     flex-direction: column;

@@ -17,6 +17,7 @@ const ProductsContainer = styled.div`
   grid-column-gap: 3%;
   grid-row-gap: 8px;
   padding: 0 3%;
+  gap: 8px;
   width: 100%;
   transition: all .5s;
 `
