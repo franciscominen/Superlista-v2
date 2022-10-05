@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -25,14 +25,14 @@
       ],
       "@/*": [
         "./*"
-      ],
-    },
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "firebase/client.js"
+    "lib/firebase/client.ts"
   ],
   "exclude": [
     "node_modules"
