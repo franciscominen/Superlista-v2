@@ -13,6 +13,7 @@ interface Props {
 const Layout = ({ children, ...props }: Props) => {
     const router = useRouter()
     const isHome = router.route === '/'
+    const isHowToUse = router.route === '/howtouse'
     const isProducts = router.route === '/products/[[...slug]]'
     const [showCategories, setShowCategories] = useState<boolean>(false)
 
@@ -23,7 +24,7 @@ const Layout = ({ children, ...props }: Props) => {
     return (
         <ProductsProvider>
             <>
-                {isHome ?
+                {isHome || isHowToUse ?
                     null :
                     <Navbar
                         onShowCategories={onShowCategories}

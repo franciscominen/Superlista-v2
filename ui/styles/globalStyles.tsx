@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
         --darkgrey: #8D8D8D;
         --principalFont: "IBM Plex Sans";
     }
+
     html,
     body {
         padding: 0;

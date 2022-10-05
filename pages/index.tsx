@@ -78,7 +78,7 @@ const Home: NextPage = () => {
           </HomeButton>
         </SpacedContainer>
 
-        <Link href='/'>
+        <Link href='/howtouse'>
           <HowToUseLink>¿Como funciona?</HowToUseLink>
         </Link>
       </HomeContainer>
