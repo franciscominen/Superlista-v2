@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { useProductsActions } from "~/lib/hooks";
 import { IProduct } from "~/lib/types";
 import { fade } from "../../styles/animations";
-import { StartContainer, StyledModalWrapper, ModalContainer } from "../../styles/sharedStyles";
+import { StartContainer, StyledModalWrapper, ModalContainer, Strong } from "../../styles/sharedStyles";
 
 interface Props {
   show: boolean
@@ -22,13 +22,11 @@ const NoteTextArea = styled.textarea`
   width: 100%;
   resize: none;
   border-bottom: 1px solid #c8c8c8;
-  padding: 0 4px 8px 4px;
+  border-radius: 0;
+  padding: 0 4px 4px 4px;
   margin-top: 12px;
   :focus {
     outline: none;
-  }
-  ::placeholder {
-    font-weight: bold;
   }
 `
 
@@ -45,6 +43,7 @@ const AddNoteButton = styled.div`
   opacity: 0;
   animation: ${fade} .3s ease-in .2s forwards;
   transition: all .3s;
+  font-family: var(--boldFont);
 `
 
 const NoteModal = ({ show, closeModal, product }: Props) => {
@@ -57,7 +56,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
   const [noteValue, setNoteValue] = useState<string>('')
   const [exit, setExit] = useState<boolean>(false)
 
-  const toastMessage = <p className='toast-text'>Agregaste <strong>{product.name}</strong> a tu lista.</p>
+  const toastMessage = <p className='toast-text'>Agregaste <Strong>{product.name}</Strong> a tu lista.</p>
   const showToast = () => toast(toastMessage, {
     duration: 1200,
     position: 'bottom-center',
@@ -134,6 +133,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
         }
 
         h3 {
+          font-family: var(--boldFont);
           font-size: 20px;
         }
       `}</style>

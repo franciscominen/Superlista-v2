@@ -74,6 +74,7 @@ const ProductListCard = ({ product }: Props) => {
                     justify: content
                 }
                 span h3 {
+                    font-family: var(--boldFont);
                     font-size: 16px;
                     margin: 0 0 2px 0;               
                 }

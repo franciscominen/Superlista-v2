@@ -5,6 +5,10 @@ const GlobalStyle = createGlobalStyle`
       font-family: "IBM Plex Sans";
       src: url("/assets/fonts/IBMPlexSans-Regular.ttf");
     }
+    @font-face {
+      font-family: "IBM Plex Sans Bold";
+      src: url("/assets/fonts/IBMPlexSans-SemiBold.ttf");
+    }
 
     :root {
         --dark: #232323;
@@ -13,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
         --gray: #D2D2D2;
         --darkgrey: #8D8D8D;
         --principalFont: "IBM Plex Sans";
+        --boldFont: "IBM Plex Sans Bold";
     }
 
     html,
@@ -21,7 +26,6 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         font-family: var(--principalFont);
         background-color: var(--light);
-        font-family: var(--principalFont);
         overflow-x: hidden;
     }
     a {
@@ -33,7 +37,7 @@ const GlobalStyle = createGlobalStyle`
     }
     h1, h2, h3, h4, h5, h6, p, a, button {
         color: var(--dark);
-        font-family: var(--principalFont);
+        //font-family: var(--principalFont);
     }
     button {
         background: none;
@@ -48,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
     .toast-text-link {
         font-size: 18px;
         color: var(--dark);
-        font-weight: bold;
+        font-family: var(--boldFont);
         margin: 4px 0;
         padding: 0 12px;
     }

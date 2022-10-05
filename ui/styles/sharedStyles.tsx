@@ -60,6 +60,7 @@ const Title = styled.h1`
     font-weight: bold;
     width: 100%;
     padding: 0 3%;
+    font-family: var(--boldFont);
 `
 
 const StyledModalWrapper = styled.div<{ exit: boolean }>`
@@ -114,6 +115,10 @@ const HomeText = styled.p`
     margin: 8px 0 0 0;
 `
 
+const Strong = styled.strong`
+    font-family: var(--boldFont);
+`
+
 export {
     MainContainer,
     HomeContainer,
@@ -125,5 +130,6 @@ export {
     StyledModalWrapper,
     ModalContainer,
     HomeButton,
-    HomeText
+    HomeText,
+    Strong
 }

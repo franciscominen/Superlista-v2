@@ -6,6 +6,7 @@ import { IProduct } from '~/lib/types'
 import { useList, useProductsActions } from '~/lib/hooks'
 import NoteModal from '../modals/NoteModal'
 import { scaleInCenter } from '../../styles/animations'
+import { Strong } from '~/ui/styles/sharedStyles'
 
 const Card = styled.div<{ disabled: boolean }>`
     position: relative;
@@ -61,7 +62,7 @@ function ProductCard({ product }: Props) {
 
     let isInList = list.some((listProduct) => listProduct.id === product.id)
 
-    const toastMessage = <p className='toast-text'>Agregaste <strong>{product.name}</strong> a tu lista.</p>
+    const toastMessage = <p className='toast-text'>Agregaste <Strong>{product.name}</Strong> a tu lista.</p>
     const showToast = () => toast(toastMessage, {
         duration: 1200,
         position: 'bottom-center',

@@ -174,14 +174,14 @@ const CloseModalImg = styled.button`
 
 const ModalText = styled.p`
     font-size: 18px;
-    font-weight: bold;
+    font-family: var(--boldFont);
     text-align: center;
     margin-top: 8px;
 `
 
 const ModalButton = styled.button`
     font-size: 18px;
-    font-weight: bold;
+    font-family: var(--boldFont);
     background-color: var(--white);
     color: #8D8D8D;
     padding: 16px 16px;

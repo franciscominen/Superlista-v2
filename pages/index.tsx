@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 
 import ClearListModal from '~/ui/components/modals/ClearListModal'
 import { useList } from '~/lib/hooks'
-import { HomeButton, HomeText, SpacedContainer, HomeContainer } from '~/ui/styles/sharedStyles'
+import { HomeButton, HomeText, SpacedContainer, HomeContainer, Strong } from '~/ui/styles/sharedStyles'
 import { fade, homeLogoMove } from '~/ui/styles/animations'
 
 const ImageWrapper = styled.div`
@@ -22,6 +22,7 @@ const ImageWrapper = styled.div`
 `
 
 const HowToUseLink = styled.h3`
+  font-family: var(--boldFont);
   opacity: 0;
   animation: ${fade} 0.5s ease-in 2.6s forwards;
 `
@@ -61,7 +62,7 @@ const Home: NextPage = () => {
                     width={78}
                     height={78}
                   />
-                  <HomeText><strong>Crear nueva</strong> Lista</HomeText>
+                  <HomeText><Strong>Crear nueva</Strong> Lista</HomeText>
                 </HomeButton>
               )
               :
@@ -74,7 +75,7 @@ const Home: NextPage = () => {
               width={78}
               height={78}
             />
-            <HomeText><strong>Continuar</strong> Lista</HomeText>
+            <HomeText><Strong>Continuar</Strong> Lista</HomeText>
           </HomeButton>
         </SpacedContainer>
 
