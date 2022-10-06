@@ -12,19 +12,19 @@ import { fade, homeLogoMove } from '~/ui/styles/animations'
 
 const ImageWrapper = styled.div`
   position: absolute;
-  transform: translateY(-3em);
+  transform: translateY(-6em);
   opacity: 0;
   width: 250px;
   max-width: 250px;
   height: 50px;
   max-height: 50px;
-  animation: ${fade} 0.5s ease-in 0.3s forwards, ${homeLogoMove} .8s ease 1.4s forwards;
+  animation: ${fade} 0.3s ease-in 0.5s forwards, ${homeLogoMove} .5s ease 1s forwards;
 `
 
 const HowToUseLink = styled.h3`
   font-family: var(--boldFont);
   opacity: 0;
-  animation: ${fade} 0.5s ease-in 2.6s forwards;
+  animation: ${fade} 0.4s ease 1.7s forwards;
 `
 
 const Home: NextPage = () => {
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
           />
         </ImageWrapper >
 
-        <SpacedContainer style={{ marginBottom: '20px' }}>
+        <SpacedContainer style={{ marginBottom: '20px', position: 'relative', bottom: '.5em' }}>
           {
             !list.length ?
               (

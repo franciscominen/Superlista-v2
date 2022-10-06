@@ -107,7 +107,7 @@ const HomeButton = styled.button`
     height: 100%;
     object-fit: contain;
     opacity: 0;
-    animation: ${fade} 0.3s ease-in 2.1s forwards;
+    animation: ${fade} 0.3s ease-in 1.3s forwards;
 `
 
 const HomeText = styled.p`

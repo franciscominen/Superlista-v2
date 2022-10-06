@@ -58,7 +58,7 @@ const fade = keyframes`
 
 const homeLogoMove = keyframes`
   100% {
-    transform: translateY(-11em);
+    transform: translateY(-11.5em);
   }
 `
 
