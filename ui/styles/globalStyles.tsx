@@ -22,11 +22,22 @@ const GlobalStyle = createGlobalStyle`
 
     html,
     body {
+        background-image: url("/assets/background.svg");
+        background-size: auto;
         padding: 0;
         margin: 0;
         font-family: var(--principalFont);
         background-color: var(--light);
         overflow-x: hidden;
+        ::-webkit-scrollbar {
+            background-color: var(--gray);
+            width: 12px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--darkgrey);
+            border-radius: 12px;
+        }
+        user-select: none;
     }
     a {
         color: inherit;

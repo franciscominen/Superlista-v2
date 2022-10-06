@@ -21,6 +21,15 @@ const ListCard = styled.div<{ exit: boolean }>`
     opacity: ${({ exit }) => exit ? '0' : '1'};
 `
 
+const NoteText = styled.p<{ show: boolean }>`
+    font-size: 13px;
+    margin: 0;
+    width: 12em;
+    overflow-x: auto;
+    padding: 0 0 8px 0;
+    display: ${({ show }) => show ? 'flex' : 'none'};;
+`
+
 type Props = {
     product: IProduct
 }
@@ -49,15 +58,15 @@ const ProductListCard = ({ product }: Props) => {
                     <Image src={img} alt={name} width={48} height={48} />
                     <span style={{ paddingLeft: '8px' }}>
                         <h3>{name}</h3>
-                        <p>{nota}</p>
+                        <NoteText show={nota !== ''}>{nota}</NoteText>
                     </span>
                 </SpacedContainer>
                 <SpacedContainer>
                     <button onClick={() => setShowModal(true)}>
-                        <Image src="/assets/icons/edit-icon.svg" alt="Edit" width={26} height={26} />
+                        <Image src="/assets/icons/edit-icon.svg" alt="Edit" width={26} height={26} style={{ cursor: 'pointer' }} />
                     </button>
                     <button onClick={onRemoveProduct}>
-                        <Image src="/assets/icons/close-icon.svg" alt="X" width={26} height={26} />
+                        <Image src="/assets/icons/close-icon.svg" alt="X" width={26} height={26} style={{ cursor: 'pointer' }} />
                     </button>
                 </SpacedContainer>
             </ListCard>
@@ -77,10 +86,6 @@ const ProductListCard = ({ product }: Props) => {
                     font-family: var(--boldFont);
                     font-size: 16px;
                     margin: 0 0 2px 0;               
-                }
-                span p {
-                    font-size: 13px;
-                    margin: 0;
                 }
             `}</style>
         </>

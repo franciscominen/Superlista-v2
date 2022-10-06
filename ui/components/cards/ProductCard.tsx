@@ -92,10 +92,10 @@ function ProductCard({ product }: Props) {
         <>
             <Card disabled={isInList}>
                 <ButtonsContainer>
-                    <button onClick={() => setShowModal(true)}>
+                    <button onClick={() => setShowModal(true)} style={{cursor: 'pointer'}}>
                         <Image src="/assets/icons/add-note-icon.svg" alt="Edit" width={18} height={18} />
                     </button>
-                    <button onClick={() => onAddProduct()}>
+                    <button onClick={() => onAddProduct()} style={{cursor: 'pointer'}}>
                         <Image src="/assets/icons/add-icon.svg" alt="Add" width={18} height={18} />
                     </button>
                 </ButtonsContainer>

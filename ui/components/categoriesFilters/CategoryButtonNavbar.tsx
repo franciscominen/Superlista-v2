@@ -19,6 +19,7 @@ const CategoryButton = styled.button`
     padding: 0 0 0 12px;
     background-color: white;
     border-radius: 0 15px 15px 15px;
+    cursor: pointer;
 `
 
 const CategoryButtonNavbar = ({ category, onShowCategories }: Props) => {

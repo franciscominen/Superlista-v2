@@ -23,7 +23,7 @@ const Layout = ({ children, ...props }: Props) => {
 
     return (
         <ProductsProvider>
-            <>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 {isHome || isHowToUse ?
                     null :
                     <Navbar
@@ -34,13 +34,13 @@ const Layout = ({ children, ...props }: Props) => {
                 }
 
                 {isProducts ?
-                    <CategoriesFilterButton onShowCategories={onShowCategories}/>
+                    <CategoriesFilterButton onShowCategories={onShowCategories} />
                     : null
                 }
 
                 <MainContainer {...props}>{children}</MainContainer>
                 <Footer />
-            </>
+            </div>
         </ProductsProvider>
     )
 }

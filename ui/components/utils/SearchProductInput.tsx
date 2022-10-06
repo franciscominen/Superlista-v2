@@ -4,23 +4,29 @@ import { useProductsActions, useUtils } from "~/lib/hooks"
 import styled from "styled-components"
 import { scaleInCenter } from "../../styles/animations"
 
-const InputContainer = styled.div<{ active: boolean }>`
+const SearchContainer = styled.div<{ active: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
+    padding: 8px 0;
     right: 2%;
     width: 85%;
     transition: all .2s;
     transform: ${({ active }) => active ? 'translateY(0)' : 'translateY(-100px)'};
 `
 
+const InputContainer = styled.div`
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid var(--darkgrey);
+    padding-bottom: 4px;
+`
+
 const SearchInput = styled.input`
     width: 100%;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #8d8d8d;
-    padding: 4px 2px;
     font-size: 16px;
     font-family: var(--principalFont);
     &:focus {
@@ -28,7 +34,7 @@ const SearchInput = styled.input`
     } 
 `
 
-const ClearListButton = styled.button`
+const ClearSearchButton = styled.button`
     background-color: #8d8d8d;
     width: 21px;
     height: 21px;
@@ -36,8 +42,7 @@ const ClearListButton = styled.button`
     justify-content: center;
     align-items: center;
     border-radius: 100%;
-    position: absolute;
-    right: 0.2px;
+    
     animation: ${scaleInCenter} 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 `
 
@@ -46,6 +51,13 @@ const ClearListImg = styled.img`
     filter: brightness(10);
     position: relative;
     top: .3px;
+`
+
+const BackButton = styled.button`
+    transform: rotate(180deg);
+    cursor: pointer;
+    margin: 0;
+    padding: 0 12px 0 0;
 `
 
 interface Props {
@@ -70,32 +82,35 @@ const SearchProductInput = ({ handleShowSearch, showSearch }: Props) => {
 
     return (
         <>
-            <InputContainer active={showSearch}>
+            <SearchContainer active={showSearch}>
 
-                <SearchInput
-                    ref={inputRef}
-                    type="text"
-                    placeholder="Buscar producto"
-                    value={searchValue}
-                    onChange={handleSearch}
-                />
+                <InputContainer>
+                    <SearchInput
+                        ref={inputRef}
+                        type="text"
+                        placeholder="Buscar producto"
+                        value={searchValue}
+                        onChange={handleSearch}
+                        maxLength={25}
+                    />
 
-                {
-                    searchValue ?
-                        <ClearListButton onClick={onClearSearch}>
-                            <ClearListImg
-                                src="/assets/icons/close-icon.svg"
-                                alt="X"
-                            />
-                        </ClearListButton>
-                        : null
-                }
+                    {
+                        searchValue ?
+                            <ClearSearchButton onClick={onClearSearch}>
+                                <ClearListImg
+                                    src="/assets/icons/close-icon.svg"
+                                    alt="X"
+                                />
+                            </ClearSearchButton>
+                            : null
+                    }
+                </InputContainer>
 
-                <button style={{ padding: '0 3px', marginLeft: '8px', transform: 'rotate(180deg)' }} onClick={onBackSearch}>
+                <BackButton onClick={onBackSearch}>
                     <Image src="/assets/icons/back-icon.svg" alt="Back" width={36} height={36} />
-                </button>
+                </BackButton>
 
-            </InputContainer>
+            </SearchContainer>
         </>
     )
 }

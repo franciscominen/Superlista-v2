@@ -32,6 +32,7 @@ const ConfirmClearButtonStyled = styled(ConfirmClearButton)`
     opacity: ${props => (props.active ? "0" : "1")};
     transform: ${props => (props.active ? "scaleX(0)" : "scaleX(1)")};
     transform-origin: 0% 0%;
+    cursor: pointer;
 `;
 
 const ClearButton = styled.button`
@@ -45,6 +46,7 @@ const ClearButton = styled.button`
     bottom: 15%;
     z-index: 4;
     animation: ${scaleInCenter} .3s ease both;
+    cursor: pointer;
 `
 
 const ClearListButton = () => {

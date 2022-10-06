@@ -2,7 +2,9 @@ import styled from 'styled-components'
 import { fade, scaleInCenter } from './animations'
 
 const MainContainer = styled.main`
-    max-width: 750px;
+    background-color: white;
+    max-width: 465px;
+    min-height: 100vh;
     width: 100%;
     margin:  0 auto;
     padding: 7em 0 2.5em 0;

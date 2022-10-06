@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 const NavHeader = styled.header<{ isVisible: boolean }>`
     height: auto;
+    max-width: 465px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,6 +30,7 @@ const SearchButton = styled.button<{ show: boolean }>`
     padding: 0;
     transition: all .3s;
     transform: ${({ show }) => show ? 'translateY(-100px)' : 'translateY(0)'};
+    cursor: pointer;
 `
 
 const Logo = styled.img<{ show: boolean }>`
@@ -54,6 +56,7 @@ const NavbarLink = styled.a<{ active: boolean }>`
     text-align: center;
     transition: all .2s;
     font-weight: ${({ active }) => active ? "0" : "bold"};
+    cursor: pointer;
 `
 
 const NavbarLinkAnimation = styled.figure<{ active: boolean }>`

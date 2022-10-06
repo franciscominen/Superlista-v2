@@ -25,10 +25,11 @@ const EmptyListButton = styled.button`
     border-radius: 50px;
     color: var(--darkgrey);
     font-size: 16px;
-    font-weight: 800;
+    font-weight: 700;
     padding: 12px 28px;
     opacity: 0;
     animation: ${fade} .7s .8s forwards;
+    cursor: pointer;
 `
 
 const ImageWrapper = styled.div`

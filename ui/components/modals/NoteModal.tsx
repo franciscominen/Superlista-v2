@@ -32,7 +32,7 @@ const NoteTextArea = styled.textarea`
 
 const AddNoteButton = styled.div`
   margin-top: 22px;
-  width: 60%;
+  width: 17em;
   background-color: var(--dark);
   color: var(--light);
   font-size: 18px;
@@ -44,6 +44,7 @@ const AddNoteButton = styled.div`
   animation: ${fade} .3s ease-in .2s forwards;
   transition: all .3s;
   font-family: var(--boldFont);
+  cursor: pointer;
 `
 
 const NoteModal = ({ show, closeModal, product }: Props) => {
@@ -56,7 +57,11 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
   const [noteValue, setNoteValue] = useState<string>('')
   const [exit, setExit] = useState<boolean>(false)
 
-  const toastMessage = <p className='toast-text'>Agregaste <Strong>{product.name}</Strong> a tu lista.</p>
+  const toastMessage = () => {
+    if (isEdit) return <p className='toast-text'>Editaste la nota de <Strong>{product.name}</Strong>.</p>
+    return <p className='toast-text'>Agregaste <Strong>{product.name}</Strong> a tu lista.</p>
+  }
+
   const showToast = () => toast(toastMessage, {
     duration: 1200,
     position: 'bottom-center',
@@ -102,6 +107,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
               defaultValue={nota}
               placeholder="Agregue una nota al producto"
               onChange={(e) => setNoteValue(e.target.value)}
+              maxLength={80}
             />
           </div>
         </ModalContainer>
@@ -123,6 +129,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
           text-align: right;
           position: relative;
           right: 18px;
+          cursor: pointer;
         }
 
         .modal-info {
