@@ -83,7 +83,7 @@ const CategoryButton = ({ category }: Props) => {
                             )
                     }
                 </CategoryImgContainer>
-                <p style={{ margin: '6px 0 0 0' }}>{title}</p>
+                <p style={{ margin: '6px 0 0 0', fontWeight: '400', fontSize: '13px' }}>{title}</p>
             </CategoryBtn>
         </>
     )

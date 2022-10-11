@@ -58,11 +58,10 @@ const StyledFooter = styled.footer`
 `
 
 const Title = styled.h1`
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 17px;
+    font-weight: 800;
     width: 100%;
     padding: 0 3%;
-    font-family: var(--boldFont);
 `
 
 const StyledModalWrapper = styled.div<{ exit: boolean }>`
@@ -99,7 +98,7 @@ const ModalContainer = styled.div<{ exit: boolean }>`
 
 const HomeButton = styled.button`
     background-color: var(--white);
-    border: 2px solid #D2D2D2;
+    border: 1px solid #D2D2D2;
     border-radius: 20px;
     min-width: 160px;
     max-width: 185px;
@@ -109,7 +108,12 @@ const HomeButton = styled.button`
     height: 100%;
     object-fit: contain;
     opacity: 0;
+    transition: all .2s;
     animation: ${fade} 0.3s ease-in 1.3s forwards;
+    cursor: pointer;
+    &:hover {
+        border: 1px solid var(--dark);
+    }
 `
 
 const HomeText = styled.p`
@@ -118,7 +122,7 @@ const HomeText = styled.p`
 `
 
 const Strong = styled.strong`
-    font-family: var(--boldFont);
+    font-weight: 600;
 `
 
 export {

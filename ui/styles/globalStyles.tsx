@@ -1,23 +1,14 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-    @font-face {
-      font-family: "IBM Plex Sans";
-      src: url("/assets/fonts/IBMPlexSans-Regular.ttf");
-    }
-    @font-face {
-      font-family: "IBM Plex Sans Bold";
-      src: url("/assets/fonts/IBMPlexSans-SemiBold.ttf");
-    }
-
     :root {
         --dark: #232323;
         --light: #fff;
         --white: #F6F6F6;
         --gray: #D2D2D2;
         --darkgrey: #8D8D8D;
-        --principalFont: "IBM Plex Sans";
-        --boldFont: "IBM Plex Sans Bold";
+        --principalFont: 'IBM Plex Sans', sans-serif;
+        --boldFont: 'IBM Plex Sans', sans-serif;
     }
 
     html,
@@ -63,7 +54,7 @@ const GlobalStyle = createGlobalStyle`
     .toast-text-link {
         font-size: 18px;
         color: var(--dark);
-        font-family: var(--boldFont);
+        font-weight: 600;
         margin: 4px 0;
         padding: 0 12px;
     }

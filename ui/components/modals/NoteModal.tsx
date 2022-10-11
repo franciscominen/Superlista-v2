@@ -14,11 +14,12 @@ interface Props {
   product: IProduct
 }
 
-const NoteTextArea = styled.textarea`
+const NoteInput = styled.input`
   background-color: transparent;
   border: none;
   font-size: 16px;
   font-family: var(--principalFont);
+  font-weight: 500;
   width: 100%;
   resize: none;
   border-bottom: 1px solid #c8c8c8;
@@ -28,22 +29,24 @@ const NoteTextArea = styled.textarea`
   :focus {
     outline: none;
   }
+  ::placeholder {
+    font-weight: 400;
+  }
 `
 
 const AddNoteButton = styled.div`
   margin-top: 22px;
-  width: 17em;
+  width: 14em;
   background-color: var(--dark);
   color: var(--light);
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 600;
   padding: 18px 28px;
   border-radius: 28px;
   text-align: center;
   opacity: 0;
   animation: ${fade} .3s ease-in .2s forwards;
   transition: all .3s;
-  font-family: var(--boldFont);
   cursor: pointer;
 `
 
@@ -102,8 +105,8 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
               <Image src={product.img} alt={product.name} width={58} height={58} />
               <h3>{name}</h3>
             </StartContainer>
-            <NoteTextArea
-              rows={1}
+            <NoteInput
+              type={'text'}
               defaultValue={nota}
               placeholder="Agregue una nota al producto"
               onChange={(e) => setNoteValue(e.target.value)}
@@ -140,7 +143,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
         }
 
         h3 {
-          font-family: var(--boldFont);
+          font-weight: 600;
           font-size: 20px;
         }
       `}</style>

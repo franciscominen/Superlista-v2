@@ -13,7 +13,7 @@ const EmptyListWrapper = styled.div`
 const EmptyListText = styled.p`
     color: var(--darkgrey);
     font-size: 18px;
-    font-weight: 800;
+    font-weight: 600;
     text-align: center;
     opacity: 0;
     animation: ${fade} .7s .5s forwards;
@@ -24,8 +24,8 @@ const EmptyListButton = styled.button`
     border: 1px solid var(--gray);
     border-radius: 50px;
     color: var(--darkgrey);
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
     padding: 12px 28px;
     opacity: 0;
     animation: ${fade} .7s .8s forwards;

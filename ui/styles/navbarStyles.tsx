@@ -55,7 +55,7 @@ const NavbarLink = styled.a<{ active: boolean }>`
     width: 10em;
     text-align: center;
     transition: all .2s;
-    font-weight: ${({ active }) => active ? "0" : "bold"};
+    font-weight: ${({ active }) => active ? "0" : "600"};
     cursor: pointer;
 `
 

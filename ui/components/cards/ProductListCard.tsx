@@ -22,11 +22,11 @@ const ListCard = styled.div<{ exit: boolean }>`
 `
 
 const NoteText = styled.p<{ show: boolean }>`
-    font-size: 13px;
+    font-size: 16px;
     margin: 0;
     width: 12em;
     overflow-x: auto;
-    padding: 0 0 8px 0;
+    padding: 0;
     display: ${({ show }) => show ? 'flex' : 'none'};;
 `
 
@@ -83,9 +83,9 @@ const ProductListCard = ({ product }: Props) => {
                     justify: content
                 }
                 span h3 {
-                    font-family: var(--boldFont);
-                    font-size: 16px;
-                    margin: 0 0 2px 0;               
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin: 0 0 -2px 0;               
                 }
             `}</style>
         </>

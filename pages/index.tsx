@@ -22,9 +22,15 @@ const ImageWrapper = styled.div`
 `
 
 const HowToUseLink = styled.h3`
-  font-family: var(--boldFont);
+  font-size: 18px;
+  color: var(--darkgrey);
   opacity: 0;
   animation: ${fade} 0.4s ease 1.7s forwards;
+  cursor: pointer;
+  transition: all .1s;
+  &:hover {
+    color: var(--dark);
+  }
 `
 
 const Home: NextPage = () => {
@@ -80,7 +86,7 @@ const Home: NextPage = () => {
         </SpacedContainer>
 
         <Link href='/howtouse'>
-          <HowToUseLink>¿Como funciona?</HowToUseLink>
+          <HowToUseLink>¿Cómo usarla?</HowToUseLink>
         </Link>
       </HomeContainer>
     </>
