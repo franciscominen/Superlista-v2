@@ -9,11 +9,10 @@ import { Strong } from "~/ui/styles/sharedStyles";
 import Head from "next/head";
 
 const Embla = styled.div`
-    position: relative;
-    bottom: 4em;
+    margin: auto;
     overflow: hidden;
     width: 80%;
-    height: 34em;
+    height: 29em;
     display: flex;
     flex-direction: column;
     animation: ${fade} .4s ease-in .2s both;
@@ -21,17 +20,17 @@ const Embla = styled.div`
 
 const SlideTitle = styled.h2`
     font-family: var(--boldFont);
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 6px;
-    margin: 0 0 0 0;
+    margin: 0 0 16px 0;
 `
 
 const SlideText = styled.p`
-    font-size: 20px;
+    font-size: 17px;
     text-align: center;
     line-height: 1.4;
     padding: 0 24px;
-    margin: 0 0 16px 0;
+    margin: 16px 0;
 `
 
 const Line = styled.figure`
@@ -48,7 +47,7 @@ const FinishButton = styled.button`
     padding: 18px;
     width: 240px;
     border-radius: 20px;
-    margin: 0 0 12px 0;
+    margin: 16px 0 12px 0;
 `
 
 const CloseButton = styled.button`
@@ -113,12 +112,12 @@ const HowToUse: NextPage = () => {
                         </CloseButton>
                         <SlideTitle>¡BUUENAS!</SlideTitle>
                         <SlideText>
-                            Con <Strong>Superlista</Strong> podés
-                            generar tu lista de productos
+                            Con <Strong>Superlista</Strong> podés<br />
+                            generar tu lista de productos<br />
                             para ir al supermercado.<br /><br />
-                            En un futuro podrás crear listas de <Strong>manera colaborativa</Strong> con otras personas.<br /><br />
-                            Los productos son <Strong>generales</Strong>,
-                            es decir que no llevan marcas, ni detalles extras.
+                            Podrás crear listas de <Strong>manera colaborativa</Strong> con otras personas.<br /><br />
+                            Los productos son <Strong>generales</Strong>,<br />
+                            es decir que no llevan marcas,<br /> ni detalles extras.
                         </SlideText>
                     </div>
                     <div className="embla__slide slide_2">
@@ -138,7 +137,7 @@ const HowToUse: NextPage = () => {
                             width={260}
                         />
                         <SlideText>
-                            En <Strong>Productos</Strong> encontrarás justamente eso, diferenciados por categoría.
+                            En <Strong>Productos</Strong> encontrarás justamente eso, diferenciados<br /> por categoría.
                             También hay<br /> un <Strong>buscador</Strong>.<br /><br />
                             Los productos que agregues
                             aparecerán en <Strong>Mi Lista</Strong>.
@@ -161,8 +160,8 @@ const HowToUse: NextPage = () => {
                             width={120}
                         />
                         <SlideText>
-                            Para <Strong>agregar</Strong> un producto debés tocar el botón <Image src="/assets/icons/add-icon.svg" height={20} width={20} />.<br /><br />
-                            Para agregar un producto con una <Strong>descripción</Strong>, tendrás que
+                            Para <Strong>agregar</Strong> un producto<br /> debés tocar el botón <Image src="/assets/icons/add-icon.svg" height={20} width={20} />.<br /><br />
+                            Para agregar un producto con una <Strong>descripción</Strong>, tendrás que<br />
                             presionar <Image src="/assets/icons/edit-icon.svg" height={20} width={20} style={{ marginLeft: '4px' }} />.
                         </SlideText>
                     </div>
@@ -182,7 +181,7 @@ const HowToUse: NextPage = () => {
                             height={60}
                             width={260}
                         />
-                        <SlideText>En <Strong>Mi Lista</Strong> podrás editar o eliminar productos.</SlideText>
+                        <SlideText>En <Strong>Mi Lista</Strong> podrás editar<br /> o eliminar productos.</SlideText>
                         <Line></Line>
                         <Image
                             src="/assets/howtouse/share.svg"
@@ -194,7 +193,7 @@ const HowToUse: NextPage = () => {
                     </div>
                     <div className="embla__slide slide_5">
                         <SlideTitle>READY</SlideTitle>
-                        <SlideText> <Strong>Esperamos que te sea<br /> de ayuda</Strong>, cualquier inconveniente podes contactarte con Dios.</SlideText>
+                        <SlideText> <Strong>Esperamos que te sea de ayuda</Strong>,<br /> cualquier inconveniente podes<br /> contactarte con Dios.</SlideText>
                         <Image
                             src="/assets/howtouse/banner.svg"
                             alt="Filter"
@@ -224,10 +223,9 @@ const HowToUse: NextPage = () => {
                 flex: 0 0 100%;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
                 align-items: center;
                 text-align: center;
-                height: 31em;
+                height: 27em;
                 margin: 0 0 20px 0;
                 padding: 24px 0;
                 border-radius: 25px;

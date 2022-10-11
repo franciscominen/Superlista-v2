@@ -9,6 +9,7 @@ const EmptyListWrapper = styled.div`
     justify-content: center;
     align-items: center;
     height: 65vh;
+    margin: auto;
 `
 const EmptyListText = styled.p`
     color: var(--darkgrey);

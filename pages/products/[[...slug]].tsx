@@ -42,7 +42,7 @@ const Products: NextPage = () => {
   }
   
   return (
-    <>
+    <main style={{padding: '7em 0 2.5em 0', width: '100%'}}>
       <Head>
         <title>Superlista.ar | Productos</title>
       </Head>
@@ -66,7 +66,7 @@ const Products: NextPage = () => {
             })
         }
       </ProductsContainer>
-    </>
+    </main>
   )
 }
 

@@ -14,7 +14,7 @@ const MyListWrapper = styled.section`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 12px 3%;
+    padding: 7.8em 3% 2.5em 3%;
     transition: .5s;
     animation: ${slideInBottom} .5s ease;
 `

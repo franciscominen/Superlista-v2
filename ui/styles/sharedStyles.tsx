@@ -7,7 +7,7 @@ const MainContainer = styled.main`
     min-height: 100vh;
     width: 100%;
     margin:  0 auto;
-    padding: 7em 0 2.5em 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -20,6 +20,7 @@ const HomeContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 70vh;
+    margin: auto 0;
 `
 
 const StartContainer = styled.div`
