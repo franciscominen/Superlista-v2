@@ -52,7 +52,7 @@ const AddNoteButton = styled.div`
 
 const NoteModal = ({ show, closeModal, product }: Props) => {
   const router = useRouter()
-  const isEdit = router.asPath === '/mylist'
+  const isEdit = router.asPath === '/lista'
 
   const { name, nota } = product;
   const { addNoteToProduct, addProduct } = useProductsActions()

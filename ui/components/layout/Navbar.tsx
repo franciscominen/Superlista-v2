@@ -25,7 +25,7 @@ interface Props {
 
 const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) => {
     const router = useRouter()
-    const isProducts = router.pathname === "/products/[[...slug]]"
+    const isProducts = router.pathname === "/productos/[[...slug]]"
 
     const [showSearch, setShowSearch] = useState<boolean>(false)
     const [showNavbar, setShowNavbar] = useState<boolean>(true);
@@ -82,14 +82,14 @@ const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) 
                 </NavLogoContainer>
 
                 <NavContainer>
-                    <Link href='/products'>
+                    <Link href='/productos'>
                         <NavbarLink active={!isProducts}>
                             <p>PRODUCTOS</p>
                             <NavbarLinkAnimation active={!isProducts}></NavbarLinkAnimation>
                         </NavbarLink>
                     </Link>
                     <figure></figure>
-                    <Link href='/mylist' >
+                    <Link href='/lista' >
                         <NavbarLink active={isProducts} onClick={onGoToMyList}>
                             <p>MI LISTA</p>
                             <NavbarLinkAnimation active={isProducts}></NavbarLinkAnimation>

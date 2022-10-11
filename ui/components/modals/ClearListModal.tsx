@@ -29,7 +29,7 @@ const ClearListModal = () => {
     const handleClear = () => {
         clearList()
         closeModal()
-        router.replace('/products')
+        router.replace('/productos')
     }
 
     const modal = (

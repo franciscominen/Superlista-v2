@@ -17,6 +17,7 @@ const MyListWrapper = styled.section`
     padding: 7.8em 3% 2.5em 3%;
     transition: .5s;
     animation: ${slideInBottom} .5s ease;
+    min-height: 100vh;
 `
 
 const MyList: NextPage = () => {
@@ -26,6 +27,7 @@ const MyList: NextPage = () => {
         <>
             <Head>
                 <title>Superlista.ar | Productos</title>
+                <link rel="icon" href="/favicon.png" />
             </Head>
             {
                 !LIST.length ?

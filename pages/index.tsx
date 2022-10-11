@@ -61,7 +61,7 @@ const Home: NextPage = () => {
           {
             !list.length ?
               (
-                <HomeButton onClick={() => { router.push('/products') }}>
+                <HomeButton onClick={() => { router.push('/productos') }}>
                   <Image
                     src="/assets/icons/new-list-btn.svg"
                     alt='+'
@@ -74,7 +74,7 @@ const Home: NextPage = () => {
               :
               <ClearListModal />
           }
-          <HomeButton onClick={() => { router.push('/mylist') }}>
+          <HomeButton onClick={() => { router.push('/lista') }}>
             <Image
               src="/assets/icons/continue-btn.svg"
               alt='>'
@@ -85,7 +85,7 @@ const Home: NextPage = () => {
           </HomeButton>
         </SpacedContainer>
 
-        <Link href='/howtouse'>
+        <Link href='/comousarla'>
           <HowToUseLink>¿Cómo usarla?</HowToUseLink>
         </Link>
       </HomeContainer>

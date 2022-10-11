@@ -57,11 +57,11 @@ const CategoryButton = ({ category }: Props) => {
     }
 
     const onClickCategory = () => {
-        router.push({ pathname: `/products/${link}` }, undefined, { shallow: true })
+        router.push({ pathname: `/productos/${link}` }, undefined, { shallow: true })
     }
 
     const onCloseCategory = () => {
-        router.push(`/products`)
+        router.push(`/productos`)
     }
 
     return (

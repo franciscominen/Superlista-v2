@@ -27,7 +27,7 @@ const CategoryButtonNavbar = ({ category, onShowCategories }: Props) => {
     const { title, link, img } = category
 
     const onFilterByCategory = () => {
-        router.push({ pathname: `/products/${link}` }, undefined, { shallow: true })
+        router.push({ pathname: `/productos/${link}` }, undefined, { shallow: true })
         onShowCategories()
         window.scrollTo({
             top: 0,

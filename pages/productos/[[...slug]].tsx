@@ -45,6 +45,7 @@ const Products: NextPage = () => {
     <main style={{padding: '7em 0 2.5em 0', width: '100%'}}>
       <Head>
         <title>Superlista.ar | Productos</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <CategoriesCollapse />

@@ -13,8 +13,8 @@ interface Props {
 const Layout = ({ children, ...props }: Props) => {
     const router = useRouter()
     const isHome = router.route === '/'
-    const isHowToUse = router.route === '/howtouse'
-    const isProducts = router.route === '/products/[[...slug]]'
+    const isHowToUse = router.route === '/comousarla'
+    const isProducts = router.route === '/productos/[[...slug]]'
     const [showCategories, setShowCategories] = useState<boolean>(false)
 
     const onShowCategories = () => {

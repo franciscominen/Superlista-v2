@@ -20,7 +20,9 @@ const InputContainer = styled.div`
     display: flex;
     width: 100%;
     border-bottom: 1px solid var(--darkgrey);
-    padding-bottom: 4px;
+    padding-bottom: 1px;
+    width: 80%;
+    margin: 0 auto;
 `
 
 const SearchInput = styled.input`
@@ -29,6 +31,7 @@ const SearchInput = styled.input`
     border: none;
     font-size: 16px;
     font-family: var(--principalFont);
+    padding: 0;
     &:focus {
         outline: none;
     } 

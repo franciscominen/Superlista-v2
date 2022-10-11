@@ -86,7 +86,7 @@ const ShareMyListModal = () => {
 
     const onCopyLink = () => {
         const URL = process.env.NEXT_PUBLIC_URL
-        navigator.clipboard.writeText(`https://superlista.vercel.app/mylist/${listParam}`)
+        navigator.clipboard.writeText(`https://superlista.vercel.app/lista/${listParam}`)
         showToast()
     }
 

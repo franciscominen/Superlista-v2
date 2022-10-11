@@ -44,7 +44,7 @@ const EmptyList = () => {
                 <Image src='/assets/icons/empty-list-icon.svg' width={94} height={94} priority />
             </ImageWrapper>
             <EmptyListText>Parece que todavía no <br />agregaste nada</EmptyListText>
-            <Link href='/products'>
+            <Link href='/productos'>
                 <EmptyListButton>
                     Agregar Productos
                 </EmptyListButton>

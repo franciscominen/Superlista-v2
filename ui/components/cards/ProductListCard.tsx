@@ -24,7 +24,7 @@ const ListCard = styled.div<{ exit: boolean }>`
 const NoteText = styled.p<{ show: boolean }>`
     font-size: 16px;
     margin: 0;
-    width: 12em;
+    width: 11em;
     overflow-x: auto;
     padding: 0;
     display: ${({ show }) => show ? 'flex' : 'none'};;
@@ -55,7 +55,7 @@ const ProductListCard = ({ product }: Props) => {
         <>
             <ListCard exit={exit}>
                 <SpacedContainer>
-                    <Image src={img} alt={name} width={48} height={48} />
+                    <Image src={img} alt={name} width={46} height={46} layout='fixed'/>
                     <span style={{ paddingLeft: '8px' }}>
                         <h3>{name}</h3>
                         <NoteText show={nota !== ''}>{nota}</NoteText>
@@ -63,10 +63,10 @@ const ProductListCard = ({ product }: Props) => {
                 </SpacedContainer>
                 <SpacedContainer>
                     <button onClick={() => setShowModal(true)}>
-                        <Image src="/assets/icons/edit-icon.svg" alt="Edit" width={26} height={26} style={{ cursor: 'pointer' }} />
+                        <Image src="/assets/icons/edit-icon.svg" alt="Edit" layout='fixed' width={26} height={26} style={{ cursor: 'pointer' }} />
                     </button>
                     <button onClick={onRemoveProduct}>
-                        <Image src="/assets/icons/close-icon.svg" alt="X" width={26} height={26} style={{ cursor: 'pointer' }} />
+                        <Image src="/assets/icons/close-icon.svg" alt="X" layout='fixed' width={26} height={26} style={{ cursor: 'pointer' }} />
                     </button>
                 </SpacedContainer>
             </ListCard>
