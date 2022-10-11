@@ -25,6 +25,7 @@ const EmptyListButton = styled.button`
     border: 1px solid var(--gray);
     border-radius: 50px;
     color: var(--darkgrey);
+    font-family: var(--principalFont);
     font-size: 18px;
     font-weight: 600;
     padding: 12px 28px;

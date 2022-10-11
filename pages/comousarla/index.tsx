@@ -97,7 +97,7 @@ const HowToUse: NextPage = () => {
                 <title>Superlista.ar | Como Usarla</title>
                 <link rel="icon" href="/favicon.png" />
             </Head>
-            <main style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+            <main style={{ width: '100%', minHeight: '80vh', display: 'flex', flexDirection: 'column' }}>
                 <Embla className="embla" ref={viewportRef}>
                     <div className="embla__container">
                         <div className="embla__slide slide_1">

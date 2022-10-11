@@ -63,10 +63,10 @@ const ProductListCard = ({ product }: Props) => {
                 </SpacedContainer>
                 <SpacedContainer>
                     <button onClick={() => setShowModal(true)}>
-                        <Image src="/assets/icons/edit-icon.svg" alt="Edit" layout='fixed' width={26} height={26} style={{ cursor: 'pointer' }} />
+                        <img src="/assets/icons/edit-icon.svg" alt="Edit" style={{ cursor: 'pointer', width: '26px', height: '26px' }} />
                     </button>
                     <button onClick={onRemoveProduct}>
-                        <Image src="/assets/icons/close-icon.svg" alt="X" layout='fixed' width={26} height={26} style={{ cursor: 'pointer' }} />
+                        <img src="/assets/icons/close-icon.svg" alt="X" style={{ cursor: 'pointer', width: '26px', height: '26px' }} />
                     </button>
                 </SpacedContainer>
             </ListCard>

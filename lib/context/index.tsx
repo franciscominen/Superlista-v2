@@ -65,6 +65,8 @@ const ProductsProvider = ({ children }: Props) => {
             productToEdit = { ...product, nota }
             list.push(productToEdit)
         }
+
+        useLocalStorageSet("list", list)
         return list
     }
 
