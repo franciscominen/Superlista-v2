@@ -12,7 +12,7 @@ const ListCard = styled.div<{ exit: boolean }>`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 16px;
+    padding: 0 12px;
     border-radius: 16px;
     transition: transform .3s, opacity .2s, height .2s .1s, margin-bottom .2s .05s;
     margin-bottom: ${({ exit }) => exit ? '0' : '8px'};
@@ -56,19 +56,19 @@ const ProductListCard = ({ product }: Props) => {
             <ListCard exit={exit}>
                 <SpacedContainer>
                     <Image src={img} alt={name} width={46} height={46} layout='fixed'/>
-                    <span style={{ paddingLeft: '8px' }}>
+                    <span style={{ paddingLeft: '4px' }}>
                         <h3>{name}</h3>
                         <NoteText show={nota !== ''}>{nota}</NoteText>
                     </span>
                 </SpacedContainer>
-                <SpacedContainer>
+                <div style={{display: 'flex', alignItems: 'center', gap: '4px'}}>
                     <button onClick={() => setShowModal(true)}>
                         <img src="/assets/icons/edit-icon.svg" alt="Edit" style={{ cursor: 'pointer', width: '26px', height: '26px' }} />
                     </button>
                     <button onClick={onRemoveProduct}>
                         <img src="/assets/icons/close-icon.svg" alt="X" style={{ cursor: 'pointer', width: '26px', height: '26px' }} />
                     </button>
-                </SpacedContainer>
+                </div>
             </ListCard>
 
             <NoteModal show={showModal} closeModal={onCloseModal} product={product} />
