@@ -34,7 +34,7 @@ const NoteInput = styled.input`
   }
 `
 
-const AddNoteButton = styled.div`
+const AddNoteButton = styled.button`
   margin-top: 22px;
   width: 14em;
   background-color: var(--dark);

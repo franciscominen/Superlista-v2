@@ -14,7 +14,6 @@ import { useRouter } from "next/router"
 const ShareMyListModal = () => {
     const LIST = useList()
     const SESSION_ID = useSessionId()
-    const router = useRouter()
     const [showModal, setShowModal] = useState<boolean>(false)
     const [exit, setExit] = useState<boolean>(false)
     const [sharedLists, setSharedLists] = useState<ISharedList[]>([])
@@ -23,9 +22,6 @@ const ShareMyListModal = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const [showLink, setShowLink] = useState<boolean>(false)
     const [existsSharedList, setExistsSharedList] = useState<boolean>(false)
-
-    console.log(router);
-    
 
     const closeModal = () => {
         setExit(true)
