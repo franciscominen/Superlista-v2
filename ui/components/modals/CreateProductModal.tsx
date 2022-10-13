@@ -217,7 +217,13 @@ const CreateProductModal = () => {
             <StyledModalWrapper exit={exit}>
                 <ModalContainer exit={exit}>
                     <div className='close-btnHome'>
-                        <Image src="/assets/icons/close-icon.svg" alt="X" width={24} height={24} onClick={closeModal} />
+                        <Image 
+                            src="/assets/icons/close-icon.svg" 
+                            alt="X" 
+                            width={24} 
+                            height={24} 
+                            onClick={closeModal} 
+                        />
                     </div>
                     <Form>
                         <ProductNameInput
@@ -261,7 +267,10 @@ const CreateProductModal = () => {
                         </CategoriesWrapper>
                     </Form>
                 </ModalContainer>
-                <CreateProductButton onClick={handleSubmit} disabled={!createdProduct.name || !createdProduct.categoryID}>
+                <CreateProductButton
+                    onClick={handleSubmit}
+                    disabled={!createdProduct.name || !createdProduct.categoryID}
+                >
                     Crear Producto
                 </CreateProductButton>
             </StyledModalWrapper>
