@@ -30,7 +30,7 @@ const OrderByCategoryButton = () => {
                     </Link> :
                     <Link href='/lista' >
                         <a>
-                            <button onClick={unorderList} style={{ padding: '0', width: '46px', height: '46px', cursor: 'pointer' }}>
+                            <button onClick={unorderList} style={{ padding: '0', width: '46px', height: '50px', cursor: 'pointer' }}>
                                 <Image src="/assets/icons/order-icon.svg" alt='Order' width={26} height={26} />
                             </button>
                         </a>

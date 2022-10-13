@@ -44,6 +44,7 @@ const GlobalStyle = createGlobalStyle`
     button {
         background: none;
         border: none;
+        font-family: var(--principalFont);
     }
 
     // Toast

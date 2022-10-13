@@ -23,7 +23,7 @@ const MyListWrapper = styled.section`
 
 const MyList: NextPage = () => {
     const LIST = useList()
-
+    
     return (
         <>
             <Head>

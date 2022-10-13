@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import ProductCard from '~/ui/components/cards/ProductCard'
 import CategoriesCollapse from '~/ui/components/categoriesFilters/CategoriesCollapse'
 import { Title } from '~/ui/styles/sharedStyles'
+import ProductNotFound from '~/ui/components/utils/ProductNotFound'
 
 const ProductsContainer = styled.div`
   display: grid;
@@ -25,7 +26,7 @@ const ProductsContainer = styled.div`
 const Products: NextPage = () => {
   let PRODUCTS = useProducts()
   const { searchValue } = useUtils()
-  
+
   const router = useRouter()
   const categoryQuery: string | string[] | undefined = router.query.slug
 
@@ -40,9 +41,9 @@ const Products: NextPage = () => {
       return product.categoryID === categoryQuery[0]
     })
   }
-  
+
   return (
-    <main style={{padding: '7em 0 2.5em 0', width: '100%'}}>
+    <main style={{ padding: '7em 0 2.5em 0', width: '100%' }}>
       <Head>
         <title>Superlista.ar | Productos</title>
         <link rel="icon" href="/favicon.png" />
@@ -67,6 +68,7 @@ const Products: NextPage = () => {
             })
         }
       </ProductsContainer>
+      { !PRODUCTS.length ? <ProductNotFound /> : null }
     </main>
   )
 }

@@ -15,6 +15,7 @@ import {
     NavLogoContainer, 
     SearchButton 
 } from '~/ui/styles/navbarStyles'
+import { useProductsActions } from '~/lib/hooks'
 
 
 interface Props {
@@ -24,6 +25,7 @@ interface Props {
 }
 
 const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) => {
+    const { clearSearch } = useProductsActions()
     const router = useRouter()
     const isProducts = router.pathname === "/productos/[[...slug]]"
 
@@ -47,6 +49,7 @@ const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) 
     };
 
     const onGoToMyList = () => {
+        clearSearch()
         setShowCategories(false)
         setShowSearch(false)
     }
