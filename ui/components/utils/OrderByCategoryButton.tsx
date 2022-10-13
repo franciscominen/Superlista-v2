@@ -21,17 +21,17 @@ const OrderByCategoryButton = () => {
         <>
             {
                 !isOrder ?
-                    <Link href='/mylist' >
+                    <Link href='/lista' >
                         <a>
-                            <button onClick={orderByCategory} style={{ padding: '0', width: '46px', height: '46px' }}>
-                                <Image src="/assets/icons/unorder-icon.svg" alt='Order' width={28} height={28} />
+                            <button onClick={orderByCategory} style={{ padding: '0', width: '46px', height: '50px', cursor: 'pointer' }}>
+                                <Image src="/assets/icons/unorder-icon.svg" alt='Order' width={26} height={26} />
                             </button>
                         </a>
                     </Link> :
-                    <Link href='/mylist' >
+                    <Link href='/lista' >
                         <a>
-                            <button onClick={unorderList} style={{ padding: '0', width: '46px', height: '46px' }}>
-                                <Image src="/assets/icons/order-icon.svg" alt='Order' width={28} height={28} />
+                            <button onClick={unorderList} style={{ padding: '0', width: '46px', height: '50px', cursor: 'pointer' }}>
+                                <Image src="/assets/icons/order-icon.svg" alt='Order' width={26} height={26} />
                             </button>
                         </a>
                     </Link>

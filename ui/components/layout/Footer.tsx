@@ -1,10 +1,10 @@
-import { StyledFooter } from '../../styles/sharedStyles';
+import { Strong, StyledFooter } from '../../styles/sharedStyles';
 
 const Footer = () => {
     return (
         <>
             <StyledFooter>
-                Superlista.ar | Todos los derechos reservados.
+                <Strong>Superlista</Strong>.ar © 2022 - Todos los derechos reservados. v2.0.0
             </StyledFooter>
         </>
     );

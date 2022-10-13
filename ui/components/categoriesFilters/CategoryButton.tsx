@@ -30,6 +30,7 @@ const CategoryImgContainer = styled.div<{ active: boolean }>`
     align-items: center;
     border-radius: 0 15px 15px 15px;
     transition: all .3s;
+    cursor: pointer;
 `
 
 const CloseIcon = styled.span`
@@ -41,6 +42,7 @@ const CloseIcon = styled.span`
     height: 28px;
     border-radius: 50%;
     animation: ${scaleInCenter} 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    cursor: pointer;
 `
 
 const CategoryButton = ({ category }: Props) => {
@@ -55,11 +57,11 @@ const CategoryButton = ({ category }: Props) => {
     }
 
     const onClickCategory = () => {
-        router.push({ pathname: `/products/${link}` }, undefined, { shallow: true })
+        router.push({ pathname: `/productos/${link}` }, undefined, { shallow: true })
     }
 
     const onCloseCategory = () => {
-        router.push(`/products`)
+        router.push(`/productos`)
     }
 
     return (
@@ -81,7 +83,7 @@ const CategoryButton = ({ category }: Props) => {
                             )
                     }
                 </CategoryImgContainer>
-                <p style={{ margin: '6px 0 0 0' }}>{title}</p>
+                <p style={{ margin: '6px 0 0 0', fontWeight: '400', fontSize: '13px' }}>{title}</p>
             </CategoryBtn>
         </>
     )

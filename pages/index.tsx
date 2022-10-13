@@ -7,23 +7,30 @@ import { useRouter } from 'next/router'
 
 import ClearListModal from '~/ui/components/modals/ClearListModal'
 import { useList } from '~/lib/hooks'
-import { HomeButton, HomeText, SpacedContainer, HomeContainer } from '~/ui/styles/sharedStyles'
+import { HomeButton, HomeText, SpacedContainer, HomeContainer, Strong } from '~/ui/styles/sharedStyles'
 import { fade, homeLogoMove } from '~/ui/styles/animations'
 
 const ImageWrapper = styled.div`
   position: absolute;
-  transform: translateY(-3em);
+  transform: translateY(-6em);
   opacity: 0;
   width: 250px;
   max-width: 250px;
   height: 50px;
   max-height: 50px;
-  animation: ${fade} 0.5s ease-in 0.3s forwards, ${homeLogoMove} .8s ease 1.4s forwards;
+  animation: ${fade} 0.3s ease-in 0.5s forwards, ${homeLogoMove} .5s ease 1s forwards;
 `
 
 const HowToUseLink = styled.h3`
+  font-size: 18px;
+  color: var(--darkgrey);
   opacity: 0;
-  animation: ${fade} 0.5s ease-in 2.6s forwards;
+  animation: ${fade} 0.4s ease 1.7s forwards;
+  cursor: pointer;
+  transition: all .1s;
+  &:hover {
+    color: var(--dark);
+  }
 `
 
 const Home: NextPage = () => {
@@ -50,36 +57,36 @@ const Home: NextPage = () => {
           />
         </ImageWrapper >
 
-        <SpacedContainer style={{ marginBottom: '20px' }}>
+        <SpacedContainer style={{ marginBottom: '20px', position: 'relative', bottom: '.5em' }}>
           {
             !list.length ?
               (
-                <HomeButton onClick={() => { router.push('/products') }}>
+                <HomeButton onClick={() => { router.push('/productos') }}>
                   <Image
                     src="/assets/icons/new-list-btn.svg"
                     alt='+'
                     width={78}
                     height={78}
                   />
-                  <HomeText><strong>Crear nueva</strong> Lista</HomeText>
+                  <HomeText><Strong>Crear nueva</Strong> Lista</HomeText>
                 </HomeButton>
               )
               :
               <ClearListModal />
           }
-          <HomeButton onClick={() => { router.push('/mylist') }}>
+          <HomeButton onClick={() => { router.push('/lista') }}>
             <Image
               src="/assets/icons/continue-btn.svg"
               alt='>'
               width={78}
               height={78}
             />
-            <HomeText><strong>Continuar</strong> Lista</HomeText>
+            <HomeText><Strong>Continuar</Strong> Lista</HomeText>
           </HomeButton>
         </SpacedContainer>
 
-        <Link href='/howtouse'>
-          <HowToUseLink>¿Como funciona?</HowToUseLink>
+        <Link href='/comousarla'>
+          <HowToUseLink>¿Cómo usarla?</HowToUseLink>
         </Link>
       </HomeContainer>
     </>

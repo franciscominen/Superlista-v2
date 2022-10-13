@@ -2,12 +2,13 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useProductsActions } from "~/lib/hooks";
-import { 
-    StyledModalWrapper, 
-    ModalContainer, 
-    CenterContainer, 
-    HomeButton, 
-    HomeText 
+import {
+    StyledModalWrapper,
+    ModalContainer,
+    CenterContainer,
+    HomeButton,
+    HomeText,
+    Strong
 } from '~/ui/styles/sharedStyles'
 
 const ClearListModal = () => {
@@ -28,7 +29,7 @@ const ClearListModal = () => {
     const handleClear = () => {
         clearList()
         closeModal()
-        router.replace('/products')
+        router.replace('/productos')
     }
 
     const modal = (
@@ -39,10 +40,13 @@ const ClearListModal = () => {
                         <button onClick={closeModal} className='close-btnHome'>
                             <Image src="/assets/icons/close-icon.svg" alt="X" width={28} height={28} />
                         </button>
-                        <h3> Ya tenes una lista creada, <br />queres borrarla?</h3>
+                        <h3>
+                            Tenes una lista creada.<br />
+                            <Strong>¿Querés borrarla?</Strong>
+                        </h3>
                     </>
                     <CenterContainer>
-                        <button onClick={handleClear} className='modal-btn'>SI</button>
+                        <button onClick={handleClear} className='modal-btn'>SÍ</button>
                         <button onClick={closeModal} className='modal-btnCancel'>NO</button>
                     </CenterContainer>
                 </ModalContainer>
@@ -82,7 +86,8 @@ const ClearListModal = () => {
                 h3 {
                     font-size: 22px;
                     text-align: center;
-                    margin: 8px 0 22px 0;  
+                    margin: 8px 0 22px 0;
+                    font-weight: 400; 
                 }
 
                 .close-btnHome {
@@ -100,18 +105,18 @@ const ClearListModal = () => {
                     padding: 16px 0;
                     border-radius: 18px;
                     margin-bottom: 12px;
-                    border: 3px solid #D2D2D2;
+                    border: 1px solid #D2D2D2;
                 }
                 .modal-btnCancel {
                     font-size: 22px;
                     font-weight: bold;
                     background-color: #D2D2D2;
-                    color: var(--white);
+                    color: var(--darkgrey);
                     width: 120px;
                     padding: 16px 0;
                     border-radius: 18px;
                     margin-bottom: 12px;
-                    border: 3px solid #D2D2D2;
+                    border: 1px solid #D2D2D2;
                 }
             `}</style>
         </>

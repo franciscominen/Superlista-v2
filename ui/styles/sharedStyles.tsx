@@ -2,10 +2,12 @@ import styled from 'styled-components'
 import { fade, scaleInCenter } from './animations'
 
 const MainContainer = styled.main`
-    max-width: 750px;
+    background-color: white;
+    max-width: 465px;
+    min-height: 100vh;
     width: 100%;
     margin:  0 auto;
-    padding: 7em 0 2.5em 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -18,6 +20,7 @@ const HomeContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 70vh;
+    margin: auto 0;
 `
 
 const StartContainer = styled.div`
@@ -56,8 +59,8 @@ const StyledFooter = styled.footer`
 `
 
 const Title = styled.h1`
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 17px;
+    font-weight: 800;
     width: 100%;
     padding: 0 3%;
 `
@@ -96,7 +99,7 @@ const ModalContainer = styled.div<{ exit: boolean }>`
 
 const HomeButton = styled.button`
     background-color: var(--white);
-    border: 2px solid #D2D2D2;
+    border: 1px solid #D2D2D2;
     border-radius: 20px;
     min-width: 160px;
     max-width: 185px;
@@ -106,12 +109,21 @@ const HomeButton = styled.button`
     height: 100%;
     object-fit: contain;
     opacity: 0;
-    animation: ${fade} 0.3s ease-in 2.1s forwards;
+    transition: all .2s;
+    animation: ${fade} 0.3s ease-in 1.3s forwards;
+    cursor: pointer;
+    &:hover {
+        border: 1px solid var(--dark);
+    }
 `
 
 const HomeText = styled.p`
     font-size: 15px;
     margin: 8px 0 0 0;
+`
+
+const Strong = styled.strong`
+    font-weight: 600;
 `
 
 export {
@@ -125,5 +137,6 @@ export {
     StyledModalWrapper,
     ModalContainer,
     HomeButton,
-    HomeText
+    HomeText,
+    Strong
 }

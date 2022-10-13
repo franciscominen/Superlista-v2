@@ -1,11 +1,11 @@
-import { ChangeEvent } from "react"
+import React, { ChangeEvent } from "react"
 
 export interface IProduct {
     id: string
     name: string
-    img: string
+    img: string | undefined | any
     nota: string
-    categoryID: string
+    categoryID: String
     timestamp: Date
 }
 

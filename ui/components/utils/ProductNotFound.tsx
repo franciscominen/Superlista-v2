@@ -1,14 +1,13 @@
 import Image from "next/image"
-import Link from "next/link"
 import styled from "styled-components"
 import { fade, slideLeft } from "../../styles/animations"
+import CreateProductModal from "../modals/CreateProductModal"
 
 const EmptyListWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 65vh;
     margin: auto;
 `
 const EmptyListText = styled.p`
@@ -38,20 +37,16 @@ const ImageWrapper = styled.div`
     animation: ${slideLeft} .5s ease forwards;
 `
 
-const EmptyList = () => {
+const ProductNotFound = () => {
     return (
         <EmptyListWrapper>
             <ImageWrapper>
                 <Image src='/assets/icons/empty-list-icon.svg' width={94} height={94} priority />
             </ImageWrapper>
-            <EmptyListText>Parece que todavía no <br />agregaste nada</EmptyListText>
-            <Link href='/productos'>
-                <EmptyListButton>
-                    Agregar Productos
-                </EmptyListButton>
-            </Link>
+            <EmptyListText>Parece que este producto no esta.</EmptyListText>
+            <CreateProductModal />
         </EmptyListWrapper>
     )
 }
 
-export default EmptyList
+export default ProductNotFound

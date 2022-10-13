@@ -13,8 +13,8 @@ interface Props {
 const Layout = ({ children, ...props }: Props) => {
     const router = useRouter()
     const isHome = router.route === '/'
-    const isHowToUse = router.route === '/howtouse'
-    const isProducts = router.route === '/products/[[...slug]]'
+    const isHowToUse = router.route === '/comousarla'
+    const isProducts = router.route === '/productos/[[...slug]]'
     const [showCategories, setShowCategories] = useState<boolean>(false)
 
     const onShowCategories = () => {
@@ -23,7 +23,7 @@ const Layout = ({ children, ...props }: Props) => {
 
     return (
         <ProductsProvider>
-            <>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 {isHome || isHowToUse ?
                     null :
                     <Navbar
@@ -34,13 +34,13 @@ const Layout = ({ children, ...props }: Props) => {
                 }
 
                 {isProducts ?
-                    <CategoriesFilterButton onShowCategories={onShowCategories}/>
+                    <CategoriesFilterButton onShowCategories={onShowCategories} />
                     : null
                 }
 
                 <MainContainer {...props}>{children}</MainContainer>
                 <Footer />
-            </>
+            </div>
         </ProductsProvider>
     )
 }

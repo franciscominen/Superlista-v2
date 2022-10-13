@@ -13,7 +13,7 @@ const CategoriesWrapper = styled.div<{ active: boolean }>`
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0;
-    transition: all .3s;
+    transition: all .2s;
     transform: ${({ active }) => active ? 'scaleY(0)' : 'scaleY(1)'};
     opacity: ${({ active }) => active ? '0' : '1'};
     height: ${({ active }) => active ? '0' : '12.5em'};
@@ -26,6 +26,7 @@ const CategoriesWrapper = styled.div<{ active: boolean }>`
 const CollapseButton = styled.button<{ active: boolean }>`
     transition: all .3s;
     transform: ${({ active }) => active ? 'rotate(180deg)' : 'rotate(0)'};
+    cursor: pointer;
 `
 
 const CategoriesCollapse = () => {

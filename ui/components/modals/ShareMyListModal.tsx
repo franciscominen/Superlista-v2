@@ -9,6 +9,7 @@ import styled from "styled-components"
 import { StyledModalWrapper, ModalContainer } from '~/ui/styles/sharedStyles'
 import SmallLoader from "../utils/SmallLoader"
 import { fade } from "../../styles/animations"
+import { useRouter } from "next/router"
 
 const ShareMyListModal = () => {
     const LIST = useList()
@@ -81,7 +82,7 @@ const ShareMyListModal = () => {
 
     const onCopyLink = () => {
         const URL = process.env.NEXT_PUBLIC_URL
-        navigator.clipboard.writeText(`${URL}/mylist/${listParam}`)
+        navigator.clipboard.writeText(`https://superlista.vercel.app/lista/${listParam}`)
         showToast()
     }
 
@@ -156,9 +157,9 @@ const ShareMyListModal = () => {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>
+            <OpenModalButton onClick={() => setShowModal(true)}>
                 <Image src="/assets/icons/share-icon.svg" alt="Share" width={42} height={42} />
-            </button>
+            </OpenModalButton>
             {showModal ? modal : null}
         </>
     )
@@ -166,22 +167,29 @@ const ShareMyListModal = () => {
 
 export default ShareMyListModal;
 
+const OpenModalButton = styled.button`
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+`
+
 const CloseModalImg = styled.button`
     display: block;
     margin-left: auto;
     padding-right: 24px;
+    cursor: pointer;
 `
 
 const ModalText = styled.p`
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
     text-align: center;
     margin-top: 8px;
 `
 
 const ModalButton = styled.button`
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 700;
     background-color: var(--white);
     color: #8D8D8D;
     padding: 16px 16px;
@@ -192,4 +200,5 @@ const ModalButton = styled.button`
     display: block;
     opacity: 0;
     animation: ${fade} .3s forwards;
+    cursor: pointer;
 `

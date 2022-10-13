@@ -15,6 +15,7 @@ import {
     NavLogoContainer, 
     SearchButton 
 } from '~/ui/styles/navbarStyles'
+import { useProductsActions } from '~/lib/hooks'
 
 
 interface Props {
@@ -24,8 +25,9 @@ interface Props {
 }
 
 const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) => {
+    const { clearSearch } = useProductsActions()
     const router = useRouter()
-    const isProducts = router.pathname === "/products/[[...slug]]"
+    const isProducts = router.pathname === "/productos/[[...slug]]"
 
     const [showSearch, setShowSearch] = useState<boolean>(false)
     const [showNavbar, setShowNavbar] = useState<boolean>(true);
@@ -47,6 +49,7 @@ const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) 
     };
 
     const onGoToMyList = () => {
+        clearSearch()
         setShowCategories(false)
         setShowSearch(false)
     }
@@ -82,14 +85,14 @@ const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) 
                 </NavLogoContainer>
 
                 <NavContainer>
-                    <Link href='/products'>
+                    <Link href='/productos'>
                         <NavbarLink active={!isProducts}>
                             <p>PRODUCTOS</p>
                             <NavbarLinkAnimation active={!isProducts}></NavbarLinkAnimation>
                         </NavbarLink>
                     </Link>
                     <figure></figure>
-                    <Link href='/mylist' >
+                    <Link href='/lista' >
                         <NavbarLink active={isProducts} onClick={onGoToMyList}>
                             <p>MI LISTA</p>
                             <NavbarLinkAnimation active={isProducts}></NavbarLinkAnimation>

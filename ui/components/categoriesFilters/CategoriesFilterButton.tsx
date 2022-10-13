@@ -16,6 +16,7 @@ border-radius: 50%;
 z-index: 10;
 transition: all .3s;
 transform: ${({ active }) => active ? 'translateX(0)' : 'translateX(-15em)'};
+cursor: pointer;
 `
 
 type Props = {

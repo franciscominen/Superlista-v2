@@ -6,10 +6,14 @@ import { IProduct } from '~/lib/types'
 import { useList, useProductsActions } from '~/lib/hooks'
 import NoteModal from '../modals/NoteModal'
 import { scaleInCenter } from '../../styles/animations'
+import { Strong } from '~/ui/styles/sharedStyles'
 
 const Card = styled.div<{ disabled: boolean }>`
     position: relative;
-    width: 124px;
+    min-width: 60px;
+    max-width: 125px;
+    width: 100%;
+    object-fit: cover;
     height: 145px;
     display: flex;
     flex-direction: column;
@@ -61,7 +65,7 @@ function ProductCard({ product }: Props) {
 
     let isInList = list.some((listProduct) => listProduct.id === product.id)
 
-    const toastMessage = <p className='toast-text'>Agregaste <strong>{product.name}</strong> a tu lista.</p>
+    const toastMessage = <p className='toast-text'>Agregaste <Strong>{product.name}</Strong> a tu lista.</p>
     const showToast = () => toast(toastMessage, {
         duration: 1200,
         position: 'bottom-center',
@@ -88,10 +92,10 @@ function ProductCard({ product }: Props) {
         <>
             <Card disabled={isInList}>
                 <ButtonsContainer>
-                    <button onClick={() => setShowModal(true)}>
+                    <button onClick={() => setShowModal(true)} style={{cursor: 'pointer'}}>
                         <Image src="/assets/icons/add-note-icon.svg" alt="Edit" width={18} height={18} />
                     </button>
-                    <button onClick={() => onAddProduct()}>
+                    <button onClick={() => onAddProduct()} style={{cursor: 'pointer'}}>
                         <Image src="/assets/icons/add-icon.svg" alt="Add" width={18} height={18} />
                     </button>
                 </ButtonsContainer>

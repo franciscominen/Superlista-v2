@@ -1,28 +1,34 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-    @font-face {
-      font-family: "IBM Plex Sans";
-      src: url("/assets/fonts/IBMPlexSans-Regular.ttf");
-    }
-
     :root {
         --dark: #232323;
         --light: #fff;
         --white: #F6F6F6;
         --gray: #D2D2D2;
         --darkgrey: #8D8D8D;
-        --principalFont: "IBM Plex Sans";
+        --principalFont: 'IBM Plex Sans', sans-serif;
+        --boldFont: 'IBM Plex Sans', sans-serif;
     }
 
     html,
     body {
+        background-image: url("/assets/background.svg");
+        background-size: auto;
         padding: 0;
         margin: 0;
         font-family: var(--principalFont);
         background-color: var(--light);
-        font-family: var(--principalFont);
         overflow-x: hidden;
+        ::-webkit-scrollbar {
+            background-color: var(--gray);
+            width: 12px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--darkgrey);
+            border-radius: 12px;
+        }
+        user-select: none;
     }
     a {
         color: inherit;
@@ -33,11 +39,12 @@ const GlobalStyle = createGlobalStyle`
     }
     h1, h2, h3, h4, h5, h6, p, a, button {
         color: var(--dark);
-        font-family: var(--principalFont);
+        //font-family: var(--principalFont);
     }
     button {
         background: none;
         border: none;
+        font-family: var(--principalFont);
     }
 
     // Toast
@@ -48,7 +55,7 @@ const GlobalStyle = createGlobalStyle`
     .toast-text-link {
         font-size: 18px;
         color: var(--dark);
-        font-weight: bold;
+        font-weight: 600;
         margin: 4px 0;
         padding: 0 12px;
     }
