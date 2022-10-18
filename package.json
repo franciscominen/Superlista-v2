@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.0.0",
     "embla-carousel-react": "^7.0.3",
     "firebase": "^9.9.2",
     "next": "12.1.6",

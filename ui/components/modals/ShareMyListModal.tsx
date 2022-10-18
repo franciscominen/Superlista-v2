@@ -10,6 +10,7 @@ import { StyledModalWrapper, ModalContainer } from '~/ui/styles/sharedStyles'
 import SmallLoader from "../utils/SmallLoader"
 import { fade } from "../../styles/animations"
 import { useRouter } from "next/router"
+import PDFDownloadButton from "../utils/PDFDownloadButton"
 
 const ShareMyListModal = () => {
     const LIST = useList()
@@ -114,7 +115,7 @@ const ShareMyListModal = () => {
         }
     });
 
-    const shareButton = <>{loading ? <SmallLoader /> : <ModalButton onClick={createNewListToShare}>COMPARTIR</ModalButton>}</>
+    const shareButton = <>{loading ? <SmallLoader /> : <><ModalButton onClick={createNewListToShare}>COMPARTIR</ModalButton><PDFDownloadButton /></>}</>
     const updateButton = <>{loading ? <SmallLoader /> : <ModalButton onClick={updateListShared}>ACTUAILIZAR</ModalButton>}</>
     const fetchButtons = <>{existsSharedList ? updateButton : shareButton}</>
 
