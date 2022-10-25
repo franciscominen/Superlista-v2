@@ -9,11 +9,11 @@ const CategoriesNavbarWrapper = styled.div<{ active: boolean }>`
     grid-column-gap: 16px;
     grid-row-gap: 16px;
     width: 90%;
-    padding: ${({ active }) => active ? '12px 0 16px 0' : '0'};
+    padding: ${({ active }) => active ? '12px 0 26px 0' : '0'};
     transition: all .4s;
     transform: ${({ active }) => active ? 'scaleY(1)' : 'scaleY(0)'};
     opacity: ${({ active }) => active ? '1' : '0'};
-    height: ${({ active }) => active ? '24.5em' : '0'};
+    height: ${({ active }) => active ? '25em' : '0'};
     transform-origin: 100% 0%;
 `
 

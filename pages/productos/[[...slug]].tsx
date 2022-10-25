@@ -64,7 +64,7 @@ const Products: NextPage = () => {
 
       <CategoriesCollapse />
 
-      <figure style={{ background: '#f5f5f5', height: '1px', width: '95%', margin: '8px 0 0 0' }} />
+      <figure style={{ background: '#f5f5f5', height: '1px', width: '95%', margin: '8px auto 0 auto' }} />
 
       <Title>Productos</Title>
 

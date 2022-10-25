@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 const NavHeader = styled.header<{ isVisible: boolean }>`
     height: auto;
+    min-height: 117px;
     max-width: 465px;
     display: flex;
     flex-direction: column;
@@ -16,7 +17,7 @@ const NavHeader = styled.header<{ isVisible: boolean }>`
     top: 0;
     z-index: 15;
     transition: all .2s;
-    transform: ${({ isVisible }) => isVisible ? 'translateY(0)' : 'translateY(-2.7em)'};
+    transform: ${({ isVisible }) => isVisible ? 'translateY(0)' : 'translateY(-2.9em)'};
 `
 
 const NavLogoContainer = styled.div`
@@ -24,7 +25,7 @@ const NavLogoContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 4px;
+    padding: 0 4px 4px 4px;
 `
 const SearchButton = styled.button<{ show: boolean }>`
     padding: 0;
