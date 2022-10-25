@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
@@ -60,6 +60,12 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
   const [noteValue, setNoteValue] = useState<string>('')
   const [exit, setExit] = useState<boolean>(false)
 
+  const callbackRef = useCallback((inputElement: HTMLInputElement)  => {
+    if (inputElement) {
+      inputElement.focus()
+    }
+  }, [])
+
   const toastMessage = () => {
     if (isEdit) return <p className='toast-text'>Editaste la nota de <Strong>{product.name}</Strong>.</p>
     return <p className='toast-text'>Agregaste <Strong>{product.name}</Strong> a tu lista.</p>
@@ -111,6 +117,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
               placeholder="Agregue una nota al producto"
               onChange={(e) => setNoteValue(e.target.value)}
               maxLength={80}
+              ref={callbackRef}
             />
           </div>
         </ModalContainer>

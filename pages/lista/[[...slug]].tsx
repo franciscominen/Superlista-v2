@@ -10,15 +10,13 @@ import EmptyList from '~/ui/components/utils/EmptyList'
 import { slideInBottom } from '~/ui/styles/animations'
 
 const MyListWrapper = styled.section`
-    position: relative;
-    top: 5em;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 2.5em 3%;
+    padding: 7.5em 3% 3em 3%;
     transition: .5s;
-    animation: ${slideInBottom} .5s ease;
+    //animation: ${slideInBottom} .5s ease;
 `
 
 const MyList: NextPage = () => {
