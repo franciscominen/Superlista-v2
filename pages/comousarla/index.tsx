@@ -19,7 +19,6 @@ const Embla = styled.div`
 `
 
 const SlideTitle = styled.h2`
-    font-family: var(--boldFont);
     font-size: 18px;
     margin-top: 6px;
     margin: 0 0 16px 0;

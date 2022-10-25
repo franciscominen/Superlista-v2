@@ -6,10 +6,10 @@ import { ISharedList } from "~/lib/types"
 import { useList, useSessionId } from "~/lib/hooks"
 import api from "~/pages/api"
 import styled from "styled-components"
-import { StyledModalWrapper, ModalContainer } from '~/ui/styles/sharedStyles'
+import { StyledModalWrapper, ModalContainer, CenterContainer } from '~/ui/styles/sharedStyles'
 import SmallLoader from "../utils/SmallLoader"
 import { fade } from "../../styles/animations"
-import { useRouter } from "next/router"
+import PDFDownloadButton from "../utils/PDFDownloadButton"
 
 const ShareMyListModal = () => {
     const LIST = useList()
@@ -114,8 +114,22 @@ const ShareMyListModal = () => {
         }
     });
 
-    const shareButton = <>{loading ? <SmallLoader /> : <ModalButton onClick={createNewListToShare}>COMPARTIR</ModalButton>}</>
-    const updateButton = <>{loading ? <SmallLoader /> : <ModalButton onClick={updateListShared}>ACTUAILIZAR</ModalButton>}</>
+    const shareButton = <>
+        {loading ? <SmallLoader /> :
+            <CenterContainer>
+                <ModalButton onClick={createNewListToShare}>COMPARTIR</ModalButton>
+                <PDFDownloadButton />
+            </CenterContainer>
+        }
+    </>
+    const updateButton = <>
+        {loading ? <SmallLoader /> :
+            <CenterContainer>
+                <ModalButton onClick={updateListShared}>ACTUALIZAR</ModalButton>
+                <PDFDownloadButton />
+            </CenterContainer>
+        }
+    </>
     const fetchButtons = <>{existsSharedList ? updateButton : shareButton}</>
 
     const modal = (
@@ -128,15 +142,18 @@ const ShareMyListModal = () => {
                     {!LIST.length ?
                         <>
                             <ModalText>Agregá al menos un elemento <br />para compartir tu lista.</ModalText>
-                            <ModalButton onClick={closeModal}>OKEY</ModalButton>
+                            <CenterContainer><ModalButton onClick={closeModal}>OKEY</ModalButton></CenterContainer>
                         </> :
                         <>
                             <ModalText>Comparti tu Lista!</ModalText>
                             {
                                 showLink ?
-                                    <ModalButton onClick={onCopyLink}>
-                                        COPIAR LINK
-                                    </ModalButton> :
+                                    (<CenterContainer>
+                                        <ModalButton onClick={onCopyLink}>
+                                            COPIAR LINK
+                                        </ModalButton>
+                                        <PDFDownloadButton />
+                                    </CenterContainer>) :
                                     fetchButtons
                             }
                         </>
@@ -184,7 +201,7 @@ const ModalText = styled.p`
     font-size: 18px;
     font-weight: 600;
     text-align: center;
-    margin-top: 8px;
+    margin: 8px 0 16px 0;
 `
 
 const ModalButton = styled.button`
@@ -194,9 +211,9 @@ const ModalButton = styled.button`
     color: #8D8D8D;
     padding: 16px 16px;
     border-radius: 22px;
-    margin-bottom: 12px;
+    //margin-bottom: 12px;
     border: 3px solid #D2D2D2;
-    margin: 12px auto;
+    //margin: 12px auto;
     display: block;
     opacity: 0;
     animation: ${fade} .3s forwards;
