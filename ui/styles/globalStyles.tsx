@@ -8,7 +8,6 @@ const GlobalStyle = createGlobalStyle`
         --gray: #D2D2D2;
         --darkgrey: #8D8D8D;
         --principalFont: 'IBM Plex Sans', sans-serif;
-        --boldFont: 'IBM Plex Sans', sans-serif;
     }
 
     html,

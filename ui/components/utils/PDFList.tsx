@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Page, Text, Image, Document, StyleSheet, View, Font } from "@react-pdf/renderer";
+import { Page, Text, Image, Document, StyleSheet, View } from "@react-pdf/renderer";
 import { IProduct } from "~/lib/types";
 
 const styles = StyleSheet.create({
@@ -21,8 +21,17 @@ const styles = StyleSheet.create({
         color: '#232323',
         marginLeft: 20,
         paddingLeft: 50,
-        marginBottom: 8,
+        marginBottom: 4,
         fontSize: 14,
+        textAlign: "left",
+        fontFamily: 'Helvetica'
+    },
+    note: {
+        color: '#232323',
+        marginLeft: 20,
+        paddingLeft: 50,
+        marginBottom: 8,
+        fontSize: 12,
         textAlign: "left",
         fontFamily: 'Helvetica'
     },
@@ -61,7 +70,12 @@ const PDFFile = () => {
                 <View>
                     {
                         items.map(item => {
-                            return <Text key={item.id} style={styles.text}> - {item.name}: {item.nota}</Text>
+                            return (
+                                <>
+                                    <Text key={item.id} style={styles.text}> - {item.name}{item.nota ? `: ${item.nota}`: null }</Text>
+                                    
+                                </>
+                            )
                         })
                     }
                 </View>
