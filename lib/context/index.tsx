@@ -60,6 +60,8 @@ const ProductsProvider = ({ children }: Props) => {
             const editProduct = state.list.find(productList => productList.id === product.id)
             const productToUpdateNote = state.list.findIndex(product => product.id === editProduct?.id)
             const productWithNote = list[productToUpdateNote].nota = nota
+            useLocalStorageSet("list", list)
+            
             return productWithNote
         } else {
             productToEdit = { ...product, nota }
