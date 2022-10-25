@@ -211,9 +211,7 @@ const ModalButton = styled.button`
     color: #8D8D8D;
     padding: 16px 16px;
     border-radius: 22px;
-    //margin-bottom: 12px;
     border: 3px solid #D2D2D2;
-    //margin: 12px auto;
     display: block;
     opacity: 0;
     animation: ${fade} .3s forwards;
