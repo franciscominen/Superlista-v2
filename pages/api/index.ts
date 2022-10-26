@@ -97,7 +97,7 @@ export const categoriesData = [
         title: "Verdulería",
         img: "https://firebasestorage.googleapis.com/v0/b/lista-super-app.appspot.com/o/assets%2Fcategorias-static%2Fverduras.svg?alt=media&token=74e159fc-501c-48b7-9177-a60a1cef0ce9",
         link: "verduleria",
-        categoryColor: "/assets/categories-colors/veduleria-color.svg",
+        categoryColor: "/assets/categories-colors/verduleria-color.svg",
         colorCode: '#ABFFA9'
     },
 ]

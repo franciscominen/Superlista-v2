@@ -22,7 +22,7 @@ const Form = styled.div`
 
 const ProductNameInput = styled.input`
     border: none;
-    border-bottom: 2px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
     border-radius: 0;
     font-family: var(--principalFont);
     width: 85%;
@@ -37,7 +37,7 @@ const ProductNameInput = styled.input`
     }
     &:focus {
         outline: none;
-        border-bottom: 2px solid var(--dark);
+        border-bottom: 1px solid var(--dark);
     }
 `
 const CategoriesWrapper = styled.div`
@@ -57,6 +57,7 @@ const CategoryButtonLabel = styled.div`
     justify-content: center;
     font-size: 12px;
     gap: 8px;
+    border-radius: 50%;
 `
 
 const CategoryButton = styled.input`
@@ -82,7 +83,7 @@ const NoteInput = styled.input`
     font-weight: 500;
     width: 85%;
     resize: none;
-    border-bottom: 2px solid #c8c8c8;
+    border-bottom: 1px solid #c8c8c8;
     border-radius: 0;
     padding: 0 4px 4px 4px;
     text-align: center;
