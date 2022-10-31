@@ -40,7 +40,7 @@ export const categoriesData = [
         id: 3,
         title: "Higiene",
         img: "https://firebasestorage.googleapis.com/v0/b/lista-super-app.appspot.com/o/assets%2Fcategorias-static%2Fcosmetica.svg?alt=media&token=0edc262e-cff3-4599-a07a-ea8ee63f818e",
-        link: "higiene",
+        link: "cosmetica",
         categoryColor: "/assets/categories-colors/higiene-color.svg",
         colorCode: '#E8E8E8'
     },

@@ -7,6 +7,7 @@ import { useProductsActions } from "~/lib/hooks";
 import { IProduct } from "~/lib/types";
 import { fade } from "../../styles/animations";
 import { StartContainer, StyledModalWrapper, ModalContainer, Strong } from "../../styles/sharedStyles";
+import { getDynamicPlaceholder } from "~/lib/utils";
 
 interface Props {
   show: boolean
@@ -54,7 +55,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
   const router = useRouter()
   const isEdit = router.asPath === '/lista'
 
-  const { name, nota } = product;
+  const { name, nota, categoryID } = product;
   const { addNoteToProduct, addProduct } = useProductsActions()
 
   const [noteValue, setNoteValue] = useState<string>('')
@@ -114,7 +115,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
             <NoteInput
               type={'text'}
               defaultValue={nota}
-              placeholder="Agregue una nota al producto"
+              placeholder={getDynamicPlaceholder(categoryID)}
               onChange={(e) => setNoteValue(e.target.value)}
               maxLength={80}
               ref={callbackRef}
