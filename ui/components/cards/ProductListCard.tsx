@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { useProductsActions } from '~/lib/hooks'
 import { SpacedContainer } from '../../styles/sharedStyles'
 import NoteModal from '../modals/NoteModal'
+import { slideInBottom } from '~/ui/styles/animations'
 
 const ListCard = styled.div<{ exit: boolean }>`
     background-color: var(--white);
@@ -14,6 +15,7 @@ const ListCard = styled.div<{ exit: boolean }>`
     width: 100%;
     padding: 0 12px;
     border-radius: 16px;
+    animation: ${slideInBottom} .5s ease;
     transition: transform .3s, opacity .2s, height .2s .1s, margin-bottom .2s .05s;
     margin-bottom: ${({ exit }) => exit ? '0' : '8px'};
     height: ${({ exit }) => exit ? '0' : '4em'};

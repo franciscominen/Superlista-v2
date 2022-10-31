@@ -1,8 +1,9 @@
-import { useRef } from "react"
+import { useCallback, useRef, useState } from "react"
 import Image from "next/image"
 import { useProductsActions, useUtils } from "~/lib/hooks"
 import styled from "styled-components"
 import { scaleInCenter } from "../../styles/animations"
+import { SearchButton } from "~/ui/styles/navbarStyles"
 
 const SearchContainer = styled.div<{ active: boolean }>`
     display: flex;
@@ -64,14 +65,19 @@ const BackButton = styled.button`
 `
 
 interface Props {
-    handleShowSearch: any,
     showSearch: boolean,
+    setShowSearch: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const SearchProductInput = ({ handleShowSearch, showSearch }: Props) => {
+const SearchProductInput = ({ showSearch, setShowSearch }: Props) => {
     const { handleSearch, clearSearch } = useProductsActions()
     const { searchValue } = useUtils()
     const inputRef = useRef<HTMLInputElement | null>(null)
+
+    const handleShowSearch = () => {
+        setShowSearch(!showSearch)
+        inputRef?.current?.focus()
+    }
 
     const onBackSearch = () => {
         clearSearch()
@@ -85,6 +91,10 @@ const SearchProductInput = ({ handleShowSearch, showSearch }: Props) => {
 
     return (
         <>
+            <SearchButton onClick={handleShowSearch} show={showSearch}>
+                <Image src="/assets/icons/search-icon.svg" alt='Search' width={46} height={46} />
+            </SearchButton>
+
             <SearchContainer active={showSearch}>
 
                 <InputContainer>

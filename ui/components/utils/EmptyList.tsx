@@ -8,8 +8,9 @@ const EmptyListWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 65vh;
     margin: auto;
+    //position: relative;
+    //top: 12em;
 `
 const EmptyListText = styled.p`
     color: var(--darkgrey);

@@ -27,7 +27,7 @@ const CategoriesFilterButton = ({ onShowCategories }: Props) => {
     const [filterIconActive, setFilterIconActive] = useState<boolean>(false)
 
     const showFilterIcon = () => {
-        window.scrollY > 400 ?
+        window.scrollY > 80 ?
             setFilterIconActive(true) :
             setFilterIconActive(false)
     }

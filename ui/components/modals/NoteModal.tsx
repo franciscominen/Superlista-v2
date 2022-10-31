@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
@@ -7,6 +7,7 @@ import { useProductsActions } from "~/lib/hooks";
 import { IProduct } from "~/lib/types";
 import { fade } from "../../styles/animations";
 import { StartContainer, StyledModalWrapper, ModalContainer, Strong } from "../../styles/sharedStyles";
+import { getDynamicPlaceholder } from "~/lib/utils";
 
 interface Props {
   show: boolean
@@ -54,11 +55,17 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
   const router = useRouter()
   const isEdit = router.asPath === '/lista'
 
-  const { name, nota } = product;
+  const { name, nota, categoryID } = product;
   const { addNoteToProduct, addProduct } = useProductsActions()
 
   const [noteValue, setNoteValue] = useState<string>('')
   const [exit, setExit] = useState<boolean>(false)
+
+  const callbackRef = useCallback((inputElement: HTMLInputElement)  => {
+    if (inputElement) {
+      inputElement.focus()
+    }
+  }, [])
 
   const toastMessage = () => {
     if (isEdit) return <p className='toast-text'>Editaste la nota de <Strong>{product.name}</Strong>.</p>
@@ -108,9 +115,10 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
             <NoteInput
               type={'text'}
               defaultValue={nota}
-              placeholder="Agregue una nota al producto"
+              placeholder={getDynamicPlaceholder(categoryID)}
               onChange={(e) => setNoteValue(e.target.value)}
               maxLength={80}
+              ref={callbackRef}
             />
           </div>
         </ModalContainer>
