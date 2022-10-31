@@ -6,14 +6,14 @@ import CategoriesNavbar from '../categoriesFilters/CategoriesNavbar'
 import ShareMyListModal from '../modals/ShareMyListModal'
 import OrderByCategoryButton from '../utils/OrderByCategoryButton'
 import SearchProductInput from '../utils/SearchProductInput'
-import { 
-    Logo, 
-    NavbarLink, 
-    NavbarLinkAnimation, 
-    NavContainer, 
-    NavHeader, 
-    NavLogoContainer, 
-    SearchButton 
+import {
+    Logo,
+    NavbarLink,
+    NavbarLinkAnimation,
+    NavContainer,
+    NavHeader,
+    NavLogoContainer,
+    SearchButton
 } from '~/ui/styles/navbarStyles'
 import { useProductsActions } from '~/lib/hooks'
 
@@ -32,10 +32,6 @@ const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) 
     const [showSearch, setShowSearch] = useState<boolean>(false)
     const [showNavbar, setShowNavbar] = useState<boolean>(true);
     const [lastScrollY, setLastScrollY] = useState<Number>(0);
-
-    const handleShowSearch = () => {
-        setShowSearch(!showSearch)
-    }
 
     const controlNavbar = () => {
         if (typeof window !== 'undefined') {
@@ -74,10 +70,7 @@ const Navbar = ({ onShowCategories, showCategories, setShowCategories }: Props) 
                     {
                         isProducts ?
                             <>
-                                <SearchButton onClick={handleShowSearch} show={showSearch}>
-                                    <Image src="/assets/icons/search-icon.svg" alt='Search' width={46} height={46} />
-                                </SearchButton>
-                                <SearchProductInput handleShowSearch={handleShowSearch} showSearch={showSearch} />
+                                <SearchProductInput showSearch={showSearch} setShowSearch={setShowSearch} />
                             </>
                             : <OrderByCategoryButton />
                     }

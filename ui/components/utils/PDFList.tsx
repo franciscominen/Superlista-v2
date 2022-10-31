@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         paddingLeft: 50,
         marginBottom: 4,
-        fontSize: 14,
+        fontSize: 16,
         textAlign: "left",
         fontFamily: 'Helvetica'
     },
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const PDFFile = () => {
+const PDFList = () => {
     const [items, setItems] = useState<IProduct[]>([]);
 
     useEffect(() => {
@@ -64,17 +64,16 @@ const PDFFile = () => {
     return (
         <Document>
             <Page style={styles.document}>
-                <Image style={styles.image} src='https://firebasestorage.googleapis.com/v0/b/lista-super-app.appspot.com/o/assets%2Fsuperlistalogo.png?alt=media&token=d68c19ee-4acb-4a48-9ace-05b48b93031e'
+                <Image style={styles.image} src='https://i.ibb.co/7z7MHJD/logo-pdf.jpg'
                 />
                 <Text style={styles.listTitle}>Mi Lista:</Text>
                 <View>
                     {
                         items.map(item => {
                             return (
-                                <>
-                                    <Text key={item.id} style={styles.text}> - {item.name}{item.nota ? `: ${item.nota}`: null }</Text>
-                                    
-                                </>
+                                <div key={item.id}>
+                                    <Text style={styles.text}> - {item.name}{item.nota ? `: ${item.nota}` : null}</Text>
+                                </div>
                             )
                         })
                     }
@@ -85,4 +84,4 @@ const PDFFile = () => {
     );
 };
 
-export default PDFFile;
+export default PDFList;

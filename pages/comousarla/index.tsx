@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { fade } from "~/ui/styles/animations";
 import { Strong } from "~/ui/styles/sharedStyles";
-import Head from "next/head";
 
 const Embla = styled.div`
     margin: auto;
@@ -92,26 +91,6 @@ const HowToUse: NextPage = () => {
 
     return (
         <>
-            <Head>
-                <Head>
-                    <title>Superlista.ar | Como usarla?</title>
-                    <meta name="description" content="Con Superlista.ar podes armar de forma rápida y sencilla, tu lista para ir al supermercado." />
-                    <link rel="icon" href="/favicon.png" />
-                    <meta property="og:url" content="https://superlista.vercel.app/" />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:title" content="Superlista.ar | Armá tu lista para ir al super" />
-                    <meta property="og:description" content="Con Superlista.ar podes armar de forma rápida y sencilla, tu lista para ir al supermercado." />
-                    <meta property="og:image" itemProp="image" content="https://firebasestorage.googleapis.com/v0/b/lista-super-app.appspot.com/o/assets%2FCover.jpg?alt=media&token=ee793dfc-5c61-4696-a9e1-4bfb9f439df1" />
-                    <meta property="og:image:secure_url" content="https://firebasestorage.googleapis.com/v0/b/lista-super-app.appspot.com/o/assets%2FCover.jpg?alt=media&token=ee793dfc-5c61-4696-a9e1-4bfb9f439df1" />
-                    <meta name="twitter:card" content="summary_large_image" />
-                    <meta name="twitter:site" content="@superlista_ar" />
-                    <meta name="twitter:creator" content="@franminen" />
-                    <meta name="twitter:title" content="Superlista.ar | Armá tu lista para ir al super" />
-                    <meta name="twitter:description" content="Con Superlista.ar podes armar de forma rápida y sencilla, tu lista para ir al supermercado." />
-                    <meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/lista-super-app.appspot.com/o/assets%2FCover.jpg?alt=media&token=ee793dfc-5c61-4696-a9e1-4bfb9f439df1" />
-                </Head>
-            </Head>
-            
             <main style={{ width: '100%', minHeight: '80vh', display: 'flex', flexDirection: 'column' }}>
                 <Embla className="embla" ref={viewportRef}>
                     <div className="embla__container">

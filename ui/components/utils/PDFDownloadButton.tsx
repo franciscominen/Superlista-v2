@@ -1,7 +1,7 @@
 import { PDFDownloadLink } from "@react-pdf/renderer"
 import styled from "styled-components"
 import { fade } from "~/ui/styles/animations"
-import PDFFile from "./PDFList"
+import PDFList from "./PDFList"
 
 const ModalButton = styled.button`
     font-size: 18px;
@@ -22,7 +22,7 @@ const ModalButton = styled.button`
 const PDFDownloadButton = () => {
     return (
         <>
-            <PDFDownloadLink document={<PDFFile />} fileName='Superlista.ar | Mi Lista'>
+            <PDFDownloadLink document={<PDFList />} fileName='Superlista.ar-MiLista.pdf'>
                 <ModalButton>PDF</ModalButton>
             </PDFDownloadLink >
         </>
