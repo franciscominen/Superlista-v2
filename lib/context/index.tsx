@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { doc, getDoc } from "firebase/firestore";
 import { v4 as uuid } from 'uuid';
 import { database } from "../firebase";
+import { MainContainer } from "~/ui/styles/sharedStyles";
 
 interface Props {
     children: JSX.Element;
@@ -111,7 +112,7 @@ const ProductsProvider = ({ children }: Props) => {
         return () => setStatus("pending")
     }, []);
 
-    if (status === "pending") return <Loading />;
+    if (status === "pending") return (<MainContainer><Loading /></MainContainer>);
 
     const state: State = { products, list, sessionId }
     const actions: Actions = {

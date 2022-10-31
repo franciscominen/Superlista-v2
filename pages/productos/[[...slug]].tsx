@@ -1,5 +1,4 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import { IProduct } from '~/lib/types'
@@ -44,23 +43,6 @@ const Products: NextPage = () => {
 
   return (
     <main style={{ padding: '7em 0 2.5em 0', width: '100%' }}>
-      <Head>
-        <title>Superlista.ar | Productos</title>
-        <meta name="description" content="Con Superlista.ar podes armar de forma rápida y sencilla, tu lista para ir al supermercado." />
-        <link rel="icon" href="/favicon.png" />
-        <meta property="og:url" content="https://superlista.vercel.app/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Superlista.ar | Armá tu lista para ir al super" />
-        <meta property="og:description" content="Con Superlista.ar podes armar de forma rápida y sencilla, tu lista para ir al supermercado." />
-        <meta property="og:image" itemProp="image" content="https://firebasestorage.googleapis.com/v0/b/lista-super-app.appspot.com/o/assets%2FCover.jpg?alt=media&token=ee793dfc-5c61-4696-a9e1-4bfb9f439df1" />
-        <meta property="og:image:secure_url" content="https://firebasestorage.googleapis.com/v0/b/lista-super-app.appspot.com/o/assets%2FCover.jpg?alt=media&token=ee793dfc-5c61-4696-a9e1-4bfb9f439df1" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@superlista_ar" />
-        <meta name="twitter:creator" content="@franminen" />
-        <meta name="twitter:title" content="Superlista.ar | Armá tu lista para ir al super" />
-        <meta name="twitter:description" content="Con Superlista.ar podes armar de forma rápida y sencilla, tu lista para ir al supermercado." />
-        <meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/lista-super-app.appspot.com/o/assets%2FCover.jpg?alt=media&token=ee793dfc-5c61-4696-a9e1-4bfb9f439df1" />
-      </Head>
 
       <CategoriesCollapse />
 

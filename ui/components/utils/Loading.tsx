@@ -2,12 +2,27 @@ import Image from "next/image";
 import styled from "styled-components";
 import { loadingAnimation } from "../../styles/animations";
 
-const MainContainer = styled.div`
+
+const LoadingWrapper = styled.div`
+  background-image: url("/assets/background.svg");
+  background-size: auto;
   height: 100vh;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #F6F6F6;
+  overflow-y: hidden;
+`
+
+const MainContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+  max-width: 465px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,12 +45,14 @@ const WheelsWrapper = styled.div`
 
 const Loading = () => (
   <>
-    <MainContainer>
-      <ProductsWrapper />
-      <WheelsWrapper>
-        <Image priority src='/assets/loader/wheels.svg' layout="responsive" width={700} height={200} />
-      </WheelsWrapper>
-    </MainContainer>
+    <LoadingWrapper>
+      <MainContainer>
+        <ProductsWrapper />
+        <WheelsWrapper>
+          <Image priority src='/assets/loader/wheels.svg' layout="responsive" width={700} height={200} />
+        </WheelsWrapper>
+      </MainContainer>
+    </LoadingWrapper>
   </>
 );
 
