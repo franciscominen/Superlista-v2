@@ -89,7 +89,7 @@ const ModalContainer = styled.div<{ exit: boolean }>`
     background: var(--light);
     padding: 22px 0 12px 0;
     border-radius: 40px;
-    max-width: 30em;
+    max-width: 27em;
     width: 90%;
     margin: 0 auto;
     animation: ${scaleInCenter} .2s ease-in;
