@@ -153,9 +153,9 @@ const HowToUse: NextPage = () => {
                                 width={120}
                             />
                             <SlideText>
-                                Para <Strong>agregar</Strong> un producto<br /> debés tocar el botón <Image src="/assets/icons/add-icon.svg" height={20} width={20} />.<br /><br />
+                                Para <Strong>agregar</Strong> un producto<br /> debés tocar el botón <Image src="/assets/icons/add-icon.svg" height={20} width={20} alt='+'/>.<br /><br />
                                 Para agregar un producto con una <Strong>descripción</Strong>, tendrás que<br />
-                                presionar <Image src="/assets/icons/edit-icon.svg" height={20} width={20} style={{ marginLeft: '4px' }} />.
+                                presionar <Image alt='edit' src="/assets/icons/edit-icon.svg" height={20} width={20} style={{ marginLeft: '4px' }} />.
                             </SlideText>
                         </div>
                         <div className="embla__slide slide_4">

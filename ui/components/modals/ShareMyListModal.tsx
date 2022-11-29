@@ -81,7 +81,7 @@ const ShareMyListModal = () => {
     });
 
     const onCopyLink = () => {
-        const URL = process.env.NEXT_PUBLIC_URL
+        // const URL = process.env.NEXT_PUBLIC_URL
         navigator.clipboard.writeText(`https://superlista.vercel.app/lista/${listParam}`)
         showToast()
     }
@@ -109,7 +109,7 @@ const ShareMyListModal = () => {
     }, [LIST])
 
     useEffect(() => {
-        if (!!lastSharedList.length) {
+        if (!lastSharedList.length) {
             setExistsSharedList(true)
         }
     });

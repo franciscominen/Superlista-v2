@@ -57,7 +57,7 @@ const ProductListCard = ({ product }: Props) => {
         <>
             <ListCard exit={exit}>
                 <SpacedContainer>
-                    <Image src={img} alt={name} width={46} height={46} layout='fixed'/>
+                    <Image src={img} alt={name} width={46} height={46} />
                     <span style={{ paddingLeft: '4px' }}>
                         <h3>{name}</h3>
                         <NoteText show={nota !== ''}>{nota}</NoteText>
@@ -65,10 +65,10 @@ const ProductListCard = ({ product }: Props) => {
                 </SpacedContainer>
                 <div style={{display: 'flex', alignItems: 'center', gap: '4px'}}>
                     <button onClick={() => setShowModal(true)}>
-                        <img src="/assets/icons/edit-icon.svg" alt="Edit" style={{ cursor: 'pointer', width: '26px', height: '26px' }} />
+                        <Image width='26' height='26' src="/assets/icons/edit-icon.svg" alt="Edit" style={{ cursor: 'pointer' }} />
                     </button>
                     <button onClick={onRemoveProduct}>
-                        <img src="/assets/icons/close-icon.svg" alt="X" style={{ cursor: 'pointer', width: '26px', height: '26px' }} />
+                        <Image width='26' height='26' src="/assets/icons/close-icon.svg" alt="X" style={{ cursor: 'pointer' }} />
                     </button>
                 </div>
             </ListCard>

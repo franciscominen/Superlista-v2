@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import { memo, useState } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import toast from 'react-hot-toast'
@@ -63,7 +63,7 @@ function ProductCard({ product }: Props) {
     const { addProduct } = useProductsActions()
     const [showModal, setShowModal] = useState<boolean>(false);
 
-    let isInList = list.some((listProduct) => listProduct.id === product.id)
+    const isInList = list.some((listProduct) => listProduct.id === product.id)
 
     const toastMessage = <p className='toast-text'>Agregaste <Strong>{product.name}</Strong> a tu lista.</p>
     const showToast = () => toast(toastMessage, {
@@ -104,7 +104,6 @@ function ProductCard({ product }: Props) {
                     <Image
                         src={product.img}
                         alt={product.name}
-                        layout="responsive"
                         width={64}
                         height={64}
                     />
