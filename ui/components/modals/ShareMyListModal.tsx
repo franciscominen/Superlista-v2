@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import toast from "react-hot-toast"
 import { database } from "~/lib/firebase"
 import { ISharedList } from "~/lib/types"
 import { useList, useSessionId } from "~/lib/hooks"
@@ -10,6 +9,7 @@ import { StyledModalWrapper, ModalContainer, CenterContainer } from '~/ui/styles
 import SmallLoader from "../utils/SmallLoader"
 import { fade } from "../../styles/animations"
 import PDFDownloadButton from "../utils/PDFDownloadButton"
+import showToast from "../utils/Toast"
 
 const ShareMyListModal = () => {
     const LIST = useList()
@@ -66,24 +66,10 @@ const ShareMyListModal = () => {
         setLoading(false)
     }
 
-    const toastMessage = <p className='toast-text-link'>Link de la lista copiado.</p>
-    const showToast = () => toast(toastMessage, {
-        duration: 1600,
-        position: 'bottom-center',
-        style: {
-            boxShadow: 'none',
-            background: '#f6f6f6f0',
-            border: '1px solid #D2D2D2',
-            borderRadius: '20px',
-            position: 'relative',
-            bottom: '2em',
-        },
-    });
-
     const onCopyLink = () => {
         // const URL = process.env.NEXT_PUBLIC_URL
         navigator.clipboard.writeText(`https://superlista.vercel.app/lista/${listParam}`)
-        showToast()
+        showToast(<p className='toast-text-link'>Link de la lista copiado.</p>)
     }
 
     useEffect(() => {
