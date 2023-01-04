@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react"
+import { useRef } from "react"
 import Image from "next/image"
 import { useProductsActions, useUtils } from "~/lib/hooks"
 import styled from "styled-components"

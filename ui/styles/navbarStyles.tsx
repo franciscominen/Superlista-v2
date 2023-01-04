@@ -48,7 +48,7 @@ const NavContainer = styled.nav`
     padding-bottom: 12px;
 `
 
-const NavbarLink = styled.a<{ active: boolean }>`
+const NavbarLink = styled.div<{ active: boolean }>`
     display: flex;
     flex-direction: column;
     justify-content: center;

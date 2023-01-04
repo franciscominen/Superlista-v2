@@ -1,7 +1,5 @@
-import Image from "next/image";
 import styled from "styled-components";
 import { loadingAnimation } from "../../styles/animations";
-
 
 const LoadingWrapper = styled.div`
   background-image: url("/assets/background.svg");
@@ -39,20 +37,22 @@ const ProductsWrapper = styled.div`
   animation: ${loadingAnimation} 3s linear infinite both;
 `
 
-const WheelsWrapper = styled.div`
-  padding: 0 5px;
-`
-
 const Loading = () => (
   <>
     <LoadingWrapper>
       <MainContainer>
         <ProductsWrapper />
-        <WheelsWrapper>
-          <Image priority src='/assets/loader/wheels.svg' layout="responsive" width={700} height={200} />
-        </WheelsWrapper>
+        <img src='/assets/loader/wheels.svg' alt='wheels' className="wheels" />
       </MainContainer>
     </LoadingWrapper>
+
+    <style jsx>{`
+      .wheels {
+        max-width: 465px;
+        object-fit: contain;
+        padding: 1px 4px 0 4px;
+      }
+    `}</style>
   </>
 );
 

@@ -57,7 +57,7 @@ const ClearListButton = () => {
     return (
         <>
             {
-                !!list.length ?
+                list.length ?
                     <>
                         <ClearButton onClick={() => setActive(!active)}>
                             <Image
