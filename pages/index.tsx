@@ -44,12 +44,10 @@ const Home: NextPage = () => {
             priority
             src='/assets/logo-navbar.svg'
             alt='Superlista.ar'
-            layout="responsive"
             width={250}
             height={50}
           />
-        </ImageWrapper >
-
+        </ImageWrapper>
         <SpacedContainer style={{ marginBottom: '20px', position: 'relative', bottom: '.5em' }}>
           {
             !list.length ?

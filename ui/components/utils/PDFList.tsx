@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Page, Text, Image, Document, StyleSheet, View } from "@react-pdf/renderer";
 import { IProduct } from "~/lib/types";
 

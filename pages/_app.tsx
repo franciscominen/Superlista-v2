@@ -2,6 +2,7 @@
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
+import { Analytics } from '@vercel/analytics/react';
 import { Provider as ProductsProvider } from "~/lib/context"
 import { Toaster } from 'react-hot-toast';
 import GlobalStyle from '~/ui/styles/globalStyles'
@@ -46,6 +47,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           <Toaster />
         </Layout>
       </ProductsProvider>
+      <Analytics />
     </>
 
   )

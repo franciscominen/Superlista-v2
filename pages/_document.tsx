@@ -10,8 +10,6 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <title>Superlista.ar</title>
-
                     <link rel="icon" href="/favicon.png" />
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={'true'} />

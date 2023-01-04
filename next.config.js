@@ -8,7 +8,7 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     domains: ['firebasestorage.googleapis.com'],
-    //formats: ['image/svg+xml'],
+    // formats: ['image/svg+xml'],
   },
 }
 
