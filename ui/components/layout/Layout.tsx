@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react"
+import { ReactNode, useState } from "react"
 import { useRouter } from "next/router"
 import { Provider as ProductsProvider } from "~/lib/context"
 import { MainContainer } from "../../styles/sharedStyles"

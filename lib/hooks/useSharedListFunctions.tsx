@@ -3,7 +3,7 @@ import { ISharedList } from "../types";
 
 const useSharedListFunctions = (
   database: any,
-  SESSION_ID: string,
+  SESSION_ID: string | null,
   LIST: any[]
 ) => {
   const [sharedLists, setSharedLists] = useState<ISharedList[]>([]);
@@ -63,6 +63,8 @@ const useSharedListFunctions = (
     createNewListToShare,
     updateListShared,
     setSharedLists,
+    setListParam,
+    setShowLink,
   };
 };
 
