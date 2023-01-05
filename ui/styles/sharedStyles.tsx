@@ -92,6 +92,8 @@ const ModalContainer = styled.div<{ exit: boolean }>`
   max-width: 27em;
   width: 90%;
   margin: 0 auto;
+  position: relative;
+  bottom: 3em;
   animation: ${scaleInCenter} 0.2s ease-in;
   transition: all 0.2s ease-in;
   transform: ${({ exit }) => (exit ? "scale(0)" : "scale(1)")};
