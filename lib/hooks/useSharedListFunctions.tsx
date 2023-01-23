@@ -6,6 +6,7 @@ const useSharedListFunctions = (
   SESSION_ID: string | null,
   LIST: any[]
 ) => {
+
   const [sharedLists, setSharedLists] = useState<ISharedList[]>([]);
   const [lastSharedList, setLastSharedList] = useState<ISharedList[]>([]);
   const [listParam, setListParam] = useState("");

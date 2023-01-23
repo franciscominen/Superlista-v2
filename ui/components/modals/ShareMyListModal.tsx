@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { database } from "~/lib/firebase";
 import { ISharedList } from "~/lib/types";
-import { useList, useSessionId } from "~/lib/hooks";
+import { useList, useProductsActions, useSessionId } from "~/lib/hooks";
 import api from "~/pages/api";
 import styled from "styled-components";
 import {
@@ -14,11 +14,12 @@ import {
 import PDFDownloadButton from "../utils/PDFDownloadButton";
 import showToast from "../utils/Toast";
 import useSharedListFunctions from "~/lib/hooks/useSharedListFunctions";
-import ShareMyListButtons from "../utils/ShareMyListButtons";
+import ShareMyListButton from "../utils/ShareMyListButton";
 
 const ShareMyListModal = () => {
   const LIST = useList();
   const SESSION_ID = useSessionId();
+  const { fetchSharedList } = useProductsActions();
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const [exit, setExit] = useState<boolean>(false);
@@ -48,10 +49,9 @@ const ShareMyListModal = () => {
 
   const onCopyLink = () => {
     // const URL = process.env.NEXT_PUBLIC_URL
-    navigator.clipboard.writeText(
-      `https://superlista.vercel.app/lista/${listParam}`
-    );
+    navigator.clipboard.writeText(`http://localhost:3000/lista/${listParam}`);
     showToast(<p className="toast-text-link">Link de la lista copiado.</p>);
+    fetchSharedList(lastSharedList[0]?.id);
   };
 
   useEffect(() => {
@@ -69,10 +69,12 @@ const ShareMyListModal = () => {
   }, [lastSharedList]);
 
   useEffect(() => {
-    getLastSharedList();
     setShowLink(false);
     if (!lastSharedList.length) {
       setExistsSharedList(false);
+    }
+    if (existsSharedList) {
+      updateListShared();
     }
   }, [LIST]);
 
@@ -113,11 +115,9 @@ const ShareMyListModal = () => {
                   <PDFDownloadButton />
                 </CenterContainer>
               ) : (
-                <ShareMyListButtons
+                <ShareMyListButton
                   loading={loading}
-                  condition={existsSharedList}
                   createListFunction={createNewListToShare}
-                  updateListFunction={updateListShared}
                 />
               )}
             </>

@@ -28,6 +28,7 @@ export interface Actions {
     clearList: () => void
     handleSearch: (e: ChangeEvent<HTMLInputElement>) => void
     clearSearch: () => void
+    fetchSharedList: (query: string | string[]) => Promise<void>
 }
 
 export interface Utils {
