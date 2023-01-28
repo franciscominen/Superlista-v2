@@ -1,14 +1,16 @@
-import { NextPage } from 'next'
-import { useRouter } from 'next/router'
+import { NextPage } from "next";
 
-import { IProduct } from '~/lib/types'
-import { useProducts, useUtils } from '~/lib/hooks'
-import styled from 'styled-components'
+import { IProduct } from "~/lib/types";
+import styled from "styled-components";
 
-import ProductCard from '~/ui/components/cards/ProductCard'
-import CategoriesCollapse from '~/ui/components/categoriesFilters/CategoriesCollapse'
-import { Title } from '~/ui/styles/sharedStyles'
-import ProductNotFound from '~/ui/components/utils/ProductNotFound'
+import ProductCard from "~/ui/components/cards/ProductCard";
+import CategoriesCollapse from "~/ui/components/categoriesFilters/CategoriesCollapse";
+import { Title } from "~/ui/styles/sharedStyles";
+import ProductNotFound from "~/ui/components/utils/ProductNotFound";
+import { useListStore } from "~/lib/store/state";
+import { shallow } from "zustand/shallow";
+import { useEffect } from "react";
+import useProductsActions from "~/lib/store/actions/useProductsActions";
 
 const ProductsContainer = styled.div`
   display: grid;
@@ -19,53 +21,70 @@ const ProductsContainer = styled.div`
   padding: 0 3%;
   gap: 8px;
   width: 100%;
-  transition: all .5s;
-`
+  transition: all 0.5s;
+`;
 
 const Products: NextPage = () => {
-  let PRODUCTS = useProducts()
-  const { searchValue } = useUtils()
+  const { fetchProducts } = useProductsActions();
 
-  const router = useRouter()
-  const categoryQuery: string | string[] | undefined = router.query.slug
+  const { products, isLoading } = useListStore(
+    (state) => ({
+      products: state.PRODUCTS,
+      isLoading: state.IS_LOADING,
+    }),
+    shallow
+  );
 
-  PRODUCTS = !searchValue
-    ? PRODUCTS
-    : PRODUCTS.filter(product =>
-      product.name.toLowerCase().includes(searchValue.toLocaleLowerCase())
-    )
+  useEffect(() => {
+    if (!products.length) {
+      fetchProducts();
+    }
+  }, []);
+
+  /*   const { searchValue } = useUtils();
+
+  const router = useRouter();
+  const categoryQuery: string | string[] | undefined = router.query.slug;
+
+  products = !searchValue
+    ? products
+    : products.filter((product) =>
+        product.name.toLowerCase().includes(searchValue.toLocaleLowerCase())
+      );
 
   if (categoryQuery) {
-    PRODUCTS = PRODUCTS.filter((product) => {
-      return product.categoryID === categoryQuery[0]
-    })
-  }
+    products = products.filter((product) => {
+      return product.categoryID === categoryQuery[0];
+    });
+  } */
 
   return (
-    <main style={{ padding: '7em 0 2.5em 0', width: '100%' }}>
-
+    <main style={{ padding: "7em 0 2.5em 0", width: "100%" }}>
       <CategoriesCollapse />
 
-      <figure style={{ background: '#f5f5f5', height: '1px', width: '95%', margin: '8px auto 0 auto' }} />
+      <figure
+        style={{
+          background: "#f5f5f5",
+          height: "1px",
+          width: "95%",
+          margin: "8px auto 0 auto",
+        }}
+      />
 
       <Title>Productos</Title>
 
       <ProductsContainer>
-        {
-          PRODUCTS
-            .map((product: IProduct) => {
-              return (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                />
-              )
-            })
-        }
+        {isLoading ? (
+          <h2>Cargando...</h2>
+        ) : (
+          products.map((product: IProduct) => {
+            return <ProductCard key={product.id} product={product} />;
+          })
+        )}
       </ProductsContainer>
-      {!PRODUCTS.length ? <ProductNotFound /> : null}
+      {!products.length ? <ProductNotFound /> : null}
     </main>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

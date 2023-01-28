@@ -16,9 +16,10 @@ export interface ISharedList {
 }
 
 export interface State {
-    products: IProduct[]
-    list: IProduct[]
-    sessionId: string | null
+    PRODUCTS: IProduct[]
+    LIST: IProduct[]
+    SESSION_ID: string | null
+    IS_LOADING: boolean
 }
 
 export interface Actions {
