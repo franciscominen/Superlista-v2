@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useProductsActions } from "~/lib/hooks";
 import {
     StyledModalWrapper,
     ModalContainer,
@@ -10,13 +9,14 @@ import {
     HomeText,
     Strong
 } from '~/ui/styles/sharedStyles'
+import useListActions from "~/lib/store/actions/useListActions";
 
 const ClearListModal = () => {
     const [showModal, setShowModal] = useState(false)
     const [exit, setExit] = useState(false)
     const router = useRouter()
 
-    const { clearList } = useProductsActions()
+    const { clearList } = useListActions()
 
     const closeModal = () => {
         setExit(true)

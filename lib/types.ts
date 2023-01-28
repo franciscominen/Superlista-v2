@@ -23,7 +23,7 @@ export interface State {
 }
 
 export interface Actions {
-    addProduct: (product: IProduct) => void
+    addProductToList: (product: IProduct) => void
     removeProduct: (id: IProduct['id']) => void
     addNoteToProduct: (product: IProduct, note: IProduct['nota']) => void
     clearList: () => void

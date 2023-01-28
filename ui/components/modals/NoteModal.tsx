@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import styled from "styled-components";
-import { useProductsActions } from "~/lib/hooks";
 import { IProduct } from "~/lib/types";
 import { fade } from "../../styles/animations";
 import {
@@ -13,6 +12,7 @@ import {
   Strong,
 } from "../../styles/sharedStyles";
 import { getDynamicPlaceholder } from "~/lib/utils";
+import useProductsActions from "~/lib/store/actions/useProductsActions";
 
 interface Props {
   show: boolean;
@@ -63,7 +63,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
   const isEdit = router.asPath === "/lista";
 
   const { name, nota, categoryID } = product;
-  const { addNoteToProduct, addProduct } = useProductsActions();
+  const { addNoteToProduct, addProductToList } = useProductsActions();
 
   const [noteValue, setNoteValue] = useState<string>("");
   const [exit, setExit] = useState<boolean>(false);
@@ -106,7 +106,7 @@ const NoteModal = ({ show, closeModal, product }: Props) => {
 
   const handleAdd = () => {
     addNoteToProduct(product, noteValue);
-    addProduct(product);
+    addProductToList(product);
     onCloseModal();
     showToast();
   };
