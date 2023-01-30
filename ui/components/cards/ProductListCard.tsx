@@ -6,30 +6,6 @@ import NoteModal from "../modals/NoteModal";
 import { slideInBottom } from "~/ui/styles/animations";
 import useListActions from "~/lib/store/actions/useListActions";
 
-const ListCard = styled.div<{ exit: boolean }>`
-  background-color: var(--white);
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 0 12px;
-  border-radius: 16px;
-  animation: ${slideInBottom} 0.5s ease;
-  transition: transform 0.3s, opacity 0.2s, height 0.2s 0.1s,
-    margin-bottom 0.2s 0.05s;
-  margin-bottom: ${({ exit }) => (exit ? "0" : "8px")};
-  height: ${({ exit }) => (exit ? "0" : "4em")};
-  transform: ${({ exit }) => (exit ? "translateX(-100%)" : "translateX(0)")};
-  opacity: ${({ exit }) => (exit ? "0" : "1")};
-`;
-
-const NoteText = styled.p<{ show: boolean }>`
-  font-size: 16px;
-  margin: 0;
-  overflow-x: auto;
-  padding: 0;
-  display: ${({ show }) => (show ? "flex" : "none")}; ;
-`;
-
 type Props = {
   product: IProduct;
 };
@@ -117,3 +93,27 @@ const ProductListCard = ({ product }: Props) => {
 };
 
 export default ProductListCard;
+
+const ListCard = styled.div<{ exit: boolean }>`
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 12px;
+  border-radius: 16px;
+  animation: ${slideInBottom} 0.5s ease;
+  transition: transform 0.3s, opacity 0.2s, height 0.2s 0.1s,
+    margin-bottom 0.2s 0.05s;
+  margin-bottom: ${({ exit }) => (exit ? "0" : "8px")};
+  height: ${({ exit }) => (exit ? "0" : "4em")};
+  transform: ${({ exit }) => (exit ? "translateX(-100%)" : "translateX(0)")};
+  opacity: ${({ exit }) => (exit ? "0" : "1")};
+`;
+
+const NoteText = styled.p<{ show: boolean }>`
+  font-size: 16px;
+  margin: 0;
+  overflow-x: auto;
+  padding: 0;
+  display: ${({ show }) => (show ? "flex" : "none")}; ;
+`;

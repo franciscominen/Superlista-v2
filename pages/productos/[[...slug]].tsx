@@ -9,8 +9,7 @@ import { Title } from "~/ui/styles/sharedStyles";
 import ProductNotFound from "~/ui/components/utils/ProductNotFound";
 import { useListStore } from "~/lib/store/state";
 import { shallow } from "zustand/shallow";
-import { useEffect } from "react";
-import useProductsActions from "~/lib/store/actions/useProductsActions";
+import { useRouter } from "next/router";
 
 const ProductsContainer = styled.div`
   display: grid;
@@ -25,38 +24,30 @@ const ProductsContainer = styled.div`
 `;
 
 const Products: NextPage = () => {
-  const { fetchProducts } = useProductsActions();
+  const router = useRouter();
+  const categoryQuery = router.query.slug;
 
-  const { products, isLoading } = useListStore(
+  const { products, isLoading, searchValue } = useListStore(
     (state) => ({
       products: state.PRODUCTS,
       isLoading: state.IS_LOADING,
+      searchValue: state.SEARCH_VALUE,
     }),
     shallow
   );
 
-  useEffect(() => {
-    if (!products.length) {
-      fetchProducts();
-    }
-  }, []);
-
-  /*   const { searchValue } = useUtils();
-
-  const router = useRouter();
-  const categoryQuery: string | string[] | undefined = router.query.slug;
-
-  products = !searchValue
-    ? products
-    : products.filter((product) =>
-        product.name.toLowerCase().includes(searchValue.toLocaleLowerCase())
-      );
-
+  let PRODUCTS = [...products];
   if (categoryQuery) {
-    products = products.filter((product) => {
+    PRODUCTS = PRODUCTS.filter((product) => {
       return product.categoryID === categoryQuery[0];
     });
-  } */
+  }
+
+  PRODUCTS = !searchValue
+    ? PRODUCTS
+    : PRODUCTS.filter((product) =>
+        product.name.toLowerCase().includes(searchValue.toLocaleLowerCase())
+      );
 
   return (
     <main style={{ padding: "7em 0 2.5em 0", width: "100%" }}>
@@ -77,12 +68,12 @@ const Products: NextPage = () => {
         {isLoading ? (
           <h2>Cargando...</h2>
         ) : (
-          products.map((product: IProduct) => {
+          PRODUCTS.map((product: IProduct) => {
             return <ProductCard key={product.id} product={product} />;
           })
         )}
       </ProductsContainer>
-      {!products.length ? <ProductNotFound /> : null}
+      {!PRODUCTS.length ? <ProductNotFound /> : null}
     </main>
   );
 };

@@ -6,7 +6,6 @@ import ProductListCard from "~/ui/components/cards/ProductListCard";
 import ClearListButton from "~/ui/components/utils/ClearListButton";
 import EmptyList from "~/ui/components/utils/EmptyList";
 import { useListStore } from "~/lib/store/state";
-import { shallow } from "zustand/shallow";
 
 const MyListWrapper = styled.section`
   display: flex;
@@ -18,12 +17,7 @@ const MyListWrapper = styled.section`
 `;
 
 const MyList: NextPage = () => {
-  const { LIST } = useListStore(
-    (state) => ({
-      LIST: state.LIST,
-    }),
-    shallow
-  );
+  const LIST = useListStore((state) => state.LIST);
 
   return (
     <>

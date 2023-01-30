@@ -20,6 +20,7 @@ export interface State {
     LIST: IProduct[]
     SESSION_ID: string | null
     IS_LOADING: boolean
+    SEARCH_VALUE: string
 }
 
 export interface Actions {

@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, ChangeEvent } from "react"
+/* import { useState, useEffect, createContext, ChangeEvent } from "react"
 import { IProduct, Context, State, Actions, Utils } from "../types"
 import { useLocalStorageGet, useLocalStorageSet } from "../hooks";
 import api from '~/pages/api'
@@ -104,7 +104,7 @@ const ProductsProvider = ({ children }: Props) => {
         if (router.query.slug) {
             fetchSharedList(router.query.slug)
         }
-        api.getAll((products: IProduct[]) => {
+        api.getProducts((products: IProduct[]) => {
             setProducts(products)
             setStatus("resolved")
         });
@@ -141,3 +141,4 @@ const ProductsProvider = ({ children }: Props) => {
 }
 
 export { ProductsProvider as Provider, ProductsContext as default }
+ */

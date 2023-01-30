@@ -1,6 +1,7 @@
 import api from "~/pages/api";
 import { useListStore } from "../state";
 import { IProduct } from "~/lib/types";
+import { ChangeEvent } from "react";
 
 const useProductsActions = () => {
 
@@ -10,7 +11,7 @@ const useProductsActions = () => {
     const fetchProducts = () => {
         useListStore.setState({ IS_LOADING: true });
         try {
-            return api.getAll((products: IProduct[]) => {
+            return api.getProducts((products: IProduct[]) => {
                 useListStore.setState((state) => ({ ...state, PRODUCTS: products }))
                 useListStore.setState({ IS_LOADING: false });
             });
@@ -39,7 +40,6 @@ const useProductsActions = () => {
             const editProduct = LIST.find(productList => productList.id === product.id)
             const productToUpdateNote = LIST.findIndex(product => product.id === editProduct?.id)
             const productWithNote = LIST[productToUpdateNote].nota = nota
-            // useLocalStorageSet("list", list)
 
             return productWithNote
         } else {
@@ -47,14 +47,23 @@ const useProductsActions = () => {
             LIST.push(productToEdit)
         }
 
-        // useLocalStorageSet("list", list)
         return LIST
+    }
+
+    const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+        return useListStore.setState({ SEARCH_VALUE: e.target.value });
+    }
+
+    const clearSearch = () => {
+        return useListStore.setState({ SEARCH_VALUE: '' });
     }
 
     return {
         fetchProducts,
         addProductToList,
-        addNoteToProduct
+        addNoteToProduct,
+        handleSearch,
+        clearSearch
     }
 }
 

@@ -7,24 +7,16 @@ import NoteModal from "../modals/NoteModal";
 import { scaleInCenter } from "../../styles/animations";
 import { Strong } from "~/ui/styles/sharedStyles";
 import { useListStore } from "~/lib/store/state";
-import { shallow } from "zustand/shallow";
 import useProductsActions from "~/lib/store/actions/useProductsActions";
 
 type Props = { product: IProduct };
 
 function ProductCard({ product }: Props) {
-  const { list } = useListStore(
-    (state) => ({
-      list: state.LIST,
-    }),
-    shallow
-  );
-
-  // const list = useList()
+  const LIST = useListStore((state) => state.LIST);
   const { addProductToList } = useProductsActions();
-  const [showModal, setShowModal] = useState<boolean>(false);
 
-  const isInList = list.some((listProduct) => listProduct.id === product.id);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const isInList = LIST.some((listProduct) => listProduct.id === product.id);
 
   const toastMessage = (
     <p className="toast-text">

@@ -1,9 +1,19 @@
 import { create } from 'zustand'
-import { State } from '../types';
+import { persist } from 'zustand/middleware'
+import { State } from '../types'
 
-export const useListStore = create<State>(() => ({
-    PRODUCTS: [],
-    LIST: [],
-    SESSION_ID: '',
-    IS_LOADING: false,
-}));
+export const useListStore = create<State>()(
+    persist(
+        (set, get) => ({
+            PRODUCTS: [],
+            LIST: [],
+            SESSION_ID: '',
+            IS_LOADING: false,
+            SEARCH_VALUE: '',
+        }),
+        {
+            name: 'list-storage',
+            partialize: (state) => ({ LIST: state.LIST }),
+        }
+    )
+)
