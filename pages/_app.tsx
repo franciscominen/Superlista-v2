@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useEffect } from "react";
+import { ReactElement, ReactNode, useEffect, useState } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { Analytics } from "@vercel/analytics/react";
@@ -23,11 +23,14 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   const isLoading = useListStore((state) => state.IS_LOADING);
   const { fetchProducts } = useProductsActions();
+  const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
+    setIsSSR(false);
     fetchProducts();
   }, []);
 
+  if (isSSR) return null;
   if (isLoading) return <Loading />;
 
   return getLayout(
