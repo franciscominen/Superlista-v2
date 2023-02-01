@@ -1,4 +1,4 @@
-import { useContext } from "react";
+/* import { useContext } from "react";
 import ProductsContext from "~/lib/context";
 import { IProduct, Actions, Utils, State } from "~/lib/types";
 
@@ -43,3 +43,4 @@ export function useLocalStorageGet(key: string, initialValue: any) {
         return initialValue;
     }
 }
+ */

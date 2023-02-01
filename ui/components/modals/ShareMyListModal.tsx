@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { database } from "~/lib/firebase";
 import { ISharedList } from "~/lib/types";
-import { useList, useSessionId } from "~/lib/hooks";
 import api from "~/pages/api";
 import styled from "styled-components";
 import {
@@ -13,30 +12,13 @@ import {
 } from "~/ui/styles/sharedStyles";
 import PDFDownloadButton from "../utils/PDFDownloadButton";
 import showToast from "../utils/Toast";
-import useSharedListFunctions from "~/lib/hooks/useSharedListFunctions";
 import ShareMyListButtons from "../utils/ShareMyListButtons";
 
 const ShareMyListModal = () => {
-  const LIST = useList();
-  const SESSION_ID = useSessionId();
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const [exit, setExit] = useState<boolean>(false);
   const [existsSharedList, setExistsSharedList] = useState<boolean>(false);
-
-  const {
-    sharedLists,
-    lastSharedList,
-    listParam,
-    showLink,
-    loading,
-    getLastSharedList,
-    createNewListToShare,
-    updateListShared,
-    setSharedLists,
-    setListParam,
-    setShowLink,
-  } = useSharedListFunctions(database, SESSION_ID, LIST);
 
   const closeModal = () => {
     setExit(true);
@@ -53,34 +35,6 @@ const ShareMyListModal = () => {
     );
     showToast(<p className="toast-text-link">Link de la lista copiado.</p>);
   };
-
-  useEffect(() => {
-    api.getSharedLists((sharedLists: ISharedList[]) => {
-      setSharedLists(sharedLists);
-    });
-  }, []);
-
-  useEffect(() => {
-    getLastSharedList();
-  }, [sharedLists]);
-
-  useEffect(() => {
-    setListParam(lastSharedList[0]?.id);
-  }, [lastSharedList]);
-
-  useEffect(() => {
-    getLastSharedList();
-    setShowLink(false);
-    if (!lastSharedList.length) {
-      setExistsSharedList(false);
-    }
-  }, [LIST]);
-
-  useEffect(() => {
-    if (lastSharedList.length) {
-      setExistsSharedList(true);
-    }
-  });
 
   const modal = (
     <>
