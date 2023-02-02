@@ -30,7 +30,7 @@ const ProductNotFound = () => {
                 <Image src='/assets/icons/empty-list-icon.svg' alt="empty" width={94} height={94} priority />
             </ImageWrapper>
             <EmptyListText>Parece que este producto no esta.</EmptyListText>
-            {/* <CreateProductModal /> */}
+            <CreateProductModal />
         </EmptyListWrapper>
     )
 }
