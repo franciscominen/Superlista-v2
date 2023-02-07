@@ -1,5 +1,5 @@
 import { database } from "~/lib/firebase"
-import { IProduct, ISharedList } from "~/lib/types"
+import { IProduct, ISharedList, State } from "~/lib/types"
 
 export default {
     getProducts: (callback: (products: IProduct[]) => void) =>
@@ -10,17 +10,10 @@ export default {
                     .sort((a, b) => 0.5 - Math.random())
                     .map(doc => ({ ...(doc.data() as IProduct), id: doc.id }))
             )),
-    getProductsByCategory: (queryParam: String, callback: (products: IProduct[]) => void) =>
-        database
-            .collection('products')
-            .where("categoryID", "==", queryParam)
-            .onSnapshot(snapshot => callback(
-                snapshot.docs
-                    .map(doc => ({ ...(doc.data() as IProduct), id: doc.id }))
-            )),
-    getSharedLists: (callback: (sharedLists: ISharedList[]) => void) =>
+    getSharedLists: (queryParam: State['SESSION_ID'], callback: (sharedList: ISharedList[]) => IProduct[]) =>
         database
             .collection('sharedLists')
+            .where('listID', '==', queryParam)
             .onSnapshot(snapshot => callback(
                 snapshot.docs
                     .map(doc => ({ id: doc.id, listID: doc.data().listID, listProducts: doc.data().listProducts }))

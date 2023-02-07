@@ -18,7 +18,8 @@ export interface ISharedList {
 export interface State {
     PRODUCTS: IProduct[]
     LIST: IProduct[]
-    SESSION_ID: string | null
+    SESSION_ID: string | string[] | null | undefined
+    SHARED_LIST_ID: string | string[] | null | undefined
     IS_LOADING: boolean
     SEARCH_VALUE: string
 }

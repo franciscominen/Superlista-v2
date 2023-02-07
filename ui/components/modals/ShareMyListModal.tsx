@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { database } from "~/lib/firebase";
-import { ISharedList } from "~/lib/types";
-import api from "~/pages/api";
 import styled from "styled-components";
 import {
   StyledModalWrapper,
@@ -10,15 +7,33 @@ import {
   CenterContainer,
   ModalButton,
 } from "~/ui/styles/sharedStyles";
+import SmallLoader from "../utils/SmallLoader";
 import PDFDownloadButton from "../utils/PDFDownloadButton";
 import showToast from "../utils/Toast";
-import ShareMyListButtons from "../utils/ShareMyListButtons";
+import useListActions from "~/lib/store/actions/useListActions";
+import { useListStore } from "~/lib/store/state";
+import { v4 as uuid } from "uuid";
+// import { database } from "~/lib/firebase";
+// import { database } from "~/lib/firebase";
 
 const ShareMyListModal = () => {
+  const LIST = useListStore((state) => state.LIST);
+  const SESSION_ID = useListStore((state) => state.SESSION_ID);
+  const SHARED_LIST_ID = useListStore((state) => state.SHARED_LIST_ID);
 
+  const {
+    createNewListToShare,
+    isLoading,
+    updateListShared,
+    fetchSharedList,
+    getSharedListId,
+  } = useListActions();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [exit, setExit] = useState<boolean>(false);
-  const [existsSharedList, setExistsSharedList] = useState<boolean>(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
 
   const closeModal = () => {
     setExit(true);
@@ -28,13 +43,46 @@ const ShareMyListModal = () => {
     }, 400);
   };
 
+  const onShareMyList = async () => {
+    const randomId = uuid().slice(0, 8);
+    createNewListToShare(randomId);
+    fetchSharedList(randomId);
+    getSharedListId(randomId);
+  };
+
   const onCopyLink = () => {
     // const URL = process.env.NEXT_PUBLIC_URL
-    navigator.clipboard.writeText(
-      `https://superlista.vercel.app/lista/${listParam}`
-    );
+    navigator.clipboard.writeText(`http://localhost:3000/lista/${SESSION_ID}`);
     showToast(<p className="toast-text-link">Link de la lista copiado.</p>);
   };
+
+  useEffect(() => {
+    if (!LIST.length) {
+      useListStore.setState((state) => ({ ...state, SESSION_ID: null }));
+      useListStore.setState((state) => ({ ...state, SHARED_LIST_ID: null }));
+    }
+    /* 
+    if (SESSION_ID) {
+      updateListShared(SHARED_LIST_ID);
+    } */
+  }, [LIST]);
+
+  const updateList = () => {
+    if (SESSION_ID) {
+      return updateListShared(SHARED_LIST_ID);
+    }
+  };
+
+/*   const deleteColl = () => {
+    database
+      .collection("sharedLists")
+      .get()
+      .then((res) => {
+        res.forEach((element) => {
+          element.ref.delete();
+        });
+      });
+  }; */
 
   const modal = (
     <>
@@ -61,18 +109,16 @@ const ShareMyListModal = () => {
           ) : (
             <>
               <ModalText>Comparti tu Lista!</ModalText>
-              {showLink ? (
+              {SESSION_ID ? (
                 <CenterContainer>
                   <ModalButton onClick={onCopyLink}>COPIAR LINK</ModalButton>
                   <PDFDownloadButton />
+                  <ModalButton onClick={updateList}>Actualizar</ModalButton>
                 </CenterContainer>
+              ) : isLoading ? (
+                <SmallLoader />
               ) : (
-                <ShareMyListButtons
-                  loading={loading}
-                  condition={existsSharedList}
-                  createListFunction={createNewListToShare}
-                  updateListFunction={updateListShared}
-                />
+                <ModalButton onClick={onShareMyList}>Compartir</ModalButton>
               )}
             </>
           )}
@@ -83,7 +129,7 @@ const ShareMyListModal = () => {
 
   return (
     <>
-      <OpenModalButton onClick={() => setShowModal(true)}>
+      <OpenModalButton onClick={openModal}>
         <Image
           src="/assets/icons/share-icon.svg"
           alt="Share"

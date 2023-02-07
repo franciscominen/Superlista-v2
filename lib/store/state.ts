@@ -7,13 +7,14 @@ export const useListStore = create<State>()(
         (set, get) => ({
             PRODUCTS: [],
             LIST: [],
-            SESSION_ID: '',
+            SESSION_ID: null,
+            SHARED_LIST_ID: null,
             IS_LOADING: false,
             SEARCH_VALUE: '',
         }),
         {
             name: 'list-storage',
-            partialize: (state) => ({ LIST: state.LIST }),
+            partialize: (state) => ({ LIST: state.LIST, SESSION_ID: state.SESSION_ID, SHARED_LIST_ID: state.SHARED_LIST_ID }),
         }
     )
 )

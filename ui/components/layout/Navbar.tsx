@@ -64,7 +64,7 @@ const Navbar = ({
     <>
       <NavHeader isVisible={showNavbar}>
         <NavLogoContainer>
-          {/* <ShareMyListModal /> */}
+          <ShareMyListModal />
           <Logo
             src="/assets/logo-navbar.svg"
             alt="Superlista.ar"
