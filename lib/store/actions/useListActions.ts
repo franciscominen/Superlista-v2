@@ -1,11 +1,10 @@
+import { useState } from "react";
+import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { database } from "~/lib/firebase";
 import { IProduct, State } from "~/lib/types";
 import { useListStore } from "../state";
-import { database } from "~/lib/firebase";
-import { useState } from "react";
 import api from "~/pages/api";
-import { useRouter } from "next/router";
 
-import { collection, query, where, onSnapshot } from "firebase/firestore";
 const useListActions = () => {
 
     const LIST = useListStore((state) => state.LIST);
@@ -25,7 +24,6 @@ const useListActions = () => {
         try {
             return api.getSharedLists(SESSION_ID, (sharedList: ISharedList[]) => {
                 const sharedListID = sharedList.map(list => { return list.id });
-                console.log(sharedListID);
                 return useListStore.setState((state) => ({ ...state, SHARED_LIST_ID: sharedListID[0] }))
             });
         } catch {
@@ -51,21 +49,16 @@ const useListActions = () => {
         }
     };
 
-    const fetchSharedList = (queryParam: string) => {
-        try {
-            const q = query(collection(database, "sharedLists"), where("listID", "==", queryParam));
-            console.log('fetch shared list');
+    const fetchSharedList = async (queryParam: string | string[] | null | undefined) => {
+        const docRef = doc(database, "sharedLists", `${queryParam}`);
+        const docSnap = await getDoc(docRef);
 
-            return onSnapshot(q, (querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    console.log(doc.data()?.listProducts);
-                    
-                    return useListStore.setState(state => ({ ...state, LIST: doc.data()?.listProducts }));
-                });
+        if (docSnap.exists()) {
+            onSnapshot(docRef, (snapshot) => {
+                useListStore.setState(state => ({ ...state, LIST: snapshot.data()?.listProducts }))
             });
-
-        } catch {
-            console.log('fetchSharedListFunction error');
+        } else {
+            console.log("No such document!");
         }
     }
 
@@ -80,7 +73,7 @@ const useListActions = () => {
                 });
             setIsLoading(false);
         } catch {
-            console.log("error");
+            console.log("Update Error");
         }
     };
 

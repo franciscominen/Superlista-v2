@@ -9,7 +9,6 @@ import Head from "next/head";
 import useProductsActions from "~/lib/store/actions/useProductsActions";
 import { useListStore } from "~/lib/store/state";
 import Loading from "~/ui/components/utils/Loading";
-import { useRouter } from "next/router";
 import useListActions from "~/lib/store/actions/useListActions";
 
 export type NextPageWithLayout = NextPage & {
@@ -22,11 +21,8 @@ type AppPropsWithLayout = AppProps & {
 
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
-
-  const router = useRouter();
-  const queryParam = router.query.slug;
-
   const isLoading = useListStore((state) => state.IS_LOADING);
+  const sharedListId = useListStore((state) => state.SHARED_LIST_ID);
   const { fetchProducts } = useProductsActions();
   const { fetchSharedList } = useListActions();
   const [isSSR, setIsSSR] = useState(true);
@@ -35,8 +31,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     setIsSSR(false);
     fetchProducts();
 
-    if (queryParam) {
-      fetchSharedList(queryParam);
+    if (sharedListId) {
+      fetchSharedList(sharedListId);
     }
   }, []);
 

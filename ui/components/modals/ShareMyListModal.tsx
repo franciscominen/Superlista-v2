@@ -13,8 +13,6 @@ import showToast from "../utils/Toast";
 import useListActions from "~/lib/store/actions/useListActions";
 import { useListStore } from "~/lib/store/state";
 import { v4 as uuid } from "uuid";
-// import { database } from "~/lib/firebase";
-// import { database } from "~/lib/firebase";
 
 const ShareMyListModal = () => {
   const LIST = useListStore((state) => state.LIST);
@@ -46,14 +44,13 @@ const ShareMyListModal = () => {
   const onShareMyList = async () => {
     const randomId = uuid().slice(0, 8);
     createNewListToShare(randomId);
-    fetchSharedList(randomId);
     getSharedListId(randomId);
   };
 
   const onCopyLink = () => {
-    // const URL = process.env.NEXT_PUBLIC_URL
     navigator.clipboard.writeText(`http://localhost:3000/lista/${SESSION_ID}`);
     showToast(<p className="toast-text-link">Link de la lista copiado.</p>);
+    fetchSharedList(SHARED_LIST_ID);
   };
 
   useEffect(() => {
@@ -61,19 +58,13 @@ const ShareMyListModal = () => {
       useListStore.setState((state) => ({ ...state, SESSION_ID: null }));
       useListStore.setState((state) => ({ ...state, SHARED_LIST_ID: null }));
     }
-    /* 
+
     if (SESSION_ID) {
       updateListShared(SHARED_LIST_ID);
-    } */
+    }
   }, [LIST]);
 
-  const updateList = () => {
-    if (SESSION_ID) {
-      return updateListShared(SHARED_LIST_ID);
-    }
-  };
-
-/*   const deleteColl = () => {
+  /*   const deleteColl = () => {
     database
       .collection("sharedLists")
       .get()
@@ -113,7 +104,6 @@ const ShareMyListModal = () => {
                 <CenterContainer>
                   <ModalButton onClick={onCopyLink}>COPIAR LINK</ModalButton>
                   <PDFDownloadButton />
-                  <ModalButton onClick={updateList}>Actualizar</ModalButton>
                 </CenterContainer>
               ) : isLoading ? (
                 <SmallLoader />
