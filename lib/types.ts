@@ -22,6 +22,7 @@ export interface State {
     SHARED_LIST_ID: string | string[] | null | undefined
     IS_LOADING: boolean
     SEARCH_VALUE: string
+    IS_LIST_UPDATED: boolean
 }
 
 export interface Actions {

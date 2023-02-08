@@ -7,6 +7,7 @@ const useProductsActions = () => {
 
     const LIST = useListStore((state) => state.LIST);
     const PRODUCTS = useListStore((state) => state.PRODUCTS);
+    const SHARED_LIST_ID = useListStore((state) => state.SHARED_LIST_ID);
 
     const fetchProducts = () => {
         useListStore.setState({ IS_LOADING: true });
@@ -29,6 +30,10 @@ const useProductsActions = () => {
         if (isProductInList) return;
 
         product.timestamp = new Date();
+
+        if (SHARED_LIST_ID) {
+            useListStore.setState(state => ({ ...state, IS_LIST_UPDATED: true }))
+        }
         return useListStore.setState((state) => ({ ...state, LIST: LIST.concat(product) }));
     }
 

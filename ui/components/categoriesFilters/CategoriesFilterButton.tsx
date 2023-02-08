@@ -9,9 +9,9 @@ const ShowCategoriesButton = styled.button<{ active: boolean }>`
   align-items: center;
   position: fixed !important;
   left: 3%;
-  top: 82%;
-  width: 58px;
-  height: 58px;
+  bottom: 15%;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   z-index: 10;
   transition: all 0.3s;
@@ -45,8 +45,8 @@ const CategoriesFilterButton = ({ onShowCategories }: Props) => {
       <Image
         src="/assets/icons/filter-icon.svg"
         alt="Filter"
-        height={46}
-        width={46}
+        height={42}
+        width={42}
         style={{ position: "relative", top: "3px" }}
       />
     </ShowCategoriesButton>

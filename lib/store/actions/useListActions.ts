@@ -1,17 +1,23 @@
 import { useState } from "react";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { database } from "~/lib/firebase";
-import { IProduct, State } from "~/lib/types";
+import { IProduct, ISharedList, State } from "~/lib/types";
 import { useListStore } from "../state";
 import api from "~/pages/api";
 
 const useListActions = () => {
 
     const LIST = useListStore((state) => state.LIST);
+    const SHARED_LIST_ID = useListStore((state) => state.SHARED_LIST_ID);
+
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isUpdate, setIsUpdate] = useState<boolean>(false);
 
     const removeProduct = (id: IProduct['id']) => {
+        if (SHARED_LIST_ID) {
+            useListStore.setState(state => ({ ...state, IS_LIST_UPDATED: true }))
+        }
         const productToRemove = LIST.filter(product => product.id !== id)
         return useListStore.setState(state => ({ ...state, LIST: productToRemove }))
     }
@@ -20,7 +26,7 @@ const useListActions = () => {
         return LIST.length ? useListStore.setState(state => ({ ...state, LIST: [] })) : LIST
     }
 
-    const getSharedListId = (SESSION_ID: any) => {
+    const getSharedListId = (SESSION_ID: State['SESSION_ID']) => {
         try {
             return api.getSharedLists(SESSION_ID, (sharedList: ISharedList[]) => {
                 const sharedListID = sharedList.map(list => { return list.id });
@@ -49,31 +55,44 @@ const useListActions = () => {
         }
     };
 
-    const fetchSharedList = async (queryParam: string | string[] | null | undefined) => {
-        const docRef = doc(database, "sharedLists", `${queryParam}`);
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-            onSnapshot(docRef, (snapshot) => {
-                useListStore.setState(state => ({ ...state, LIST: snapshot.data()?.listProducts }))
+    const fetchSharedList = async (SESSION_ID: string | string[] | undefined | null) => {
+        const docQuery = query(collection(database, "sharedLists"), where("listID", "==", SESSION_ID));
+        const unsubscribe = onSnapshot(docQuery, (querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                useListStore.setState(state => ({ ...state, LIST: doc.data()?.listProducts }))
             });
-        } else {
-            console.log("No such document!");
-        }
+        });
+
+        return () => unsubscribe && unsubscribe()
     }
 
-    const updateListShared = async (SHARED_LIST_ID: State['SHARED_LIST_ID']) => {
-        setIsLoading(true);
+    const updateListShared = async (listID: State['SHARED_LIST_ID']) => {
+        setIsUpdate(true);
+        console.log('Loading');
+
         try {
             await database
                 .collection("sharedLists")
-                .doc(SHARED_LIST_ID as string | undefined)
+                .doc(listID as string | undefined)
                 .update({
                     listProducts: [...LIST],
                 });
-            setIsLoading(false);
+            setIsUpdate(false);
+            console.log('Loaded');
+
         } catch {
             console.log("Update Error");
+        }
+    };
+
+    const deleteListShared = async (listID: State['SHARED_LIST_ID']) => {
+        try {
+            await database
+                .collection("sharedLists")
+                .doc(listID as string | undefined)
+                .delete()
+        } catch {
+            console.log("Delete Error");
         }
     };
 
@@ -84,7 +103,9 @@ const useListActions = () => {
         createNewListToShare,
         fetchSharedList,
         updateListShared,
-        getSharedListId
+        getSharedListId,
+        deleteListShared,
+        isUpdate
     }
 }
 

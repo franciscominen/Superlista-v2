@@ -22,10 +22,12 @@ const ShareMyListModal = () => {
   const {
     createNewListToShare,
     isLoading,
-    updateListShared,
+    // updateListShared,
     fetchSharedList,
     getSharedListId,
+    deleteListShared,
   } = useListActions();
+
   const [showModal, setShowModal] = useState<boolean>(false);
   const [exit, setExit] = useState<boolean>(false);
 
@@ -50,17 +52,14 @@ const ShareMyListModal = () => {
   const onCopyLink = () => {
     navigator.clipboard.writeText(`http://localhost:3000/lista/${SESSION_ID}`);
     showToast(<p className="toast-text-link">Link de la lista copiado.</p>);
-    fetchSharedList(SHARED_LIST_ID);
+    fetchSharedList(SESSION_ID);
   };
 
   useEffect(() => {
     if (!LIST.length) {
+      deleteListShared(SHARED_LIST_ID);
       useListStore.setState((state) => ({ ...state, SESSION_ID: null }));
       useListStore.setState((state) => ({ ...state, SHARED_LIST_ID: null }));
-    }
-
-    if (SESSION_ID) {
-      updateListShared(SHARED_LIST_ID);
     }
   }, [LIST]);
 
@@ -108,7 +107,9 @@ const ShareMyListModal = () => {
               ) : isLoading ? (
                 <SmallLoader />
               ) : (
-                <ModalButton onClick={onShareMyList}>Compartir</ModalButton>
+                <CenterContainer>
+                  <ModalButton onClick={onShareMyList}>COMPARTIR</ModalButton>
+                </CenterContainer>
               )}
             </>
           )}

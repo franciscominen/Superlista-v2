@@ -10,7 +10,7 @@ export default {
                     .sort((a, b) => 0.5 - Math.random())
                     .map(doc => ({ ...(doc.data() as IProduct), id: doc.id }))
             )),
-    getSharedLists: (queryParam: State['SESSION_ID'], callback: (sharedList: ISharedList[]) => IProduct[]) =>
+    getSharedLists: (queryParam: State['SESSION_ID'], callback: (sharedList: ISharedList[]) => void) =>
         database
             .collection('sharedLists')
             .where('listID', '==', queryParam)

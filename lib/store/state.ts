@@ -11,6 +11,7 @@ export const useListStore = create<State>()(
             SHARED_LIST_ID: null,
             IS_LOADING: false,
             SEARCH_VALUE: '',
+            IS_LIST_UPDATED: false,
         }),
         {
             name: 'list-storage',

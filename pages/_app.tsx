@@ -22,7 +22,7 @@ type AppPropsWithLayout = AppProps & {
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
   const isLoading = useListStore((state) => state.IS_LOADING);
-  const sharedListId = useListStore((state) => state.SHARED_LIST_ID);
+  const SESSION_ID = useListStore((state) => state.SESSION_ID);
   const { fetchProducts } = useProductsActions();
   const { fetchSharedList } = useListActions();
   const [isSSR, setIsSSR] = useState(true);
@@ -31,8 +31,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     setIsSSR(false);
     fetchProducts();
 
-    if (sharedListId) {
-      fetchSharedList(sharedListId);
+    if (SESSION_ID) {
+      fetchSharedList(SESSION_ID);
     }
   }, []);
 
