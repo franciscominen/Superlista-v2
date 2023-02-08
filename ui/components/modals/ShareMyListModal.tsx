@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import {
@@ -17,16 +17,9 @@ import { v4 as uuid } from "uuid";
 const ShareMyListModal = () => {
   const LIST = useListStore((state) => state.LIST);
   const SESSION_ID = useListStore((state) => state.SESSION_ID);
-  const SHARED_LIST_ID = useListStore((state) => state.SHARED_LIST_ID);
 
-  const {
-    createNewListToShare,
-    isLoading,
-    // updateListShared,
-    fetchSharedList,
-    getSharedListId,
-    deleteListShared,
-  } = useListActions();
+  const { createNewListToShare, isLoading, fetchSharedList, getSharedListId } =
+    useListActions();
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const [exit, setExit] = useState<boolean>(false);
@@ -54,14 +47,6 @@ const ShareMyListModal = () => {
     showToast(<p className="toast-text-link">Link de la lista copiado.</p>);
     fetchSharedList(SESSION_ID);
   };
-
-  useEffect(() => {
-    if (!LIST.length) {
-      deleteListShared(SHARED_LIST_ID);
-      useListStore.setState((state) => ({ ...state, SESSION_ID: null }));
-      useListStore.setState((state) => ({ ...state, SHARED_LIST_ID: null }));
-    }
-  }, [LIST]);
 
   /*   const deleteColl = () => {
     database

@@ -10,9 +10,7 @@ const useListActions = () => {
     const LIST = useListStore((state) => state.LIST);
     const SHARED_LIST_ID = useListStore((state) => state.SHARED_LIST_ID);
 
-
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [isUpdate, setIsUpdate] = useState<boolean>(false);
 
     const removeProduct = (id: IProduct['id']) => {
         if (SHARED_LIST_ID) {
@@ -67,9 +65,6 @@ const useListActions = () => {
     }
 
     const updateListShared = async (listID: State['SHARED_LIST_ID']) => {
-        setIsUpdate(true);
-        console.log('Loading');
-
         try {
             await database
                 .collection("sharedLists")
@@ -77,9 +72,6 @@ const useListActions = () => {
                 .update({
                     listProducts: [...LIST],
                 });
-            setIsUpdate(false);
-            console.log('Loaded');
-
         } catch {
             console.log("Update Error");
         }
@@ -105,7 +97,6 @@ const useListActions = () => {
         updateListShared,
         getSharedListId,
         deleteListShared,
-        isUpdate
     }
 }
 
