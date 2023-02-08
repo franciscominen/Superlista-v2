@@ -87,6 +87,13 @@ const ShareMyListModal = () => {
               {SESSION_ID ? (
                 <CenterContainer>
                   <ModalButton onClick={onCopyLink}>COPIAR LINK</ModalButton>
+                  <a
+                    href="whatsapp://send?text=This is WhatsApp sharing example using link"
+                    data-action="share/whatsapp/share"
+                    target="_blank"
+                  >
+                    WSP
+                  </a>
                   <PDFDownloadButton />
                 </CenterContainer>
               ) : isLoading ? (
