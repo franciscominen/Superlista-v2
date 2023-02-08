@@ -1,17 +1,18 @@
 import { ReactElement } from "react";
 import { toast } from "react-hot-toast";
 
-const showToast = (toastMessage: ReactElement) => toast(toastMessage, {
+const showToast = (toastMessage: ReactElement | (() => JSX.Element)) =>
+  toast(toastMessage, {
     duration: 1600,
-    position: 'bottom-center',
+    position: "bottom-center",
     style: {
-        boxShadow: 'none',
-        background: '#f6f6f6f0',
-        border: '1px solid #D2D2D2',
-        borderRadius: '20px',
-        position: 'relative',
-        bottom: '2em',
+      boxShadow: "none",
+      background: "#f6f6f6f0",
+      border: "1px solid #D2D2D2",
+      borderRadius: "20px",
+      position: "relative",
+      bottom: "2em",
     },
-});
+  });
 
-export default showToast
+export default showToast;

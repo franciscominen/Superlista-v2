@@ -1,48 +1,54 @@
-import { ReactNode, useState } from "react"
-import { useRouter } from "next/router"
-import { Provider as ProductsProvider } from "~/lib/context"
-import { MainContainer } from "../../styles/sharedStyles"
-import CategoriesFilterButton from "../categoriesFilters/CategoriesFilterButton"
-import Navbar from "./Navbar"
-import Footer from "./Footer"
+import { ReactNode, useState } from "react";
+import { useRouter } from "next/router";
+import { MainContainer } from "../../styles/sharedStyles";
+import CategoriesFilterButton from "../categoriesFilters/CategoriesFilterButton";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import UpdateSharedListButton from "../utils/UpdateSharedListButton";
 
 interface Props {
-    children?: ReactNode
+  children?: ReactNode;
 }
 
 const Layout = ({ children, ...props }: Props) => {
-    const router = useRouter()
-    const isHome = router.route === '/'
-    const isHowToUse = router.route === '/comousarla'
-    const isProducts = router.route === '/productos/[[...slug]]'
-    const [showCategories, setShowCategories] = useState<boolean>(false)
+  const router = useRouter();
+  const isHome = router.route === "/";
+  const isHowToUse = router.route === "/comousarla";
+  const isProducts = router.route === "/productos/[[...slug]]";
 
-    const onShowCategories = () => {
-        setShowCategories(!showCategories)
-    }
+  const [showCategories, setShowCategories] = useState<boolean>(false);
 
-    return (
-        <ProductsProvider>
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                {isHome || isHowToUse ?
-                    null :
-                    <Navbar
-                        onShowCategories={onShowCategories}
-                        showCategories={showCategories}
-                        setShowCategories={setShowCategories}
-                    />
-                }
+  const onShowCategories = () => {
+    setShowCategories(!showCategories);
+  };
 
-                {isProducts ?
-                    <CategoriesFilterButton onShowCategories={onShowCategories} />
-                    : null
-                }
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {isHome || isHowToUse ? null : (
+        <Navbar
+          onShowCategories={onShowCategories}
+          showCategories={showCategories}
+          setShowCategories={setShowCategories}
+        />
+      )}
 
-                <MainContainer {...props}>{children}</MainContainer>
-                <Footer />
-            </div>
-        </ProductsProvider>
-    )
-}
+      {isProducts ? (
+        <CategoriesFilterButton onShowCategories={onShowCategories} />
+      ) : null}
 
-export default Layout
+      <UpdateSharedListButton />
+
+      <MainContainer {...props}>{children}</MainContainer>
+      <Footer />
+    </div>
+  );
+};
+
+export default Layout;
