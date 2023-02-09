@@ -60,7 +60,7 @@ const AddNoteButton = styled.button`
 
 const NoteModal = ({ show, closeModal, product }: Props) => {
   const router = useRouter();
-  const isEdit = router.asPath === "/lista";
+  const isEdit = router.pathname === "/lista/[[...slug]]";
 
   const { name, nota, categoryID } = product;
   const { addNoteToProduct, addProductToList } = useProductsActions();

@@ -45,7 +45,9 @@ const useProductsActions = () => {
             const editProduct = LIST.find(productList => productList.id === product.id)
             const productToUpdateNote = LIST.findIndex(product => product.id === editProduct?.id)
             const productWithNote = LIST[productToUpdateNote].nota = nota
-
+            if (SHARED_LIST_ID) {
+                useListStore.setState(state => ({ ...state, IS_LIST_UPDATED: true }))
+            }
             return productWithNote
         } else {
             productToEdit = { ...product, nota }

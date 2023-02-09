@@ -24,7 +24,7 @@ const ConfirmClearButtonStyled = styled(ConfirmClearButton)`
   padding-right: 19px;
   position: fixed;
   left: 3%;
-  bottom: 15%;
+  bottom: 15vh;
   z-index: 3;
   border-radius: 2em;
   opacity: ${(props) => (props.active ? "0" : "1")};

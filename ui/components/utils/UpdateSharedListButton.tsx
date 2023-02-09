@@ -11,7 +11,7 @@ const UpdateButton = styled.button<{ active: boolean }>`
   align-items: center;
   position: fixed !important;
   left: 3%;
-  bottom: 21.5%;
+  bottom: 23.5vh;
   width: 52px;
   height: 52px;
   border-radius: 50%;
