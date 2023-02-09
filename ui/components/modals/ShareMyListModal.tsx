@@ -44,7 +44,9 @@ const ShareMyListModal = () => {
   };
 
   const onCopyLink = () => {
-    navigator.clipboard.writeText(`https://superlista.vercel.app/lista/${SESSION_ID}`);
+    navigator.clipboard.writeText(
+      `https://superlista.vercel.app/lista/${SESSION_ID}`
+    );
     showToast(<p className="toast-text-link">Link de la lista copiado.</p>);
     fetchSharedList(SESSION_ID);
   };
@@ -97,7 +99,7 @@ const ShareMyListModal = () => {
                     />
                   </ShareButton>
                   <ShareButtonA
-                    href="whatsapp://send?text=This is WhatsApp sharing example using link"
+                    href={`whatsapp://send?text=Hola! Te comparto la Superlista que hice. https://superlista.vercel.app/lista/${SESSION_ID}`}
                     data-action="share/whatsapp/share"
                     target="_blank"
                     className="wsp-btn"
