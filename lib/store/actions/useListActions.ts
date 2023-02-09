@@ -27,6 +27,8 @@ const useListActions = () => {
     const getSharedListId = (SESSION_ID: State['SESSION_ID']) => {
         try {
             return api.getSharedLists(SESSION_ID, (sharedList: ISharedList[]) => {
+                console.log('Loop getSharedLists');
+
                 const sharedListID = sharedList.map(list => { return list.id });
                 return useListStore.setState((state) => ({ ...state, SHARED_LIST_ID: sharedListID[0] }))
             });
@@ -56,6 +58,8 @@ const useListActions = () => {
     const fetchSharedList = async (SESSION_ID: string | string[] | undefined | null) => {
         const docQuery = query(collection(database, "sharedLists"), where("listID", "==", SESSION_ID));
         const unsubscribe = onSnapshot(docQuery, (querySnapshot) => {
+            console.log('Loop fetchSharedList');
+
             querySnapshot.forEach((doc) => {
                 useListStore.setState(state => ({ ...state, LIST: doc.data()?.listProducts }))
             });
@@ -72,6 +76,8 @@ const useListActions = () => {
                 .update({
                     listProducts: [...LIST],
                 });
+            console.log('Loop updateListShared');
+
         } catch {
             console.log("Update Error");
         }

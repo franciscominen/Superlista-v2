@@ -13,6 +13,7 @@ import showToast from "../utils/Toast";
 import useListActions from "~/lib/store/actions/useListActions";
 import { useListStore } from "~/lib/store/state";
 import { v4 as uuid } from "uuid";
+import { scaleInCenter } from "~/ui/styles/animations";
 
 const ShareMyListModal = () => {
   const LIST = useListStore((state) => state.LIST);
@@ -86,14 +87,28 @@ const ShareMyListModal = () => {
               <ModalText>Comparti tu Lista!</ModalText>
               {SESSION_ID ? (
                 <CenterContainer>
-                  <ModalButton onClick={onCopyLink}>COPIAR LINK</ModalButton>
-                  <a
+                  <ShareButton onClick={onCopyLink}>
+                    <Image
+                      src="/assets/icons/link-icon.svg"
+                      alt="Copy Link"
+                      height={32}
+                      width={32}
+                      style={{ position: "relative", top: "2px" }}
+                    />
+                  </ShareButton>
+                  <ShareButtonA
                     href="whatsapp://send?text=This is WhatsApp sharing example using link"
                     data-action="share/whatsapp/share"
                     target="_blank"
+                    className="wsp-btn"
                   >
-                    WSP
-                  </a>
+                    <Image
+                      src="/assets/icons/wsp-icon.svg"
+                      alt="Copy Link"
+                      height={30}
+                      width={30}
+                    />
+                  </ShareButtonA>
                   <PDFDownloadButton />
                 </CenterContainer>
               ) : isLoading ? (
@@ -144,5 +159,32 @@ const ModalText = styled.p`
   font-size: 18px;
   font-weight: 600;
   text-align: center;
-  margin: 8px 0 16px 0;
+  margin: 8px 0 20px 0;
+`;
+
+const ShareButton = styled.button`
+  background: var(--white);
+  border-radius: 0 15px 15px 15px;
+  border: 2px solid var(--gray);
+  width: 60px;
+  height: 60px;
+  margin: 0 6px;
+  cursor: pointer;
+  animation: ${scaleInCenter} 0.3s ease both;
+`;
+
+const ShareButtonA = styled.a`
+  background: var(--white);
+  border-radius: 0 15px 15px 15px;
+  border: 2px solid var(--gray);
+  width: 60px;
+  height: 60px;
+  display: none;
+  margin: 0 6px;
+  animation: ${scaleInCenter} 0.3s ease both;
+  @media (max-width: 700px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
