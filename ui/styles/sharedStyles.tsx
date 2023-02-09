@@ -87,11 +87,13 @@ const StyledModalWrapper = styled.div<{ exit: boolean }>`
 
 const ModalContainer = styled.div<{ exit: boolean }>`
   background: var(--light);
-  padding: 22px 0 12px 0;
+  padding: 22px 0;
   border-radius: 40px;
   max-width: 27em;
   width: 90%;
   margin: 0 auto;
+  position: relative;
+  bottom: 3em;
   animation: ${scaleInCenter} 0.2s ease-in;
   transition: all 0.2s ease-in;
   transform: ${({ exit }) => (exit ? "scale(0)" : "scale(1)")};

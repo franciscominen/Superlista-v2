@@ -16,13 +16,17 @@ export interface ISharedList {
 }
 
 export interface State {
-    products: IProduct[]
-    list: IProduct[]
-    sessionId: string | null
+    PRODUCTS: IProduct[]
+    LIST: IProduct[]
+    SESSION_ID: string | string[] | null | undefined
+    SHARED_LIST_ID: string | string[] | null | undefined
+    IS_LOADING: boolean
+    SEARCH_VALUE: string
+    IS_LIST_UPDATED: boolean
 }
 
 export interface Actions {
-    addProduct: (product: IProduct) => void
+    addProductToList: (product: IProduct) => void
     removeProduct: (id: IProduct['id']) => void
     addNoteToProduct: (product: IProduct, note: IProduct['nota']) => void
     clearList: () => void

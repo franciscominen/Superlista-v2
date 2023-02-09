@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
         --principalFont: 'IBM Plex Sans', sans-serif;
     }
 
-    html,
+   /*  html, */
     body {
         background-image: url("/assets/background.svg");
         background-size: auto;
@@ -19,12 +19,13 @@ const GlobalStyle = createGlobalStyle`
         font-family: var(--principalFont);
         background-color: var(--light);
         overflow-x: hidden;
+        overflow-y: overlay;
         ::-webkit-scrollbar {
-            background-color: var(--gray);
+            opacity: 0;
             width: 12px;
         }
         ::-webkit-scrollbar-thumb {
-            background-color: var(--darkgrey);
+            background-color: #2323239b;
             border-radius: 12px;
         }
         user-select: none;
