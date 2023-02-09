@@ -87,7 +87,7 @@ export default memo(ProductCard);
 const Card = styled.div<{ disabled: boolean }>`
   position: relative;
   min-width: 60px;
-  max-width: 125px;
+  max-width: 100%;
   width: 100%;
   object-fit: cover;
   height: 145px;
@@ -103,6 +103,7 @@ const Card = styled.div<{ disabled: boolean }>`
   pointer-events: ${({ disabled }) => (disabled ? "none" : "all")};
   animation: ${scaleInCenter} 0.2s ease-in;
 `;
+
 const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;

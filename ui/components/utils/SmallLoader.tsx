@@ -1,38 +1,36 @@
+import { CenterContainer } from "~/ui/styles/sharedStyles";
+
 const SmallLoader = () => {
-    return (
-        <>
-            <span className="loader"></span>
-            <style jsx>{`
-            .loader {
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
-                display: block;
-                margin: 39.5px auto;
-                position: relative;
-                color: var(--darkgrey);
-                box-sizing: border-box;
-                animation: animloader 1s linear infinite alternate;
-                }
+  return (
+    <>
+      <CenterContainer>
+        <span className="loader"></span>
+      </CenterContainer>
 
-                @keyframes animloader {
-                0% {
-                    box-shadow: -38px -6px, -14px 6px,  14px -6px;
-                }
-                33% {
-                    box-shadow: -38px 6px, -14px -6px,  14px 6px;
-                }
-                66% {
-                    box-shadow: -38px -6px, -14px 6px, 14px -6px;
-                }
-                100% {
-                    box-shadow: -38px 6px, -14px -6px, 14px 6px;
-                }
-                }
-            `}</style>
-        </>
+      <style jsx>{`
+        .loader {
+          width: 40px;
+          height: 40px;
+          margin: 10px 0;
+          border: 2px solid var(--dark);
+          border-bottom-color: transparent;
+          border-radius: 50%;
+          display: inline-block;
+          box-sizing: border-box;
+          animation: rotation 0.7s linear infinite;
+        }
 
-    )
-}
+        @keyframes rotation {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
+    </>
+  );
+};
 
-export default SmallLoader
+export default SmallLoader;

@@ -10,6 +10,7 @@ import {
     Strong
 } from '~/ui/styles/sharedStyles'
 import useListActions from "~/lib/store/actions/useListActions";
+import { useListStore } from "~/lib/store/state";
 
 const ClearListModal = () => {
     const [showModal, setShowModal] = useState(false)
@@ -28,6 +29,9 @@ const ClearListModal = () => {
 
     const handleClear = () => {
         clearList()
+        useListStore.setState((state) => ({ ...state, SESSION_ID: null }));
+        useListStore.setState((state) => ({ ...state, SHARED_LIST_ID: null }));
+        useListStore.setState((state) => ({ ...state, IS_LIST_UPDATED: false }));
         closeModal()
         router.replace('/productos')
     }
