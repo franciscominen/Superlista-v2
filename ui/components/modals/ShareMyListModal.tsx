@@ -44,7 +44,7 @@ const ShareMyListModal = () => {
   };
 
   const onCopyLink = () => {
-    navigator.clipboard.writeText(`http://localhost:3000/lista/${SESSION_ID}`);
+    navigator.clipboard.writeText(`https://superlista.vercel.app/lista/${SESSION_ID}`);
     showToast(<p className="toast-text-link">Link de la lista copiado.</p>);
     fetchSharedList(SESSION_ID);
   };
