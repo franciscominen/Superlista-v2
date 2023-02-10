@@ -24,7 +24,7 @@ const ConfirmClearButtonStyled = styled(ConfirmClearButton)`
   padding-right: 19px;
   position: fixed;
   left: 3%;
-  bottom: 15vh;
+  bottom: 13vh;
   z-index: 3;
   border-radius: 2em;
   opacity: ${(props) => (props.active ? "0" : "1")};
@@ -41,7 +41,7 @@ const ClearButton = styled.button`
   border-radius: 100%;
   position: fixed;
   left: 3%;
-  bottom: 15%;
+  bottom: 13vh;
   z-index: 4;
   animation: ${scaleInCenter} 0.3s ease both;
   cursor: pointer;

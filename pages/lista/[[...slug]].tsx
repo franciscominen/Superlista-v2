@@ -14,11 +14,15 @@ const MyListWrapper = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0 3% 3em;
+  padding: 0 3%;
+  transition: 0.5s;
   position: relative;
   top: 7.5em;
-  height: auto;
-  transition: 0.5s;
+  height: 80vh;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const MyList: NextPage = () => {

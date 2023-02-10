@@ -30,10 +30,10 @@ const ProductListCard = ({ product }: Props) => {
   return (
     <>
       <ListCard exit={exit}>
-        <Image src={img} alt={name} width={46} height={46} />
+        <Image src={img} alt={name} width={37} height={37} />
         <span
           style={{
-            padding: "0 4px 0 4px",
+            padding: "0 4px 0 8px",
             maxWidth: "13em",
             minWidth: "7em",
             objectFit: "contain",
@@ -99,13 +99,14 @@ const ListCard = styled.div<{ exit: boolean }>`
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0 12px;
   border-radius: 16px;
   animation: ${slideInBottom} 0.5s ease;
   transition: transform 0.3s, opacity 0.2s, height 0.2s 0.1s,
-    margin-bottom 0.2s 0.05s;
+  margin-bottom 0.2s 0.05s;
   margin-bottom: ${({ exit }) => (exit ? "0" : "8px")};
-  height: ${({ exit }) => (exit ? "0" : "4em")};
+  padding: 0.2s 0.05s;
+  padding: ${({ exit }) => (exit ? "0" : "15px 12px")};
+  height: ${({ exit }) => (exit ? "0" : "66px")};
   transform: ${({ exit }) => (exit ? "translateX(-100%)" : "translateX(0)")};
   opacity: ${({ exit }) => (exit ? "0" : "1")};
 `;
