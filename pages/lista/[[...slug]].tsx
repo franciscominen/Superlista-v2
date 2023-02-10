@@ -14,7 +14,8 @@ const MyListWrapper = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 7.5em 3% 3em 3%;
+  padding: 0 3% 3em;
+  margin-top: 7.5em;
   transition: 0.5s;
 `;
 
@@ -31,6 +32,7 @@ const MyList: NextPage = () => {
       useListStore.setState((state) => ({ ...state, SESSION_ID: null }));
       useListStore.setState((state) => ({ ...state, SHARED_LIST_ID: null }));
       useListStore.setState((state) => ({ ...state, IS_LIST_UPDATED: false }));
+      window.localStorage.setItem("PDFList", "");
     }
   }, [LIST.length]);
 
