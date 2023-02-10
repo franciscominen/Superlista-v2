@@ -31,6 +31,7 @@ const MyList: NextPage = () => {
       useListStore.setState((state) => ({ ...state, SESSION_ID: null }));
       useListStore.setState((state) => ({ ...state, SHARED_LIST_ID: null }));
       useListStore.setState((state) => ({ ...state, IS_LIST_UPDATED: false }));
+      window.localStorage.setItem("PDFList", '');
     }
   }, [LIST.length]);
 

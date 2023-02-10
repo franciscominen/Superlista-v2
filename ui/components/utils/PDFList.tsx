@@ -55,7 +55,7 @@ const PDFList = () => {
     const [items, setItems] = useState<IProduct[]>([]);
 
     useEffect(() => {
-        const items = JSON.parse(localStorage.getItem('list')!);
+        const items = JSON.parse(localStorage.getItem('PDFList')!);
         if (items) {
             setItems(items);
         }

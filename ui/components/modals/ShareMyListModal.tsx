@@ -41,6 +41,7 @@ const ShareMyListModal = () => {
     const randomId = uuid().slice(0, 8);
     createNewListToShare(randomId);
     getSharedListId(randomId);
+    window.localStorage.setItem("PDFList", JSON.stringify(LIST));
   };
 
   const onCopyLink = () => {
