@@ -15,7 +15,9 @@ const MyListWrapper = styled.section`
   align-items: center;
   width: 100%;
   padding: 0 3% 3em;
-  margin-top: 7.5em;
+  position: relative;
+  top: 7.5em;
+  height: auto;
   transition: 0.5s;
 `;
 
