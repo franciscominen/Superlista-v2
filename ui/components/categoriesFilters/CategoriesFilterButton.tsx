@@ -9,7 +9,7 @@ const ShowCategoriesButton = styled.button<{ active: boolean }>`
   align-items: center;
   position: fixed !important;
   left: 3%;
-  bottom: 15vh;
+  bottom: 13vh;
   width: 52px;
   height: 52px;
   border-radius: 50%;

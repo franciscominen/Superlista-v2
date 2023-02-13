@@ -11,7 +11,7 @@ const UpdateButton = styled.button<{ active: boolean }>`
   align-items: center;
   position: fixed !important;
   left: 3%;
-  bottom: 23.5vh;
+  bottom: 23vh;
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -23,11 +23,13 @@ const UpdateButton = styled.button<{ active: boolean }>`
 `;
 
 const UpdateSharedListButton = () => {
+  const LIST = useListStore((state) => state.LIST);
   const IS_LIST_UPDATED = useListStore((state) => state.IS_LIST_UPDATED);
   const SHARED_LIST_ID = useListStore((state) => state.SHARED_LIST_ID);
   const { updateListShared } = useListActions();
 
   const onUpdateList = () => {
+    window.localStorage.setItem("PDFList", JSON.stringify(LIST));
     updateListShared(SHARED_LIST_ID);
     showToast(
       <p style={{ margin: "5px 0" }}>Actualizaste tu lista compartida.</p>
