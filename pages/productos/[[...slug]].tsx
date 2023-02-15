@@ -40,7 +40,7 @@ const Products: NextPage = () => {
   if (categoryQuery) {
     PRODUCTS = PRODUCTS.filter((product) => {
       return product.categoryID === categoryQuery[0];
-    });
+    }).sort((a, b) => a.name.localeCompare(b.name));
   }
 
   PRODUCTS = !searchValue
@@ -63,7 +63,7 @@ const Products: NextPage = () => {
       />
 
       <Title>Productos</Title>
-        
+
       <ProductsContainer>
         {isLoading ? (
           <h2>Cargando...</h2>

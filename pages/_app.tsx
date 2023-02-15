@@ -10,6 +10,7 @@ import useProductsActions from "~/lib/store/actions/useProductsActions";
 import { useListStore } from "~/lib/store/state";
 import Loading from "~/ui/components/utils/Loading";
 import useListActions from "~/lib/store/actions/useListActions";
+import { useRouter } from "next/router";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -22,19 +23,27 @@ type AppPropsWithLayout = AppProps & {
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
   const isLoading = useListStore((state) => state.IS_LOADING);
-  const SESSION_ID = useListStore((state) => state.SESSION_ID);
+  const router = useRouter();
+  const listParam = router.query.slug;
   const { fetchProducts } = useProductsActions();
-  const { fetchSharedList } = useListActions();
+  const { fetchSharedList, getSharedListId } = useListActions();
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
     setIsSSR(false);
     fetchProducts();
-
-    if (SESSION_ID) {
-      fetchSharedList(SESSION_ID);
-    }
   }, []);
+
+  useEffect(() => {
+    if (listParam) {
+      fetchSharedList(listParam[0]);
+      getSharedListId(listParam[0]);
+      useListStore.setState((state) => ({
+        ...state,
+        SESSION_ID: listParam[0],
+      }));
+    }
+  }, [listParam]);
 
   if (isSSR) return null;
   if (isLoading) return <Loading />;
