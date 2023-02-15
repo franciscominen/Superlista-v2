@@ -14,11 +14,8 @@ const MyListWrapper = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0 3%;
+  padding: 7.5em 3% 3em 3%;
   transition: 0.5s;
-  position: relative;
-  top: 7.5em;
-  height: 80vh;
   overflow-y: auto;
   &::-webkit-scrollbar {
     display: none;
