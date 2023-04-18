@@ -10,6 +10,7 @@ import ProductNotFound from "~/ui/components/utils/ProductNotFound";
 import { useListStore } from "~/lib/store/state";
 import { shallow } from "zustand/shallow";
 import { useRouter } from "next/router";
+import CreateProductModal from "~/ui/components/modals/CreateProductModal";
 
 const ProductsContainer = styled.div`
   display: grid;
@@ -50,7 +51,15 @@ const Products: NextPage = () => {
       );
 
   return (
-    <main style={{ padding: "7em 0 2.5em 0", width: "100%" }}>
+    <main
+      style={{
+        padding: "7em 0 2.5em 0",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <CategoriesCollapse />
 
       <figure
@@ -73,7 +82,7 @@ const Products: NextPage = () => {
           })
         )}
       </ProductsContainer>
-      {!PRODUCTS.length ? <ProductNotFound /> : null}
+      {!PRODUCTS.length ? <ProductNotFound /> : <CreateProductModal />}
     </main>
   );
 };
