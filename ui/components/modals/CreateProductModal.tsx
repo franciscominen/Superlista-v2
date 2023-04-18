@@ -236,6 +236,7 @@ const EmptyListButton = styled.button`
   font-family: var(--principalFont);
   font-size: 18px;
   font-weight: 600;
+  margin-top: 16px;
   padding: 12px 28px;
   opacity: 0;
   animation: ${fade} 0.7s 0.8s forwards;
