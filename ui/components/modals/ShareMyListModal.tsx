@@ -100,7 +100,7 @@ const ShareMyListModal = () => {
                     />
                   </ShareButton>
                   <ShareButtonA
-                    href={`whatsapp://send?text=Hola! Te comparto la Superlista que hice. https://superlista.vercel.app/lista/${SESSION_ID}`}
+                    href={`https://web.whatsapp.com/send?text=Hola! Te comparto la Superlista que hice. https://superlista.vercel.app/lista/${SESSION_ID}`}
                     data-action="share/whatsapp/share"
                     target="_blank"
                     className="wsp-btn"
